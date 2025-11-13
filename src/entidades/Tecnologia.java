@@ -1,4 +1,4 @@
-package entidades;
+package src.entidades;
 
 public class Tecnologia {
     private long id;

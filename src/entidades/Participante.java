@@ -1,4 +1,4 @@
-package entidades;
+package src.entidades;
 
 public abstract class Participante{
     private long cod;
