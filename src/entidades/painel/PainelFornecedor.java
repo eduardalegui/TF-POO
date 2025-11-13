@@ -6,14 +6,14 @@ import javax.swing.border.MatteBorder;
 
 
 
-public class MinhaJanela extends JFrame{
+public class PainelFornecedor extends JFrame{
     private JTextField campoTexto;
     private JButton botao;
     
-    public MinhaJanela(){
+    public PainelFornecedor(){
         super();
         this.setSize(1200,700);
-        this.setTitle("Cadastrar Comprador"); // nome da janela
+        this.setTitle("Cadastrar Fornecedor"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         
         //===============================================
@@ -28,7 +28,7 @@ public class MinhaJanela extends JFrame{
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
-                JLabel titulo = new JLabel("CADASTRAR COMPRADOR");
+                JLabel titulo = new JLabel("CADASTRAR FORNECEDOR");
                 comp1.setLayout(layout11);
                 comp1.setBackground(Color.RED);
                 comp1.setOpaque(true);
@@ -178,3 +178,4 @@ public class MinhaJanela extends JFrame{
         setVisible(true); // ultima linha!!!
     }
 }
+
