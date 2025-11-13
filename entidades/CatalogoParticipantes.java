@@ -54,6 +54,42 @@ public class CatalogoParticipantes {
         }
     }
 
+    public String cadastrarComprador(String stringCod, String nome, String pais, String email) {
+        try {
+            boolean cadastrado = false;
+            long cod = Long.parseLong(stringCod);
+
+            if (nome == null || pais == null || cod <= 0 || email == null || !email.contains("@")) {
+                return "Preencha todos os campos corretamente";
+            }
+
+            for (Participante p : participantes) {
+                if (p.getCod() == cod) {
+                    return "ERRO:codigo repetido";
+                }
+            }
+
+            Comprador c = new Comprador(cod, nome, pais, email);
+            for (int i = 0; i < participantes.size(); i++) {
+                if (participantes.get(i).getCod() > cod) {
+                    cadastrado = true;
+                    participantes.add(i, c);
+                    break;
+                }
+            }
+
+            if (!cadastrado) {
+                participantes.add(c);
+            }
+
+            return "Comprador cadastrado";
+        } catch (NullPointerException e) {
+            return "Preencha todos os campos corretamente";
+        } catch (Exception e) {
+            return "Revise seus dados e tente novamente";
+        }
+    }
+
     public Area verificarArea(String area) {
         for(Area a : Area.values()) {
             if(a.getNome().equals(area)) {
@@ -61,5 +97,43 @@ public class CatalogoParticipantes {
             }
         } 
         return null;
+    }
+
+    public String consultarFornecedorComMaisTecnologias(){
+        ArrayList<Fornecedor> arrayFornecedores = new ArrayList<>();
+        for (Participante p : participantes) {
+            if (p instanceof Fornecedor) {
+                arrayFornecedores.add((Fornecedor) p);
+            }
+        }
+        if (arrayFornecedores.size() == 0) {
+            return "Erro: Não há fornecedores cadastrados";
+        }
+        Fornecedor maior = arrayFornecedores.get(0);
+        for (Fornecedor f: arrayFornecedores) {
+            if (maior.getArrayTecnologia().size() < f.getArrayTecnologia().size()) {
+                maior = f;
+            }
+        }
+        return maior.geraDescricao() + ";" + maior.getArrayTecnologia().size();
+    }
+
+    public String consultarCompradorComMaisVendas(){
+        ArrayList<Comprador> arrayCompradores = new ArrayList<>();
+        for (Participante p : participantes) {
+            if (p instanceof Comprador) {
+                arrayCompradores.add((Comprador) p);
+            }
+        }
+        if (arrayCompradores.size() == 0) {
+            return "Erro: Não há fornecedores cadastrados";
+        }
+        Comprador maior = arrayCompradores.get(0);
+        for (Comprador f: arrayCompradores) {
+            if (maior.getArrayVenda().size() < f.getArrayVenda().size()) {
+                maior = f;
+            }
+        }
+        return maior.geraDescricao();
     }
 }

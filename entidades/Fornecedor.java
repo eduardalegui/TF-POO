@@ -23,21 +23,37 @@ public class Fornecedor extends Participante{
         return this.area;
     }
 
-    public void cadastrarTecnologia(long id, String modelo, String descricao, double valorBase, double peso, double temperatura, Fornecedor fornecedor){
+    public ArrayList<Tecnologia> getArrayTecnologia(){
+        return arrayTecnologias;
+    }
+
+    public String cadastrarTecnologia(long id, String modelo, String descricao, double valorBase, double peso, double temperatura, Fornecedor fornecedor){
         try {
             for (Tecnologia tecnologia : arrayTecnologias) {
                 if (tecnologia.getId() == id) {
-                    return;
-                }
-                else{
-                    Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
-                    arrayTecnologias.add(novaTecnologia);
-                    Collections.sort(arrayTecnologias, Comparator.comparing(Tecnologia::getId));
+                    return "ERRO:id repetido no sistema";
                 }
             }
+            Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
+            arrayTecnologias.add(novaTecnologia);
+            Collections.sort(arrayTecnologias, Comparator.comparing(Tecnologia::getId));
+            return "Tecnologia cadastrada";
         } catch (Exception e) {
-            return;
+            return "Revise seus dados e tente novamente";
         }
+    }
+
+    public String consultarTecnologiaComMaiorValor(){
+        if (arrayTecnologias.size() == 0) {
+            return "Erro: Não há tecnologias cadastradas";
+        }
+        Tecnologia maior = arrayTecnologias.get(0);
+        for (Tecnologia tecnologia : arrayTecnologias) {
+            if (maior.getValorBase() < tecnologia.getValorBase()) {
+                maior = tecnologia;
+            }
+        }
+        return maior.getDescricao();
     }
 
     @Override

@@ -30,7 +30,7 @@ public class Comprador extends Participante{
         return this.arrayVenda;
     }
 
-    public void cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
+    public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
         try {
             long num = Long.parseLong(stringNum);
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
@@ -38,15 +38,17 @@ public class Comprador extends Participante{
             
             for(Venda v : arrayVenda) {
                 if(v.getNum() == num) {
-                    return;
+                    return "ERRO:numero repetido";
                 }
             }
+
             Venda venda = new Venda(num, date, comprador, tecnologia);
             arrayVenda.add(venda);
+            return "Venda cadastrada";
         } catch(NullPointerException e) {
-            return;
+            return "Preencha os dados corretamente e tente novamente";
         } catch (Exception e) {
-            return;
+            return "Revise seus dados e tente novamente";
         }
         
     }

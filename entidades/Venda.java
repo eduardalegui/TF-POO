@@ -17,7 +17,31 @@ public class Venda{
     }
 
     public double calculaValorFinal(){
-        return 0;
+        double valorFinal = 0;
+        double valorBase = tecnologia.getValorBase();
+        Area area = tecnologia.getFornecedor().getArea();
+        int qtdVendas;
+        if (comprador.getArrayVenda().size() > 10) {
+            qtdVendas = 10;
+        }
+        else{
+            qtdVendas = comprador.getArrayVenda().size();
+        }
+
+        if (area == Area.TI) {
+            valorFinal = valorBase + (valorBase * ((20 - qtdVendas) / 100));
+        }
+        if (area == Area.ANDROIDES) {
+            valorFinal = valorBase + (valorBase * ((15 - qtdVendas) / 100));
+        }
+        if (area == Area.ALIMENTOS) {
+            valorFinal = valorBase + (valorBase * ((10 - qtdVendas) / 100));
+        }
+        if (area == Area.EMERGENTE) {
+            valorFinal = valorBase + (valorBase * ((25 - qtdVendas) / 100));
+        }
+
+        return valorFinal;
     }
 
     public long getNum() {
@@ -28,4 +52,4 @@ public class Venda{
         return this.date;
     }
 
-}
+}           
