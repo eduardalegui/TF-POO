@@ -19,6 +19,58 @@ public class Tecnologia {
         this.fornecedor = fornecedor;
     }
 
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getModelo() {
+        return this.modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public double getValorBase() {
+        return this.valorBase;
+    }
+
+    public void setValorBase(double valorBase) {
+        this.valorBase = valorBase;
+    }
+
+    public double getPeso() {
+        return this.peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public double getTemperatura() {
+        return this.temperatura;
+    }
+
+    public void setTemperatura(double temperatura) {
+        this.temperatura = temperatura;
+    }
+
+    public Fornecedor getFornecedor() {
+        return this.fornecedor;
+    }
+
     public void defineFornecedor(Fornecedor f) {
         this.fornecedor = f;
     }
