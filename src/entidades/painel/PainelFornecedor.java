@@ -43,7 +43,7 @@ public class PainelFornecedor extends JFrame{
                 comp2.setLayout(layout2);
                 comp2.setMaximumSize(new Dimension(900, 400));
                 comp2.setOpaque(false);
-                comp2.setBorder(BorderFactory.createEmptyBorder(50, 100, 0, 100));
+                comp2.setBorder(BorderFactory.createEmptyBorder(40, 130, 0, 150));
                 FlowLayout  layout1 = new FlowLayout(FlowLayout.RIGHT);
                 MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, verde);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
@@ -51,7 +51,7 @@ public class PainelFornecedor extends JFrame{
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JLabel tituloNome = new JLabel("Nome: ");
+                    JLabel tituloNome = new JLabel("Cod: ");
                     JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
@@ -65,7 +65,7 @@ public class PainelFornecedor extends JFrame{
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JLabel tituloEmail = new JLabel("Cod: ");
+                    JLabel tituloEmail = new JLabel("Nome: ");
                     JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
@@ -79,7 +79,7 @@ public class PainelFornecedor extends JFrame{
                 //===============================================
                 //===============================================
                     JPanel comp23 = new JPanel();
-                    JLabel tituloPais = new JLabel("Fundação: ");
+                    JLabel tituloPais = new JLabel("Data: ");
                     JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
@@ -92,24 +92,24 @@ public class PainelFornecedor extends JFrame{
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
-                    // JPanel comp24 = new JPanel();
-                    // JLabel tituloCod = new JLabel("Cod: ");
-                    // JTextField campTexto4 = new JTextField(20);
-                    // tituloCod.setFont(fontDosTitulos);
-                    // campTexto4.setOpaque(false);
-                    // campTexto4.setBorder(bordaCampTexto);
-                    // campTexto4.setFont(fontDosCampTexto);
-                    // comp24.setLayout(layout1);
-                    // comp24.add(tituloCod);
-                    // comp24.add(campTexto4);
-                    // comp24.setFont(fontDosTitulos);
-                    // comp24.setOpaque(false);
+                    JPanel comp24 = new JPanel();
+                    JLabel tituloCod = new JLabel("Area: ");
+                    JTextField campTexto4 = new JTextField(20);
+                    tituloCod.setFont(fontDosTitulos);
+                    campTexto4.setOpaque(false);
+                    campTexto4.setBorder(bordaCampTexto);
+                    campTexto4.setFont(fontDosCampTexto);
+                    comp24.setLayout(layout1);
+                    comp24.add(tituloCod);
+                    comp24.add(campTexto4);
+                    comp24.setFont(fontDosTitulos);
+                    comp24.setOpaque(false);
                 //===============================================
 
                 comp2.add(comp21);
                 comp2.add(comp22);
                 comp2.add(comp23);
-                //comp2.add(comp24);
+                comp2.add(comp24);
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
@@ -148,7 +148,7 @@ public class PainelFornecedor extends JFrame{
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
-                comp3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+                comp3.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
                 comp3.add(botao1);
                 comp3.add(botao2);
                 comp3.add(botao3);
