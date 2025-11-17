@@ -1,5 +1,6 @@
 package entidades;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Venda{
@@ -50,6 +51,11 @@ public class Venda{
 
     public Date getDate() {
         return this.date;
+    }
+
+    public String geraDescricao() {
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+        return this.num + ";" + data.format(this.date) + ";" + this.valorFinal + ";" + this.comprador.geraDescricao() + ";" + this.tecnologia.geraDescricao();
     }
 
 }           
