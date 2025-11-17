@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Comprador extends Participante{
@@ -51,6 +52,48 @@ public class Comprador extends Participante{
             return "Revise seus dados e tente novamente";
         }
         
+    }
+
+    public List<String> mostrarRelatorioDeVendas() {
+        List<String> retorno = new ArrayList<>();
+        for(Venda v : arrayVenda) {
+            retorno.add(v.geraDescricao());
+        }
+        return retorno;
+    }
+
+    public String removerOsDadosDeUmaDeterminadaVenda(long num) {
+        for(Venda v : arrayVenda) {
+            if(v.getNum() == num) {
+                arrayVenda.remove(v);
+                return "Venda removida";
+            }
+        }
+        return "ERRO:não existe venda com o id fornecido";
+    }
+
+    public String consultarVendaComMaiorValor(){
+        ArrayList<Venda> vendasEmpatadas = new ArrayList<>();
+        String retorno = "";
+        if (arrayVenda.isEmpty()) {
+            return "Erro: Não há vendas cadastradas";
+        }
+        Venda maior = arrayVenda.get(0);
+        for (Venda venda : arrayVenda) {
+            if (maior.calculaValorFinal() < venda.calculaValorFinal()) {
+                maior = venda;
+            }
+        }
+        vendasEmpatadas.add(maior);
+        for (Venda venda : arrayVenda) {
+            if (maior.calculaValorFinal() == venda.calculaValorFinal()) {
+                vendasEmpatadas.add(venda);
+            }
+        }
+        for (Venda venda : vendasEmpatadas) {
+            retorno = retorno + venda.geraDescricao() + "\n";
+        }
+        return retorno;
     }
 
     public String geraDescricao(){
