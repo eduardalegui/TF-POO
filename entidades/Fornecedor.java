@@ -6,7 +6,7 @@ import java.util.*;
 public class Fornecedor extends Participante{
     private Date fundacao;
     private Area area;
-    private ArrayList<Tecnologia> arrayTecnologias;
+    private List<Tecnologia> arrayTecnologias;
 
     public Fornecedor(long cod, String nome, Date fundacao, Area area) {
         super(cod, nome);
@@ -23,7 +23,7 @@ public class Fornecedor extends Participante{
         return this.area;
     }
 
-    public ArrayList<Tecnologia> getArrayTecnologia(){
+    public List<Tecnologia> getArrayTecnologia(){
         return arrayTecnologias;
     }
 
@@ -44,6 +44,8 @@ public class Fornecedor extends Participante{
     }
 
     public String consultarTecnologiaComMaiorValor(){
+        ArrayList<Tecnologia> tecnologiasEmpatadas = new ArrayList<>();
+        String retorno = "";
         if (arrayTecnologias.size() == 0) {
             return "Erro: Não há tecnologias cadastradas";
         }
@@ -53,7 +55,24 @@ public class Fornecedor extends Participante{
                 maior = tecnologia;
             }
         }
-        return maior.getDescricao();
+        tecnologiasEmpatadas.add(maior);
+        for (Tecnologia tecnologia : arrayTecnologias) {
+            if (maior.getValorBase() == tecnologia.getValorBase()) {
+                tecnologiasEmpatadas.add(tecnologia);
+            }
+        }
+        for (Tecnologia tecnologia : tecnologiasEmpatadas) {
+            retorno = retorno + tecnologia.geraDescricao() + "\n";
+        }
+        return retorno;
+    }
+
+    public List<String> mostrarRelatorioDeTecnologias() {
+        List<String> retorno = new ArrayList<>();
+        for(Tecnologia t : arrayTecnologias) {
+            retorno.add(t.geraDescricao());
+        }
+        return retorno; 
     }
 
     @Override
