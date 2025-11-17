@@ -20,10 +20,27 @@ public class PainelComprador extends JFrame{
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
+            JButton voltar = new JButton("Voltar");
+            Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
+            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, Color.RED);
+            FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
+            JPanel botaoVoltar = new JPanel();
+            botaoVoltar.setMaximumSize(new Dimension(1200, 40));
+            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 70, 0));
+                voltar.setPreferredSize(new Dimension(100, 40));
+                botaoVoltar.setOpaque(false);
+                voltar.setOpaque(true);
+                voltar.setBorder(bordaBotaoVoltar);
+                voltar.setLayout(layoutB);
+                botaoVoltar.setLayout(layoutB);
+                voltar.setFont(fontBotoes);
+                voltar.setBackground(corFundo);
+            botaoVoltar.add(voltar);
+            body.add(botaoVoltar);
             body.setLayout(layout);
             body.setBackground(corFundo);
             body.setOpaque(true); //não o torna tranparente
-            body.setBorder(BorderFactory.createEmptyBorder(50, 0, 0, 0));
+            body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
             
             //===============================================
                 JPanel comp1 = new JPanel();
@@ -117,7 +134,7 @@ public class PainelComprador extends JFrame{
                 JButton botao3= new JButton("Mostrar");
                 JButton botao4= new JButton("Fechar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
-                Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
+                
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
                 botao1.setPreferredSize(new Dimension(150, 60));
