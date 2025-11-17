@@ -109,16 +109,19 @@ public class PainelFornecedor extends JFrame{
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
+                    JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"TI", "Android", "Emergente", "Alimento"});
+                    selecionaArea.setPreferredSize(new Dimension(500, 50));
+                    selecionaArea.setFont(fontDosCampTexto);
                     JPanel comp24 = new JPanel();
                     JLabel tituloCod = new JLabel("Area: ");
-                    JTextField campTexto4 = new JTextField(20);
+                    //JTextField campTexto4 = new JTextField(20);
                     tituloCod.setFont(fontDosTitulos);
-                    campTexto4.setOpaque(false);
-                    campTexto4.setBorder(bordaCampTexto);
-                    campTexto4.setFont(fontDosCampTexto);
+                    //campTexto4.setOpaque(false);
+                    //campTexto4.setBorder(bordaCampTexto);
+                    //campTexto4.setFont(fontDosCampTexto);
                     comp24.setLayout(layout1);
                     comp24.add(tituloCod);
-                    comp24.add(campTexto4);
+                    comp24.add(selecionaArea);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
