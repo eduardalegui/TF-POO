@@ -167,8 +167,8 @@ public class PainelComprador extends JFrame{
                 comp3.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
                 comp3.add(botao1);
                 comp3.add(botao2);
-                comp3.add(botao3);
-                comp3.add(botao4);
+                //comp3.add(botao3);
+                //comp3.add(botao4);
             //===============================================
             //===============================================
                 // JPanel comp4 = new JPanel();
