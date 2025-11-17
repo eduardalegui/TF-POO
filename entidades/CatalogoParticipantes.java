@@ -100,6 +100,8 @@ public class CatalogoParticipantes {
     }
 
     public String consultarFornecedorComMaisTecnologias(){
+        ArrayList<Fornecedor> fornecedoresEmpatados = new ArrayList<>();
+        String retorno = "";
         ArrayList<Fornecedor> arrayFornecedores = new ArrayList<>();
         for (Participante p : participantes) {
             if (p instanceof Fornecedor) {
@@ -115,10 +117,21 @@ public class CatalogoParticipantes {
                 maior = f;
             }
         }
-        return maior.geraDescricao() + ";" + maior.getArrayTecnologia().size();
+        fornecedoresEmpatados.add(maior);
+        for (Fornecedor f : arrayFornecedores) { 
+            if (maior.getArrayTecnologia().size()== f.getArrayTecnologia().size()) {
+                fornecedoresEmpatados.add(f);
+            }
+        }
+        for (Fornecedor f : fornecedoresEmpatados) {
+            retorno = retorno + f.geraDescricao() + f.getArrayTecnologia().size() + "\n";
+        }
+        return retorno;
     }
 
     public String consultarCompradorComMaisVendas(){
+        ArrayList<Comprador> compradoresEmpatados = new ArrayList<>();
+        String retorno = "";
         ArrayList<Comprador> arrayCompradores = new ArrayList<>();
         for (Participante p : participantes) {
             if (p instanceof Comprador) {
@@ -129,11 +142,55 @@ public class CatalogoParticipantes {
             return "Erro: Não há fornecedores cadastrados";
         }
         Comprador maior = arrayCompradores.get(0);
-        for (Comprador f: arrayCompradores) {
-            if (maior.getArrayVenda().size() < f.getArrayVenda().size()) {
-                maior = f;
+        for (Comprador c: arrayCompradores) {
+            if (maior.getArrayVenda().size() < c.getArrayVenda().size()) {
+                maior = c;
             }
         }
+        compradoresEmpatados.add(maior);
+        for (Comprador comprador : arrayCompradores) { 
+            if (maior.getArrayVenda().size()== comprador.getArrayVenda().size()) {
+                arrayCompradores.add(comprador);
+            }
+        }
+        for (Comprador comprador : compradoresEmpatados) {
+            retorno = retorno + comprador.geraDescricao() + "\n";
+        }
+        
         return maior.geraDescricao();
+    }
+
+    public List<String> mostrarRelatorioDeFornecedores() {
+        List<String> retorno = new ArrayList<>();
+        for(Participante p : participantes) {
+            if(p instanceof Fornecedor) {
+                Fornecedor fornecedor = (Fornecedor) p;
+                retorno.add(fornecedor.geraDescricao());
+            }
+        }
+        return retorno;
+    }
+
+    public List<String> mostrarRelatorioDeCompradores() {
+        List<String> retorno = new ArrayList<>();
+        for(Participante p : participantes) {
+            if(p instanceof Comprador) {
+                Comprador comprador = (Comprador) p;
+                retorno.add(comprador.geraDescricao());
+            }
+        }
+        return retorno;
+    }
+
+    public String removerOsDadosDeUmDeterminadoComprador(long cod) {
+        for(Participante p : participantes) {
+            if(p instanceof Comprador) {
+                if(p.getCod() == cod) {
+                    Comprador comprador = (Comprador) p;
+                    return comprador.geraDescricao();
+                }
+            }
+        }
+        return "ERRO:não existe comprador com este código";
     }
 }
