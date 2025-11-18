@@ -184,7 +184,7 @@ public class PainelHomePage extends JFrame {
                 comp4.setLayout(layout4);
                 //===============================================
                     JPanel comp41 = new JPanel();
-                    JLabel duda = new JLabel("Bublebee");
+                    JLabel duda = new JLabel("Pedro Henrique Castilhos Fraga");
                     duda.setFont(nomes);
                     comp41.add(duda);
                     comp41.setLayout(layout11);
@@ -193,7 +193,7 @@ public class PainelHomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp42 = new JPanel();
-                    JLabel pe = new JLabel("Pedrinho do Loló");
+                    JLabel pe = new JLabel("Eduarda Pfitscher Leguisamo");
                     pe.setFont(nomes);
                     comp42.add(pe);
                     comp42.setLayout(layout11);
@@ -202,7 +202,7 @@ public class PainelHomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp43 = new JPanel();
-                    JLabel lu = new JLabel("Luquinhas Gameplays");
+                    JLabel lu = new JLabel("Lucas Lourenço Jacchetti");
                     lu.setFont(nomes);
                     comp43.add(lu);
                     comp43.setLayout(layout11);
