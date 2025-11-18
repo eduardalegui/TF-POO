@@ -131,8 +131,8 @@ public class PainelComprador extends JFrame{
                 JPanel comp3 = new JPanel();
                 JButton botao1= new JButton("Confirmar");
                 JButton botao2= new JButton("Limpar");
-                JButton botao3= new JButton("Mostrar");
-                JButton botao4= new JButton("Fechar");
+                //JButton botao3= new JButton("Mostrar");
+                //JButton botao4= new JButton("Fechar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
@@ -149,17 +149,17 @@ public class PainelComprador extends JFrame{
                 botao2.setBackground(Color.RED);
                 botao2.setFont(fontBotoes);
 
-                botao3.setPreferredSize(new Dimension(150, 60));
-                botao3.setOpaque(true);
-                botao3.setBorder(bordaBotoes);
-                botao3.setBackground(Color.RED);
-                botao3.setFont(fontBotoes);
+                // botao3.setPreferredSize(new Dimension(150, 60));
+                // botao3.setOpaque(true);
+                // botao3.setBorder(bordaBotoes);
+                // botao3.setBackground(Color.RED);
+                // botao3.setFont(fontBotoes);
 
-                botao4.setPreferredSize(new Dimension(150, 60));
-                botao4.setOpaque(true);
-                botao4.setBorder(bordaBotoes);
-                botao4.setBackground(Color.RED);
-                botao4.setFont(fontBotoes);
+                // botao4.setPreferredSize(new Dimension(150, 60));
+                // botao4.setOpaque(true);
+                // botao4.setBorder(bordaBotoes);
+                // botao4.setBackground(Color.RED);
+                // botao4.setFont(fontBotoes);
 
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
