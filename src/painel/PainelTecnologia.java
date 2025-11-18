@@ -4,21 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-
-// Campo de texto ID: campo de texto para escrever o ID da tecnologia;
-// Campo de texto Modelo: campo de texto para escrever o modelo da tecnologia;
-// Campo de texto Descrição: campo de texto para escrever a descrição da tecnologia;
-// Campo de texto Valor Base: campo de texto para escrever o valor base da tecnologia;
-// Campo de texto Peso: campo de texto para escrever o peso da tecnologia;
-// Campo de texto Temperatura: campo de texto para escrever a temperatura da tecnologia;
-// Botão Selecionar Fornecedor: escolhe um dos fornecedores cadastrados no sistema;
-// Botão Limpar: limpa todos os campos de texto da página;
-// Botão Enviar: tenta cadastrar um fornecedor no sistema;
-//      Botão Voltar: volta para a página anterior.
-
 public class PainelTecnologia extends JFrame{
-    private JTextField campoTexto;
-    private JButton botao;
     
     public PainelTecnologia(){
         super();
@@ -38,14 +24,14 @@ public class PainelTecnologia extends JFrame{
             JPanel botaoVoltar = new JPanel();
             botaoVoltar.setMaximumSize(new Dimension(1200, 40));
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 0));
-                voltar.setPreferredSize(new Dimension(100, 40));
-                botaoVoltar.setOpaque(false);
-                voltar.setOpaque(true);
-                voltar.setBorder(bordaBotaoVoltar);
-                voltar.setLayout(layoutB);
-                botaoVoltar.setLayout(layoutB);
-                voltar.setFont(fontBotoes);
-                voltar.setBackground(corFundo);
+            voltar.setPreferredSize(new Dimension(100, 40));
+            botaoVoltar.setOpaque(false);
+            voltar.setOpaque(true);
+            voltar.setBorder(bordaBotaoVoltar);
+            voltar.setLayout(layoutB);
+            botaoVoltar.setLayout(layoutB);
+            voltar.setFont(fontBotoes);
+            voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
             body.add(botaoVoltar);
             body.setLayout(layout);
@@ -174,10 +160,7 @@ public class PainelTecnologia extends JFrame{
                 JPanel comp3 = new JPanel();
                 JButton botao1= new JButton("Confirmar");
                 JButton botao2= new JButton("Limpar");
-                //JButton botao3= new JButton("Mostrar");
-                //JButton botao4= new JButton("Fechar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
-
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
                 botao1.setPreferredSize(new Dimension(150, 60));
@@ -192,66 +175,31 @@ public class PainelTecnologia extends JFrame{
                 botao2.setBackground(azul);
                 botao2.setFont(fontBotoes);
 
-                // botao3.setPreferredSize(new Dimension(150, 60));
-                // botao3.setOpaque(true);
-                // botao3.setBorder(bordaBotoes);
-                // botao3.setBackground(azul);
-                // botao3.setFont(fontBotoes);
-
-                // botao4.setPreferredSize(new Dimension(150, 60));
-                // botao4.setOpaque(true);
-                // botao4.setBorder(bordaBotoes);
-                // botao4.setBackground(azul);
-                // botao4.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
                 comp3.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
                 comp3.add(botao1);
                 comp3.add(botao2);
-                //comp3.add(botao3);
-                //comp3.add(botao4);
             //===============================================
             //===============================================
-                //JPanel comp4 = new JPanel();
-                // JTextArea areaTexto = new JTextArea(10, 45);
-                // MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, Color.RED);
-                // Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
-                // areaTexto.setBorder(bordaAreaTexto);
-                // areaTexto.setFont(fontAreaTexto);
-                // areaTexto.setLineWrap(true);
-                // areaTexto.setWrapStyleWord(true);
-                // comp4.setLayout(layout11);
-                // comp4.setMaximumSize(new Dimension(1200, 210));
-                // comp4.setOpaque(false);
-                // JScrollPane scrollar = new JScrollPane(areaTexto);
-                // comp4.add(scrollar);
                 JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"oi"});
-                selecionaArea.setPreferredSize(new Dimension(375, 35));
-                selecionaArea.setFont(fontDosCampTexto);
                 JPanel comp4 = new JPanel();
                 JLabel tituloFornecedor = new JLabel("Fornecedor: ");
-                //JTextField campTexto4 = new JTextField(20);
                 tituloFornecedor.setFont(fontDosTitulos);
-                //campTexto4.setOpaque(false);
+                selecionaArea.setPreferredSize(new Dimension(375, 35));
+                selecionaArea.setFont(fontDosCampTexto);
                 comp4.setBorder(BorderFactory.createEmptyBorder(5, 190, 0, 0));
-                //comp4.setBorder(bordaCampTexto);
-                //campTexto4.setFont(fontDosCampTexto);
-                //comp4.setLayout(layout21);
                 comp4.add(tituloFornecedor);
                 comp4.add(selecionaArea);
                 comp4.setFont(fontDosTitulos);
                 comp4.setOpaque(false);
-
                 comp2.add(comp4);
             //===============================================
 
             body.add(comp1);
             body.add(comp2);
-            //body.add(comp4);
             body.add(comp3);
-            //body.add(comp4);
         //===============================================
         this.add(body);
         setVisible(true); // ultima linha!!!

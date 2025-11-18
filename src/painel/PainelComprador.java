@@ -7,8 +7,6 @@ import javax.swing.border.MatteBorder;
 
 
 public class PainelComprador extends JFrame{
-    private JTextField campoTexto;
-    private JButton botao;
     
     public PainelComprador(){
         super();
@@ -27,14 +25,14 @@ public class PainelComprador extends JFrame{
             JPanel botaoVoltar = new JPanel();
             botaoVoltar.setMaximumSize(new Dimension(1200, 40));
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 70, 0));
-                voltar.setPreferredSize(new Dimension(100, 40));
-                botaoVoltar.setOpaque(false);
-                voltar.setOpaque(true);
-                voltar.setBorder(bordaBotaoVoltar);
-                voltar.setLayout(layoutB);
-                botaoVoltar.setLayout(layoutB);
-                voltar.setFont(fontBotoes);
-                voltar.setBackground(corFundo);
+            voltar.setPreferredSize(new Dimension(100, 40));
+            botaoVoltar.setOpaque(false);
+            voltar.setOpaque(true);
+            voltar.setBorder(bordaBotaoVoltar);
+            voltar.setLayout(layoutB);
+            botaoVoltar.setLayout(layoutB);
+            voltar.setFont(fontBotoes);
+            voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
             body.add(botaoVoltar);
             body.setLayout(layout);
@@ -131,10 +129,7 @@ public class PainelComprador extends JFrame{
                 JPanel comp3 = new JPanel();
                 JButton botao1= new JButton("Confirmar");
                 JButton botao2= new JButton("Limpar");
-                //JButton botao3= new JButton("Mostrar");
-                //JButton botao4= new JButton("Fechar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
-                
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
                 botao1.setPreferredSize(new Dimension(150, 60));
@@ -149,47 +144,17 @@ public class PainelComprador extends JFrame{
                 botao2.setBackground(Color.RED);
                 botao2.setFont(fontBotoes);
 
-                // botao3.setPreferredSize(new Dimension(150, 60));
-                // botao3.setOpaque(true);
-                // botao3.setBorder(bordaBotoes);
-                // botao3.setBackground(Color.RED);
-                // botao3.setFont(fontBotoes);
-
-                // botao4.setPreferredSize(new Dimension(150, 60));
-                // botao4.setOpaque(true);
-                // botao4.setBorder(bordaBotoes);
-                // botao4.setBackground(Color.RED);
-                // botao4.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
                 comp3.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
                 comp3.add(botao1);
                 comp3.add(botao2);
-                //comp3.add(botao3);
-                //comp3.add(botao4);
-            //===============================================
-            //===============================================
-                // JPanel comp4 = new JPanel();
-                // JTextArea areaTexto = new JTextArea(10, 45);
-                // MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, Color.RED);
-                // Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
-                // areaTexto.setBorder(bordaAreaTexto);
-                // areaTexto.setFont(fontAreaTexto);
-                // areaTexto.setLineWrap(true);
-                // areaTexto.setWrapStyleWord(true);
-                // comp4.setLayout(layout11);
-                // comp4.setMaximumSize(new Dimension(1200, 210));
-                // comp4.setOpaque(false);
-                // JScrollPane scrollar = new JScrollPane(areaTexto);
-                // comp4.add(scrollar);
             //===============================================
 
             body.add(comp1);
             body.add(comp2);
             body.add(comp3);
-            //body.add(comp4);
         //===============================================
         this.add(body);
         setVisible(true); // ultima linha!!!
