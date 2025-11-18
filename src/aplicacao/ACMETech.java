@@ -14,5 +14,6 @@ public class ACMETech {
         PainelComprador minhaJanela = new PainelComprador();
         //PainelFornecedor minhaJanela = new PainelFornecedor();
         //TecnologiaLu minhaJanela = new TecnologiaLu();
+        //PainelTecnologia minhaJanela = new PainelTecnologia();
     }
 }
