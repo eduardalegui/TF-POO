@@ -10,7 +10,7 @@ import java.util.Locale;
 public class Comprador extends Participante{
     private String pais;
     private String email;
-    private ArrayList<Venda> arrayVenda;
+    private List<Venda> arrayVenda;
 
     public Comprador(long cod, String nome, String pais, String email){
         super(cod, nome);
@@ -27,7 +27,7 @@ public class Comprador extends Participante{
         return this.email;
     }
 
-    public ArrayList<Venda> getArrayVenda() {
+    public List<Venda> getArrayVenda() {
         return this.arrayVenda;
     }
 

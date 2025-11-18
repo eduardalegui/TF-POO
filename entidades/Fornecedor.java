@@ -78,6 +78,6 @@ public class Fornecedor extends Participante{
     @Override
     public String geraDescricao() {
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-        return this.getCod() + ";" + this.getNome() + ";" + data.format(this.getFundacao()) + this.getArea();
+        return this.getCod() + ";" + this.getNome() + ";" + data.format(this.getFundacao()) + ";" + this.getArea();
     }
 }
