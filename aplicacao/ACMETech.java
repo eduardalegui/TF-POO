@@ -1,13 +1,17 @@
 package aplicacao;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -16,6 +20,7 @@ import entidades.Comprador;
 import entidades.Fornecedor;
 import entidades.Participante;
 import entidades.Tecnologia;
+import entidades.Venda;
 
 public class ACMETech {
     private CatalogoParticipantes participantes;
@@ -34,6 +39,7 @@ public class ACMETech {
         for(String s : retornoParticipantes) {
             System.out.println(s);
         }
+        salvarDados("relatorio");
     }
 
     public void executar() {
@@ -170,6 +176,38 @@ public class ACMETech {
         }
         sc.close();
         return retorno;
+    }
+
+    public void salvarDados(String nome) {
+        try {
+            PrintStream streamSaida = new PrintStream(new File(nome + ".txt"), Charset.forName("UTF-8"));
+            System.setOut(streamSaida);
+            for(Participante p : participantes.getParticipantes()) {
+                if(p instanceof Fornecedor) {
+                    Fornecedor f = (Fornecedor) p;
+                    System.out.println(f.geraDescricao());
+                } else {
+                    Comprador c = (Comprador) p;
+                    System.out.println(c.geraDescricao());
+                }
+            }
+            for(Participante p : participantes.getParticipantes()) {
+                if(p instanceof Comprador) {
+                    Comprador c = (Comprador) p;
+                    for(Venda v : c.getArrayVenda()) {
+                        System.out.println(v.geraDescricao());
+                    }
+                } else {
+                    Fornecedor f = (Fornecedor) p;
+                    for(Tecnologia t : f.getArrayTecnologia()) {
+                        System.out.println(t.geraDescricao());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        Locale.setDefault(Locale.ENGLISH);
     }
 
 
