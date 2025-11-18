@@ -1,4 +1,4 @@
-package src.entidades.painel;
+package src.painel;
 
 import java.awt.*;
 import java.awt.event.*;

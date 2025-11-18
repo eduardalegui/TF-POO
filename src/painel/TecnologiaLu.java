@@ -1,4 +1,4 @@
-package src.entidades.painel;
+package src.painel;
 
 import java.util.*;
 
@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-public class TecnologiaLu extends JFrame implements ActionListener {
+public class TecnologiaLu extends JFrame{
 
     
     private JPanel painelBotao;
@@ -105,10 +105,10 @@ public class TecnologiaLu extends JFrame implements ActionListener {
 
         this.setSize(800, 500);
         this.setTitle("Cadastro de Tecnologia - ACMETech");
-        botao.addActionListener(this);
-        botaoLimpa.addActionListener(this);
-        botaoFecha.addActionListener(e -> this.dispose());
-        botaoMostrar.addActionListener(this);
+        // botao.addActionListener(this);
+        // botaoLimpa.addActionListener(this);
+        // botaoFecha.addActionListener(e -> this.dispose());
+        // botaoMostrar.addActionListener(this);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
