@@ -27,15 +27,15 @@ public class ACMETech {
 
     public void inicializar() {
         participantes = new CatalogoParticipantes();
-        List<String> retornoParticipantes = lerArquivoParticipantes();
+        List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
         }
-        retornoParticipantes = lerArquivoTecnologia();
+        retornoParticipantes = lerArquivoTecnologia("TECNOLOGIASENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
         }
-        retornoParticipantes = lerArquivoVendas();
+        retornoParticipantes = lerArquivoVendas("VENDASENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
         }
@@ -46,8 +46,9 @@ public class ACMETech {
         inicializar();
     }
 
-    public List<String> lerArquivoParticipantes() {
-        Path path = Paths.get("recursos","PARTICIPANTESENTRADA.CSV");
+    public List<String> lerArquivoParticipantes(String caminho) {
+        String nomeArquivo = caminho + ".CSV";
+        Path path = Paths.get("recursos",nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -81,8 +82,9 @@ public class ACMETech {
         return retorno;
     }
 
-    public List<String> lerArquivoTecnologia() {
-        Path path = Paths.get("recursos","TECNOLOGIASENTRADA.CSV");
+    public List<String> lerArquivoTecnologia(String caminho) {
+        String nomeArquivo = caminho + ".CSV";
+        Path path = Paths.get("recursos",nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -127,8 +129,9 @@ public class ACMETech {
         return retorno;
     }
 
-    public List<String> lerArquivoVendas() {
-        Path path = Paths.get("recursos","VENDASENTRADA.CSV");
+    public List<String> lerArquivoVendas(String caminho) {
+        String nomeArquivo = caminho + ".CSV";
+        Path path = Paths.get("recursos",nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -210,5 +213,92 @@ public class ACMETech {
         Locale.setDefault(Locale.ENGLISH);
     }
 
+    public void carregarDados(String caminho){
+        String nomeArquivo = caminho + ".txt";
+        Path path = Paths.get("", nomeArquivo);
+        participantes = new CatalogoParticipantes();
+        try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                String[] campos = linha.split(";");
+                int n = campos.length;
+                try {
+                    if (n == 4) {
+                        String cod = campos[0];
+                        String nome = campos[1];
+                        String fund = campos[2];
+                        String email = campos[3];
+                        participantes.cadastrarFornecedor(cod, nome, fund, email);
+                        continue;
+                    }
+                    else if (n == 10) {
+                        long id = Long.parseLong(campos[0]);
+                        String modelo = campos[1];
+                        String descricao = campos[2];
+                        double valorBase = Double.parseDouble(campos[3]);
+                        double peso = Double.parseDouble(campos[4]);
+                        double temperatura = Double.parseDouble(campos[5]);
+                        long codFornecedor = Long.parseLong(campos[6]);
 
+                        Fornecedor f = null;
+                        for (Participante p : participantes.getParticipantes()) {
+                            if (p instanceof Fornecedor && p.getCod() == codFornecedor) {
+                                f = (Fornecedor) p;
+                            }
+                        }
+                        if (f == null) {
+                            System.out.println("Fornecedor não encontrado para tecnologia id " + id);
+                            continue;
+                        }
+                        f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
+                        continue;
+                    }
+                    else if (n >= 15) {
+                        String num = campos[0];
+                        String data = campos[1];
+                        long codComprador = Long.parseLong(campos[3]);
+                        long idTec = Long.parseLong(campos[7]);
+                        Comprador comp = null;
+                        Tecnologia tec = null;
+                        for (Participante p : participantes.getParticipantes()) {
+                            if (p.getCod() == codComprador) {
+                                if (p instanceof Fornecedor) {
+                                    participantes.fornecedorParaComprador(codComprador);
+                                }
+                            }
+                        }
+                        for (Participante p : participantes.getParticipantes()) {
+                            if (p instanceof Comprador && p.getCod() == codComprador) {
+                                comp = (Comprador)p;
+                            }
+                        }
+                        for (Participante p : participantes.getParticipantes()) {
+                            if (p instanceof Fornecedor) {
+                                Fornecedor f = (Fornecedor)p;
+                                for (Tecnologia t : f.getArrayTecnologia()) {
+                                    if (t.getId() == idTec) {
+                                        tec = t;
+                                    }
+                                }
+                            }
+                        }
+                        if (comp == null || tec == null) {
+                            System.out.println("Erro ao cadastrar venda " + num);
+                            continue;
+                        }
+                        comp.cadastrarVenda(num, data, comp, tec);
+                        continue;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erro ao carregar linha: " + linha);
+                }
+            }
+            System.out.println("Carregamento concluído.");
+
+        } catch (Exception e) {
+            System.out.println("Erro: Ocorreu um erro ao carregar os dados");
+        }
+    }
+
+    
 }
