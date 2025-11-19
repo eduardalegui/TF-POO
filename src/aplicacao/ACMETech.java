@@ -2,7 +2,7 @@ package src.aplicacao;
 
 // import src.ui.PainelHomePage;
 // import src.ui.comprador.PainelCadastrarComprador;
-// import src.ui.comprador.PainelComprador;
+ import src.ui.comprador.PainelComprador;
 // import src.ui.fornecedor.PainelCadastrarFornecedor;
 // import src.ui.fornecedor.PainelFornecedor;
 // import src.ui.tecnologia.PainelCadastrarTecnologia;
@@ -15,7 +15,7 @@ public class ACMETech {
     public void executar() {
         // PainelHomePage minhaJanela = new PainelHomePage();
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
-        // PainelComprador minhaJanela = new PainelComprador();
+         PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
         // PainelFornecedor minhaJanela = new PainelFornecedor();
         // PainelCadastrarTecnologia minhaJanela = new PainelCadastrarTecnologia();
