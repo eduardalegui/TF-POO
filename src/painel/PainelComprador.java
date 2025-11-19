@@ -126,7 +126,7 @@ public class PainelComprador extends JFrame{
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Confirmar");
+                JButton botao1= new JButton("Enviar");
                 JButton botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
