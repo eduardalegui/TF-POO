@@ -18,66 +18,55 @@ public class PainelHomePage extends JFrame {
             Color corFundo = new Color(238, 236, 194);
             Color azul = new Color(0, 100, 250);
             Color verde = new Color(0, 150, 0);
-            Color roxo = new Color(136, 126, 174);
             Color amarelo = new Color(255, 194, 62);
             body.setLayout(layout);
             body.setBackground(corFundo);
             body.setOpaque(true); //não o torna tranparente
-            body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
             //===============================================
-                JPanel comp1 = new JPanel();
-                GridLayout layout1 = new GridLayout(3,1);
                 FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
                 Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                comp1.setLayout(layout1);
-                comp1.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-                
                 
                 //===============================================
                     JPanel comp11 = new JPanel();
                     MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, Color.RED);
-                    JLabel tituloTF = new JLabel("Traalho Final");
-                    Font fontTF = new Font("SansSerif", Font.BOLD, 40);
+                    JLabel tituloTF = new JLabel("Trabalho Final");
+                    Font fontTF = new Font("SansSerif", Font.BOLD, 60);
                     tituloTF.setBorder(bordaTF);
                     tituloTF.setFont(fontTF);
                     comp11.add(tituloTF);
                     comp11.setLayout(layout11);
-                    //comp11.setMaximumSize(new Dimension(100, 30));
-                    comp11.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+                    comp11.setSize(1200,40);
+                    comp11.setBorder(BorderFactory.createEmptyBorder(60, 0, 0, 0));
                     comp11.setOpaque(false);
                 //===============================================
                 //===============================================
                     JPanel comp12 = new JPanel();
                     MatteBorder bordaDE = new MatteBorder(0, 0, 4, 0, verde);
                     JLabel tituloDE = new JLabel("de");
-                    Font fontDE = new Font("SansSerif", Font.BOLD, 30);
+                    Font fontDE = new Font("SansSerif", Font.BOLD, 50);
                     tituloDE.setBorder(bordaDE);
                     tituloDE.setFont(fontDE);
                     comp12.add(tituloDE);
                     comp12.setLayout(layout11);
-                    //comp12.setMaximumSize(new Dimension(100, 20));
-                    comp12.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+                    comp12.setSize(1200,30);
                     comp12.setOpaque(false);
                 //===============================================
                 //===============================================
                     JPanel comp13 = new JPanel();
                     MatteBorder bordaPOO = new MatteBorder(0, 0, 4, 0, azul);
                     JLabel tituloPOO = new JLabel("POO");
-                    Font fontPOO = new Font("SansSerif", Font.BOLD, 50);
+                    Font fontPOO = new Font("SansSerif", Font.BOLD, 70);
                     tituloPOO.setBorder(bordaPOO);
                     tituloPOO.setFont(fontPOO);
                     comp13.add(tituloPOO);
                     comp13.setLayout(layout11);
-                    //comp13.setMaximumSize(new Dimension(100, 0));
-                    comp13.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+                    comp13.setSize(1200,50);
+                    comp13.setBorder(BorderFactory.createEmptyBorder(0, 0, 60, 0));
                     comp13.setOpaque(false);
                 //===============================================
 
-                comp1.add(comp11);
-                comp1.add(comp12);
-                comp1.add(comp13);
-                comp1.setOpaque(false);
+
             //===============================================
             //===============================================
                 JPanel comp2 = new JPanel();
@@ -135,7 +124,7 @@ public class PainelHomePage extends JFrame {
 
                 comp2.setLayout(layout21);
                 comp2.setMaximumSize(new Dimension(900, 200));
-                comp2.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+                comp2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
                 comp2.add(comp21);
                 comp2.add(comp22);
                 comp2.add(comp23);
@@ -149,30 +138,31 @@ public class PainelHomePage extends JFrame {
                 //===============================================
                     JPanel comp31 = new JPanel();
                     JButton botao31= new JButton("Salvar/Carregar");
-                    botao31.setPreferredSize(new Dimension(150, 60));
+                    botao31.setPreferredSize(new Dimension(230, 50));
                     botao31.setOpaque(true);
                     botao31.setBorder(bordaBotoes3);
                     botao31.setBackground(corFundo);
                     botao31.setFont(fontBotoes);
-                    comp31.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
+                    comp31.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 90));
                     comp31.add(botao31);
                     comp31.setOpaque(false);
                 //===============================================
                 //===============================================
                     JPanel comp32 = new JPanel();
                     JButton botao32= new JButton("Sair");
-                    botao32.setPreferredSize(new Dimension(150, 60));
+                    botao32.setPreferredSize(new Dimension(230, 50));
                     botao32.setOpaque(true);
                     botao32.setBorder(bordaBotoes3);
                     botao32.setBackground(corFundo);
                     botao32.setFont(fontBotoes);
+                    comp32.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));
                     comp32.add(botao32);
                     comp32.setOpaque(false);
                 //===============================================
 
                 comp3.setLayout(layout21);
-                comp3.setMaximumSize(new Dimension(900, 200));
-                comp3.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
+                comp3.setMaximumSize(new Dimension(1200, 30));
+                comp3.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
                 comp3.add(comp31);
                 comp3.add(comp32);
                 comp3.setOpaque(false);
@@ -182,6 +172,8 @@ public class PainelHomePage extends JFrame {
                 GridLayout layout4 = new GridLayout(1,3);
                 Font nomes = new Font("SansSerif", Font.PLAIN, 20);
                 comp4.setLayout(layout4);
+                comp4.setMaximumSize(new Dimension(1200, 10));
+                comp4.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
                 //===============================================
                     JPanel comp41 = new JPanel();
                     JLabel duda = new JLabel("Pedro Henrique Castilhos Fraga");
@@ -189,7 +181,6 @@ public class PainelHomePage extends JFrame {
                     comp41.add(duda);
                     comp41.setLayout(layout11);
                     comp41.setOpaque(false);
-                    //comp41.setMaximumSize(new Dimension(100, 20));
                 //===============================================
                 //===============================================
                     JPanel comp42 = new JPanel();
@@ -198,7 +189,6 @@ public class PainelHomePage extends JFrame {
                     comp42.add(pe);
                     comp42.setLayout(layout11);
                     comp42.setOpaque(false);
-                    //comp42.setMaximumSize(new Dimension(100, 20));
                 //===============================================
                 //===============================================
                     JPanel comp43 = new JPanel();
@@ -207,14 +197,17 @@ public class PainelHomePage extends JFrame {
                     comp43.add(lu);
                     comp43.setLayout(layout11);
                     comp43.setOpaque(false);
-                    //comp43.setMaximumSize(new Dimension(100, 20));
+                    comp43.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 50));
                 //===============================================
+                comp4.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
                 comp4.add(comp41);
                 comp4.add(comp42);
                 comp4.add(comp43);
                 comp4.setOpaque(false);
             //===============================================
-            body.add(comp1);
+            body.add(comp11);
+            body.add(comp12);
+            body.add(comp13);
             body.add(comp2);
             body.add(comp3);
             body.add(comp4);
