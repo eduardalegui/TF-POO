@@ -13,7 +13,6 @@ public class PainelFornecedor extends JFrame{
         this.setSize(1200,700);
         this.setTitle("Cadastrar Fornecedor"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
-        
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);

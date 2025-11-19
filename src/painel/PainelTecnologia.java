@@ -11,7 +11,6 @@ public class PainelTecnologia extends JFrame{
         this.setSize(1200,700);
         this.setTitle("Cadastrar Tecnologia"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
-        
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
@@ -46,8 +45,6 @@ public class PainelTecnologia extends JFrame{
                 comp1.setLayout(layout11);
                 comp1.setBackground(azul);
                 comp1.setOpaque(true);
-                //comp1.setMinimumSize(new Dimension(1200, 150));
-                //comp1.setBorder(BorderFactory.createEmptyBorder(30, 000, 30, 0));
                 comp1.setMaximumSize(new Dimension(1200, 10000));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);

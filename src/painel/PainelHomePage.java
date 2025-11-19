@@ -19,58 +19,57 @@ public class PainelHomePage extends JFrame {
             Color azul = new Color(0, 100, 250);
             Color verde = new Color(0, 150, 0);
             Color amarelo = new Color(255, 194, 62);
+            FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
+            Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
+            FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
             body.setLayout(layout);
             body.setBackground(corFundo);
             body.setOpaque(true); //não o torna tranparente
+
             //===============================================
-                FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
-                Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-                FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                
-                //===============================================
-                    JPanel comp11 = new JPanel();
-                    MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, Color.RED);
-                    JLabel tituloTF = new JLabel("Trabalho Final");
-                    Font fontTF = new Font("SansSerif", Font.BOLD, 60);
-                    tituloTF.setBorder(bordaTF);
-                    tituloTF.setFont(fontTF);
-                    comp11.add(tituloTF);
-                    comp11.setLayout(layout11);
-                    comp11.setSize(1200,40);
-                    comp11.setBorder(BorderFactory.createEmptyBorder(60, 0, 0, 0));
-                    comp11.setOpaque(false);
-                //===============================================
-                //===============================================
-                    JPanel comp12 = new JPanel();
-                    MatteBorder bordaDE = new MatteBorder(0, 0, 4, 0, verde);
-                    JLabel tituloDE = new JLabel("de");
-                    Font fontDE = new Font("SansSerif", Font.BOLD, 50);
-                    tituloDE.setBorder(bordaDE);
-                    tituloDE.setFont(fontDE);
-                    comp12.add(tituloDE);
-                    comp12.setLayout(layout11);
-                    comp12.setSize(1200,30);
-                    comp12.setOpaque(false);
-                //===============================================
-                //===============================================
-                    JPanel comp13 = new JPanel();
-                    MatteBorder bordaPOO = new MatteBorder(0, 0, 4, 0, azul);
-                    JLabel tituloPOO = new JLabel("POO");
-                    Font fontPOO = new Font("SansSerif", Font.BOLD, 70);
-                    tituloPOO.setBorder(bordaPOO);
-                    tituloPOO.setFont(fontPOO);
-                    comp13.add(tituloPOO);
-                    comp13.setLayout(layout11);
-                    comp13.setSize(1200,50);
-                    comp13.setBorder(BorderFactory.createEmptyBorder(0, 0, 60, 0));
-                    comp13.setOpaque(false);
-                //===============================================
-
-
+                JPanel comp11 = new JPanel();
+                MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, Color.RED);
+                JLabel tituloTF = new JLabel("Trabalho Final");
+                Font fontTF = new Font("SansSerif", Font.BOLD, 60);
+                tituloTF.setBorder(bordaTF);
+                tituloTF.setFont(fontTF);
+                comp11.add(tituloTF);
+                comp11.setLayout(layout11);
+                comp11.setSize(1200,40);
+                comp11.setBorder(BorderFactory.createEmptyBorder(60, 0, 0, 0));
+                comp11.setOpaque(false);
+            //===============================================
+            //===============================================
+                JPanel comp12 = new JPanel();
+                MatteBorder bordaDE = new MatteBorder(0, 0, 4, 0, verde);
+                JLabel tituloDE = new JLabel("de");
+                Font fontDE = new Font("SansSerif", Font.BOLD, 50);
+                tituloDE.setBorder(bordaDE);
+                tituloDE.setFont(fontDE);
+                comp12.add(tituloDE);
+                comp12.setLayout(layout11);
+                comp12.setSize(1200,30);
+                comp12.setOpaque(false);
+            //===============================================
+            //===============================================
+                JPanel comp13 = new JPanel();
+                MatteBorder bordaPOO = new MatteBorder(0, 0, 4, 0, azul);
+                JLabel tituloPOO = new JLabel("POO");
+                Font fontPOO = new Font("SansSerif", Font.BOLD, 70);
+                tituloPOO.setBorder(bordaPOO);
+                tituloPOO.setFont(fontPOO);
+                comp13.add(tituloPOO);
+                comp13.setLayout(layout11);
+                comp13.setSize(1200,50);
+                comp13.setBorder(BorderFactory.createEmptyBorder(0, 0, 60, 0));
+                comp13.setOpaque(false);
             //===============================================
             //===============================================
                 JPanel comp2 = new JPanel();
-                
+                comp2.setLayout(layout21);
+                comp2.setMaximumSize(new Dimension(900, 200));
+                comp2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
+
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JButton botao21= new JButton("Comprador");
@@ -122,9 +121,6 @@ public class PainelHomePage extends JFrame {
                     comp24.setOpaque(false);
                 //===============================================
 
-                comp2.setLayout(layout21);
-                comp2.setMaximumSize(new Dimension(900, 200));
-                comp2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
                 comp2.add(comp21);
                 comp2.add(comp22);
                 comp2.add(comp23);
@@ -174,6 +170,7 @@ public class PainelHomePage extends JFrame {
                 comp4.setLayout(layout4);
                 comp4.setMaximumSize(new Dimension(1200, 10));
                 comp4.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+
                 //===============================================
                     JPanel comp41 = new JPanel();
                     JLabel duda = new JLabel("Pedro Henrique Castilhos Fraga");
@@ -199,12 +196,14 @@ public class PainelHomePage extends JFrame {
                     comp43.setOpaque(false);
                     comp43.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 50));
                 //===============================================
+
                 comp4.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
                 comp4.add(comp41);
                 comp4.add(comp42);
                 comp4.add(comp43);
                 comp4.setOpaque(false);
             //===============================================
+
             body.add(comp11);
             body.add(comp12);
             body.add(comp13);
@@ -215,5 +214,4 @@ public class PainelHomePage extends JFrame {
         this.add(body);
         this.setVisible(true);
     }
-    
 }
