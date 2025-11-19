@@ -1,4 +1,4 @@
-package src.painel;
+package src.ui.comprador;
 
 import java.awt.*;
 import javax.swing.*;

@@ -1,4 +1,4 @@
-package src.painel;
+package src.ui.venda;
 
 public class PainelVenda {
     

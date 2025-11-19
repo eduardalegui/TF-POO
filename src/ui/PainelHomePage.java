@@ -1,15 +1,16 @@
-package src.painel;
+package src.ui;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelComprador extends JFrame {
 
-    public PainelComprador(){
+public class PainelHomePage extends JFrame {
+
+    public PainelHomePage(){
         super();
         this.setSize(1200,700);
-        this.setTitle("Comprador"); // nome da janela
+        this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
             JPanel body = new JPanel();
@@ -18,28 +19,11 @@ public class PainelComprador extends JFrame {
             Color azul = new Color(0, 100, 250);
             Color verde = new Color(0, 150, 0);
             Color amarelo = new Color(255, 194, 62);
-            JButton voltar = new JButton("Voltar");
-            Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, Color.RED);
-            FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
-            JPanel botaoVoltar = new JPanel();
-            botaoVoltar.setMaximumSize(new Dimension(1200, 40));
-            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 70, 0));
-            voltar.setPreferredSize(new Dimension(100, 40));
-            botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
-            voltar.setBorder(bordaBotaoVoltar);
-            voltar.setLayout(layoutB);
-            botaoVoltar.setLayout(layoutB);
-            voltar.setFont(fontBotoes);
-            voltar.setBackground(corFundo);
-            botaoVoltar.add(voltar);
-            body.add(botaoVoltar);
+            Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             body.setLayout(layout);
             body.setBackground(corFundo);
             body.setOpaque(true); //não o torna tranparente
-            body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
             //===============================================
                 JPanel comp11 = new JPanel();
@@ -230,4 +214,3 @@ public class PainelComprador extends JFrame {
         this.setVisible(true);
     }
 }
-

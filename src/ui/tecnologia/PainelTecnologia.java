@@ -1,4 +1,4 @@
-package src.painel;
+package src.ui.tecnologia;
 
 public class PainelTecnologia {
     
