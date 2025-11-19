@@ -15,6 +15,7 @@ public class PainelHomePage extends JFrame {
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
+            Color vermelho = new Color(233, 37, 37);
             Color corFundo = new Color(238, 236, 194);
             Color azul = new Color(0, 100, 250);
             Color verde = new Color(0, 150, 0);
@@ -27,7 +28,7 @@ public class PainelHomePage extends JFrame {
 
             //===============================================
                 JPanel comp11 = new JPanel();
-                MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, Color.RED);
+                MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, vermelho);
                 JLabel tituloTF = new JLabel("Trabalho Final");
                 Font fontTF = new Font("SansSerif", Font.BOLD, 60);
                 tituloTF.setBorder(bordaTF);
@@ -72,11 +73,11 @@ public class PainelHomePage extends JFrame {
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JButton botao21= new JButton("Comprador");
-                    MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, Color.RED);
+                    MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao21.setPreferredSize(new Dimension(200, 100));
                     botao21.setOpaque(true);
                     botao21.setBorder(bordaBotoes21);
-                    botao21.setBackground(Color.RED);
+                    botao21.setBackground(vermelho);
                     botao21.setFont(fontBotoes);
                     comp21.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 5));
                     comp21.add(botao21);
@@ -211,6 +212,7 @@ public class PainelHomePage extends JFrame {
             body.add(comp4);
         //===============================================
         this.add(body);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 }

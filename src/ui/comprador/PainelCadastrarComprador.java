@@ -17,9 +17,10 @@ public class PainelCadastrarComprador extends JFrame{
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
+            Color vermelho = new Color(233, 37, 37);
             JButton voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, Color.RED);
+            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             JPanel botaoVoltar = new JPanel();
             botaoVoltar.setMaximumSize(new Dimension(1200, 40));
@@ -44,7 +45,7 @@ public class PainelCadastrarComprador extends JFrame{
                 GridBagLayout layout11 = new GridBagLayout();
                 JLabel titulo = new JLabel("CADASTRAR COMPRADOR");
                 comp1.setLayout(layout11);
-                comp1.setBackground(Color.RED);
+                comp1.setBackground(vermelho);
                 comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
@@ -58,7 +59,7 @@ public class PainelCadastrarComprador extends JFrame{
                 comp2.setOpaque(false);
                 comp2.setBorder(BorderFactory.createEmptyBorder(30, 140, 0, 140));
                 FlowLayout  layout1 = new FlowLayout(FlowLayout.RIGHT);
-                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, Color.RED);
+                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, vermelho);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
 
@@ -134,13 +135,13 @@ public class PainelCadastrarComprador extends JFrame{
                 botao1.setPreferredSize(new Dimension(150, 60));
                 botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
-                botao1.setBackground(Color.RED);
+                botao1.setBackground(vermelho);
                 botao1.setFont(fontBotoes);
 
                 botao2.setPreferredSize(new Dimension(150, 60));
                 botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
-                botao2.setBackground(Color.RED);
+                botao2.setBackground(vermelho);
                 botao2.setFont(fontBotoes);
 
                 comp3.setLayout(layout21);
@@ -156,6 +157,7 @@ public class PainelCadastrarComprador extends JFrame{
             body.add(comp3);
         //===============================================
         this.add(body);
+        this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }
 }
