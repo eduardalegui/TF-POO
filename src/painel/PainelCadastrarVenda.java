@@ -4,11 +4,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-
-
-public class PainelFornecedor extends JFrame{
+public class PainelCadastrarVenda extends JFrame{
     
-    public PainelFornecedor(){
+    public PainelCadastrarVenda(){
         super();
         this.setSize(1200,700);
         this.setTitle("Cadastrar Fornecedor"); // nome da janela
@@ -17,10 +15,10 @@ public class PainelFornecedor extends JFrame{
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
-            Color verde = new Color(0, 150, 0);
+            Color amarelo = new Color(255, 194, 62);
             JButton voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, verde);
+            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, amarelo);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             JPanel botaoVoltar = new JPanel();
             botaoVoltar.setMaximumSize(new Dimension(1200, 40));
@@ -43,9 +41,9 @@ public class PainelFornecedor extends JFrame{
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
-                JLabel titulo = new JLabel("CADASTRAR FORNECEDOR");
+                JLabel titulo = new JLabel("CADASTRAR VENDA");
                 comp1.setLayout(layout11);
-                comp1.setBackground(verde);
+                comp1.setBackground(amarelo);
                 comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
@@ -55,78 +53,77 @@ public class PainelFornecedor extends JFrame{
                 JPanel comp2 = new JPanel();
                 GridLayout layout2 = new GridLayout(4,1);
                 comp2.setLayout(layout2);
-                comp2.setMaximumSize(new Dimension(900, 400));
+                comp2.setMaximumSize(new Dimension(1000, 400));
                 comp2.setOpaque(false);
                 comp2.setBorder(BorderFactory.createEmptyBorder(40, 130, 0, 150));
                 FlowLayout  layout1 = new FlowLayout(FlowLayout.RIGHT);
-                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, verde);
+                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, amarelo);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JLabel tituloNome = new JLabel("Cod: ");
+                    JLabel tituloNumero = new JLabel("Número: ");
                     JTextField campTexto1 = new JTextField(20);
-                    tituloNome.setFont(fontDosTitulos);
+                    tituloNumero.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
                     campTexto1.setFont(fontDosCampTexto);
                     comp21.setLayout(layout1);
-                    comp21.add(tituloNome);
+                    comp21.add(tituloNumero);
                     comp21.add(campTexto1);
                     comp21.setFont(fontDosTitulos);
                     comp21.setOpaque(false);
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JLabel tituloEmail = new JLabel("Nome: ");
+                    JLabel tituloData = new JLabel("Data: ");
                     JTextField campTexto2 = new JTextField(20);
-                    tituloEmail.setFont(fontDosTitulos);
+                    tituloData.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
                     campTexto2.setFont(fontDosCampTexto);
                     comp22.setLayout(layout1);
-                    comp22.add(tituloEmail);
+                    comp22.add(tituloData);
                     comp22.add(campTexto2);
                     comp22.setFont(fontDosTitulos);
                     comp22.setOpaque(false);
                 //===============================================
                 //===============================================
+                    JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp23 = new JPanel();
-                    JLabel tituloPais = new JLabel("Data: ");
-                    JTextField campTexto3 = new JTextField(20);
-                    tituloPais.setFont(fontDosTitulos);
-                    campTexto3.setOpaque(false);
-                    campTexto3.setBorder(bordaCampTexto);
-                    campTexto3.setFont(fontDosCampTexto);
+                    JLabel tituloComprador = new JLabel("Comprador: ");
+                    selecionaComprador.setPreferredSize(new Dimension(500, 50));
+                    selecionaComprador.setFont(fontDosCampTexto);
+                    tituloComprador.setFont(fontDosTitulos);
                     comp23.setLayout(layout1);
-                    comp23.add(tituloPais);
-                    comp23.add(campTexto3);
+                    comp23.add(tituloComprador);
+                    comp23.add(selecionaComprador);
                     comp23.setFont(fontDosTitulos);
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
-                    JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
+                    JComboBox<String> selecionaTecnologia = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp24 = new JPanel();
-                    JLabel tituloCod = new JLabel("Area: ");
-                    selecionaArea.setPreferredSize(new Dimension(500, 50));
-                    selecionaArea.setFont(fontDosCampTexto);
-                    tituloCod.setFont(fontDosTitulos);
+                    JLabel tituloTecnologia = new JLabel("Tecnologia: ");
+                    selecionaTecnologia.setPreferredSize(new Dimension(500, 50));
+                    selecionaTecnologia.setFont(fontDosCampTexto);
+                    tituloTecnologia.setFont(fontDosTitulos);
                     comp24.setLayout(layout1);
-                    comp24.add(tituloCod);
-                    comp24.add(selecionaArea);
+                    comp24.add(tituloTecnologia);
+                    comp24.add(selecionaTecnologia);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
 
-                comp2.add(comp21);
                 comp2.add(comp22);
+                comp2.add(comp21);
                 comp2.add(comp23);
                 comp2.add(comp24);
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Confirmar");
+                JButton botao1= new JButton("Enviar");
                 JButton botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
@@ -134,13 +131,13 @@ public class PainelFornecedor extends JFrame{
                 botao1.setPreferredSize(new Dimension(150, 60));
                 botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
-                botao1.setBackground(verde);
+                botao1.setBackground(amarelo);
                 botao1.setFont(fontBotoes);
 
                 botao2.setPreferredSize(new Dimension(150, 60));
                 botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
-                botao2.setBackground(verde);
+                botao2.setBackground(amarelo);
                 botao2.setFont(fontBotoes);
 
                 comp3.setLayout(layout21);
@@ -159,4 +156,3 @@ public class PainelFornecedor extends JFrame{
         setVisible(true); // ultima linha!!!
     }
 }
-
