@@ -153,6 +153,7 @@ public class PainelCadastrarVenda extends JFrame{
             body.add(comp3);
         //===============================================
         this.add(body);
+        this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }
 }
