@@ -21,7 +21,6 @@ public class PainelHomePage extends JFrame {
             Color amarelo = new Color(255, 194, 62);
             FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
             body.setLayout(layout);
             body.setBackground(corFundo);
             body.setOpaque(true); //não o torna tranparente
@@ -66,7 +65,7 @@ public class PainelHomePage extends JFrame {
             //===============================================
             //===============================================
                 JPanel comp2 = new JPanel();
-                comp2.setLayout(layout21);
+                comp2.setLayout(layout11);
                 comp2.setMaximumSize(new Dimension(900, 200));
                 comp2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
 
@@ -156,7 +155,7 @@ public class PainelHomePage extends JFrame {
                     comp32.setOpaque(false);
                 //===============================================
 
-                comp3.setLayout(layout21);
+                comp3.setLayout(layout11);
                 comp3.setMaximumSize(new Dimension(1200, 30));
                 comp3.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
                 comp3.add(comp31);

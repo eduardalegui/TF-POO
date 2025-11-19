@@ -7,7 +7,7 @@ package src.aplicacao;
 //import src.painel.PainelHomePage;
 //import src.painel.PainelVenda;
 //import src.painel.PainelComprador;
-//import src.painel.PainelFornecedor;
+import src.painel.PainelFornecedor;
 //import src.painel.PainelTecnologia;
 
 
@@ -21,7 +21,7 @@ public class ACMETech {
         //PainelHomePage minhaJanela = new PainelHomePage();
         //PainelCadastrarVenda minhaJanela = new PainelVenda();
         //PainelComprador minhaJanela = new PainelComprador();
-        //PainelFornecedor minhaJanela = new PainelFornecedor();
+        PainelFornecedor minhaJanela = new PainelFornecedor();
         //PainelTecnologia minhaJanela = new PainelTecnologia();
     }
 }
