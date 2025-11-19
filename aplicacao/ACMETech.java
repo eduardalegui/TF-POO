@@ -183,24 +183,34 @@ public class ACMETech {
 
     public void salvarDados(String nome) {
         try {
-            PrintStream streamSaida = new PrintStream(new File(nome + ".txt"), Charset.forName("UTF-8"));
+            PrintStream streamSaida = new PrintStream(new File(nome + ".csv"), Charset.forName("UTF-8"));
             System.setOut(streamSaida);
+            System.out.println("cod;nome;fundacao;area");
             for(Participante p : participantes.getParticipantes()) {
                 if(p instanceof Fornecedor) {
                     Fornecedor f = (Fornecedor) p;
                     System.out.println(f.geraDescricao());
-                } else {
+                }
+            }
+            System.out.println("\ncod;nome;pais;email");
+            for(Participante p : participantes.getParticipantes()) {
+                if(p instanceof Comprador) {
                     Comprador c = (Comprador) p;
                     System.out.println(c.geraDescricao());
                 }
             }
+            System.out.println("\nnum;date;valorFinal;cod;nome;pais;email;id;modelo;descricao;valorBase;peso;temperatura;cod;nome;fundacao;area");
             for(Participante p : participantes.getParticipantes()) {
                 if(p instanceof Comprador) {
                     Comprador c = (Comprador) p;
                     for(Venda v : c.getArrayVenda()) {
                         System.out.println(v.geraDescricao());
                     }
-                } else {
+                }
+            }
+            System.out.println("\nid;modelo;descricao;valorBase;peso;temperatura;cod;nome;fundacao;area");
+            for(Participante p : participantes.getParticipantes()) {
+                if(p instanceof Fornecedor) {
                     Fornecedor f = (Fornecedor) p;
                     for(Tecnologia t : f.getArrayTecnologia()) {
                         System.out.println(t.geraDescricao());
@@ -213,9 +223,9 @@ public class ACMETech {
         Locale.setDefault(Locale.ENGLISH);
     }
 
-    public void carregarDados(String caminho){
-        String nomeArquivo = caminho + ".txt";
-        Path path = Paths.get("", nomeArquivo);
+    public void carregarDadosTxt(String caminho){
+        String nomeArquivo = caminho + ".csv";
+        Path path = Paths.get("resursos", nomeArquivo);
         participantes = new CatalogoParticipantes();
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
             String linha;

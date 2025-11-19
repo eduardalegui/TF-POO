@@ -77,6 +77,6 @@ public class Tecnologia {
 
     public String geraDescricao() {
         return this.id + ";" + this.modelo + ";" + this.descricao + ";" + this.valorBase + ";" + this.peso + ";" + 
-            this.temperatura + ";" + this.fornecedor.geraDescricao() + ";";
+            this.temperatura + ";" + this.fornecedor.geraDescricao();
     }
 }
