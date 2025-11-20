@@ -1,6 +1,5 @@
-package entidades;
+package src.entidades;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;

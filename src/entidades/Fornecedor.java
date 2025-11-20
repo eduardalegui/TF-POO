@@ -1,5 +1,4 @@
-package entidades;
-
+package src.entidades;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

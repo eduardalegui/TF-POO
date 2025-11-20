@@ -1,4 +1,4 @@
-package entidades;
+package src.entidades;
 
 public enum Area {
     TI("TI"), ANDROIDES("ANDROIDES"), EMERGENTE("EMERGENTE"), ALIMENTOS("ALIMENTOS");
