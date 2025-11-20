@@ -74,4 +74,9 @@ public class Tecnologia {
     public void defineFornecedor(Fornecedor f) {
         this.fornecedor = f;
     }
+
+    public String geraDescricao() {
+        return this.id + ";" + this.modelo + ";" + this.descricao + ";" + this.valorBase + ";" + this.peso + ";" + 
+            this.temperatura + ";" + this.fornecedor.geraDescricao();
+    }
 }

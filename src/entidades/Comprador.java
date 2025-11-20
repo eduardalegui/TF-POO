@@ -3,12 +3,13 @@ package src.entidades;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Comprador extends Participante{
     private String pais;
     private String email;
-    private ArrayList<Venda> arrayVenda;
+    private List<Venda> arrayVenda;
 
     public Comprador(long cod, String nome, String pais, String email){
         super(cod, nome);
@@ -25,11 +26,11 @@ public class Comprador extends Participante{
         return this.email;
     }
 
-    public ArrayList<Venda> getArrayVenda() {
+    public List<Venda> getArrayVenda() {
         return this.arrayVenda;
     }
 
-    public void cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
+    public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
         try {
             long num = Long.parseLong(stringNum);
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
@@ -37,17 +38,61 @@ public class Comprador extends Participante{
             
             for(Venda v : arrayVenda) {
                 if(v.getNum() == num) {
-                    return;
+                    return "ERRO:numero repetido";
                 }
             }
+
             Venda venda = new Venda(num, date, comprador, tecnologia);
             arrayVenda.add(venda);
+            return "Venda cadastrada";
         } catch(NullPointerException e) {
-            return;
+            return "Preencha os dados corretamente e tente novamente";
         } catch (Exception e) {
-            return;
+            return "Revise seus dados e tente novamente";
         }
         
+    }
+
+    public List<String> mostrarRelatorioDeVendas() {
+        List<String> retorno = new ArrayList<>();
+        for(Venda v : arrayVenda) {
+            retorno.add(v.geraDescricao());
+        }
+        return retorno;
+    }
+
+    public String removerOsDadosDeUmaDeterminadaVenda(long num) {
+        for(Venda v : arrayVenda) {
+            if(v.getNum() == num) {
+                arrayVenda.remove(v);
+                return "Venda removida";
+            }
+        }
+        return "ERRO:não existe venda com o id fornecido";
+    }
+
+    public String consultarVendaComMaiorValor(){
+        ArrayList<Venda> vendasEmpatadas = new ArrayList<>();
+        String retorno = "";
+        if (arrayVenda.isEmpty()) {
+            return "Erro: Não há vendas cadastradas";
+        }
+        Venda maior = arrayVenda.get(0);
+        for (Venda venda : arrayVenda) {
+            if (maior.calculaValorFinal() < venda.calculaValorFinal()) {
+                maior = venda;
+            }
+        }
+        vendasEmpatadas.add(maior);
+        for (Venda venda : arrayVenda) {
+            if (maior.calculaValorFinal() == venda.calculaValorFinal()) {
+                vendasEmpatadas.add(venda);
+            }
+        }
+        for (Venda venda : vendasEmpatadas) {
+            retorno = retorno + venda.geraDescricao() + "\n";
+        }
+        return retorno;
     }
 
     public String geraDescricao(){
