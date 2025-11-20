@@ -53,9 +53,25 @@ public class Venda{
         return this.date;
     }
 
+    public double getValorFinal() {
+        return this.valorFinal;
+    }
+
+    public Comprador getComprador() {
+        return this.comprador;
+    }
+
+    public Tecnologia getTecnologia() {
+        return this.tecnologia;
+    }
+
     public String geraDescricao() {
+        return this.num + ";" + this.geraData() + ";" + this.valorFinal + ";" + this.comprador.geraDescricao() + ";" + this.tecnologia.geraDescricao();
+    }
+
+    public String geraData() {
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-        return this.num + ";" + data.format(this.date) + ";" + this.valorFinal + ";" + this.comprador.geraDescricao() + ";" + this.tecnologia.geraDescricao();
+        return data.format(this.date);
     }
 
 }           
