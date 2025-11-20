@@ -5,9 +5,9 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 
-public class PainelHomePage extends JFrame {
+public class HomePage extends JFrame {
 
-    public PainelHomePage(){
+    public HomePage(){
         super();
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
