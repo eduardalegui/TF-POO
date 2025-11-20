@@ -6,13 +6,13 @@ import javax.swing.border.MatteBorder;
 
 
 
-public class PainelCadastrarComprador extends JFrame{
+public class PainelCadastrarComprador extends JPanel{
     
     public PainelCadastrarComprador(){
         super();
         this.setSize(1200,700);
-        this.setTitle("Cadastrar Comprador"); // nome da janela
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        //this.setTitle("Cadastrar Comprador"); // nome da janela
+        //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
@@ -157,7 +157,7 @@ public class PainelCadastrarComprador extends JFrame{
             body.add(comp3);
         //===============================================
         this.add(body);
-        this.setLocationRelativeTo(null);
+        //this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }
 }
