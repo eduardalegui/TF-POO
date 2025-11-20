@@ -131,7 +131,7 @@ public class ACMETech {
 
     public List<String> lerArquivoVendas(String caminho) {
         String nomeArquivo = caminho + ".CSV";
-        Path path = Paths.get("recursos",nomeArquivo);
+        Path path = Paths.get("recursos", nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -183,132 +183,171 @@ public class ACMETech {
 
     public void salvarDados(String nome) {
         try {
-            PrintStream streamSaida = new PrintStream(new File(nome + ".csv"), Charset.forName("UTF-8"));
+            Path path = Paths.get("recursos", nome + ".json");
+            PrintStream streamSaida = new PrintStream(path.toFile(), Charset.forName("UTF-8"));
             System.setOut(streamSaida);
-            System.out.println("cod;nome;fundacao;area");
+            List<Fornecedor> fornecedores = new ArrayList<>();
+            List<Comprador> compradores = new ArrayList<>();
+            List<Tecnologia> tecnologias = new ArrayList<>();
+            List<Venda> vendas = new ArrayList<>();
+            int contador = 1;
+            System.out.println("{");
+            System.out.println("    \"Fornecedores\": {");
             for(Participante p : participantes.getParticipantes()) {
                 if(p instanceof Fornecedor) {
                     Fornecedor f = (Fornecedor) p;
-                    System.out.println(f.geraDescricao());
+                    fornecedores.add(f);
                 }
             }
-            System.out.println("\ncod;nome;pais;email");
+            for(Fornecedor f : fornecedores) {
+                System.out.println("        \""  + contador + "\"" + ": {");
+                System.out.println("            \"cod\": " + f.getCod() + ",");
+                System.out.println("            \"nome\": " + "\"" + f.getNome() + "\"" + ",");
+                System.out.println("            \"fundacao\": " + "\"" + f.geraData() + "\"" +",");
+                System.out.println("            \"area\": " + "\"" + f.getArea().getNome() + "\"");
+                if(contador == fornecedores.size()) {
+                    System.out.println("        }");
+                } else {
+                    System.out.println("        },");
+                    contador++;
+                }
+            }
+
+            contador = 1;
+            System.out.println("    },");
+            System.out.println("    \"Compradores\": {");
             for(Participante p : participantes.getParticipantes()) {
                 if(p instanceof Comprador) {
                     Comprador c = (Comprador) p;
-                    System.out.println(c.geraDescricao());
+                    compradores.add(c);
                 }
             }
-            System.out.println("\nnum;date;valorFinal;cod;nome;pais;email;id;modelo;descricao;valorBase;peso;temperatura;cod;nome;fundacao;area");
-            for(Participante p : participantes.getParticipantes()) {
-                if(p instanceof Comprador) {
-                    Comprador c = (Comprador) p;
-                    for(Venda v : c.getArrayVenda()) {
-                        System.out.println(v.geraDescricao());
-                    }
+            for(Comprador c : compradores) {
+                System.out.println("        \""  + contador + "\"" + ": {");
+                System.out.println("            \"cod\": " + c.getCod() + ",");
+                System.out.println("            \"nome\": " + "\"" + c.getNome() + "\"" + ",");
+                System.out.println("            \"pais\": " + "\"" + c.getPais() + "\"" +",");
+                System.out.println("            \"email\": " + "\"" + c.getEmail() + "\"");
+                if(contador == compradores.size()) {
+                    System.out.println("        }");
+                } else {
+                    System.out.println("        },");
+                    contador++;
                 }
             }
-            System.out.println("\nid;modelo;descricao;valorBase;peso;temperatura;cod;nome;fundacao;area");
-            for(Participante p : participantes.getParticipantes()) {
-                if(p instanceof Fornecedor) {
-                    Fornecedor f = (Fornecedor) p;
-                    for(Tecnologia t : f.getArrayTecnologia()) {
-                        System.out.println(t.geraDescricao());
-                    }
+
+            contador = 1;
+            System.out.println("    },");
+            System.out.println("    \"Tecnologias\": {");
+            for(Fornecedor f : fornecedores) {
+                for(Tecnologia t : f.getArrayTecnologia()) {
+                    tecnologias.add(t);
                 }
             }
+            for(Tecnologia t : tecnologias) {
+                System.out.println("        \""  + contador + "\"" + ": {");
+                System.out.println("            \"id\": " + t.getId() + ",");
+                System.out.println("            \"modelo\": " + "\"" + t.getModelo() + "\"" + ",");
+                System.out.println("            \"descricao\": " + "\"" + t.getDescricao() + "\"" +",");
+                System.out.println("            \"valor_base\": " + "\"" + t.getValorBase() + "\"" + ",");
+                System.out.println("            \"peso\": " + "\"" + t.getPeso() + "\"" + ",");
+                System.out.println("            \"temperatura\": " + "\"" + t.getTemperatura() + "\"" + ",");
+                System.out.println("            \"cod_fornecedor\": " + t.getFornecedor().getCod() + ",");
+                System.out.println("            \"nome_fornecedor\": " + "\"" + t.getFornecedor().getNome() + "\"" + ",");
+                System.out.println("            \"fundacao_fornecedor\": " + "\"" + t.getFornecedor().geraData() + "\"" + ",");
+                System.out.println("            \"area_fornecedor\": " + "\"" + t.getFornecedor().getArea().getNome() + "\"");
+                if(contador == tecnologias.size()) {
+                    System.out.println("        }");
+                } else {
+                    System.out.println("        },");
+                    contador++;
+                }
+            }
+
+            contador = 1;
+            System.out.println("    },");
+            System.out.println( "   \"Vendas\": {");
+            for(Comprador c : compradores) {
+                for(Venda v : c.getArrayVenda()) {
+                    vendas.add(v);
+                }
+            }
+            for(Venda v : vendas) {
+                System.out.println("        \""  + contador + "\"" + ": {");
+                System.out.println("            \"num\": " + v.getNum() + ",");
+                System.out.println("            \"data\": " + "\"" + v.geraData() + "\"" + ",");
+                System.out.println("            \"valor_final\": " + "\"" + v.getValorFinal() + "\"" + ",");
+                System.out.println("            \"cod_comprador\": " + v.getComprador().getCod() + ",");
+                System.out.println("            \"nome_comprador\": " + "\"" + v.getComprador().getNome() + "\"" + ",");
+                System.out.println("            \"pais_comprador\": " + "\"" + v.getComprador().getPais() + "\"" + ",");
+                System.out.println("            \"email_comprador\": " + "\"" + v.getComprador().getEmail() + "\"" + ",");
+                System.out.println("            \"id_tecnologia\": " + v.getTecnologia().getId() + ",");
+                System.out.println("            \"modelo_tecnologia\": " + "\"" + v.getTecnologia().getModelo() + "\"" + ",");
+                System.out.println("            \"descricao_tecnologia\": " + "\"" + v.getTecnologia().getDescricao() + "\"" +",");
+                System.out.println("            \"valor_base_tecnologia\": " + "\"" + v.getTecnologia().getValorBase() + "\"" + ",");
+                System.out.println("            \"peso_tecnologia\": " + "\"" + v.getTecnologia().getPeso() + "\"" + ",");
+                System.out.println("            \"temperatura_tecnologia\": " + "\"" + v.getTecnologia().getTemperatura() + "\"" + ",");
+                System.out.println("            \"cod_fornecedor_tecnologia\": " + v.getTecnologia().getFornecedor().getCod() + ",");
+                System.out.println("            \"nome_fornecedor_tecnologia\": " + "\"" + v.getTecnologia().getFornecedor().getNome() + "\"" + ",");
+                System.out.println("            \"fundacao_fornecedor_tecnologia\": " + "\"" + v.getTecnologia().getFornecedor().geraData() + "\"" + ",");
+                System.out.println("            \"area_fornecedor_tecnologia\": " + "\"" + v.getTecnologia().getFornecedor().getArea().getNome() + "\"");
+                if(contador == tecnologias.size()) {
+                    System.out.println("        }");
+                } else {
+                    System.out.println("        },");
+                    contador++;
+                }            }
+            System.out.println("    }");
+            System.out.println("}");
         } catch (Exception e) {
             System.out.println(e);
         }
         Locale.setDefault(Locale.ENGLISH);
     }
 
-    public void carregarDadosTxt(String caminho){
+    public void carregarDadosCsv(String caminho) {
         String nomeArquivo = caminho + ".csv";
         Path path = Paths.get("resursos", nomeArquivo);
         participantes = new CatalogoParticipantes();
+        Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
-            String linha;
+            String linha = null;
+            br.readLine();
             while ((linha = br.readLine()) != null) {
-                String[] campos = linha.split(";");
-                int n = campos.length;
                 try {
-                    if (n == 4) {
-                        String cod = campos[0];
-                        String nome = campos[1];
-                        String fund = campos[2];
-                        String email = campos[3];
-                        participantes.cadastrarFornecedor(cod, nome, fund, email);
-                        continue;
-                    }
-                    else if (n == 10) {
-                        long id = Long.parseLong(campos[0]);
-                        String modelo = campos[1];
-                        String descricao = campos[2];
-                        double valorBase = Double.parseDouble(campos[3]);
-                        double peso = Double.parseDouble(campos[4]);
-                        double temperatura = Double.parseDouble(campos[5]);
-                        long codFornecedor = Long.parseLong(campos[6]);
-
-                        Fornecedor f = null;
-                        for (Participante p : participantes.getParticipantes()) {
-                            if (p instanceof Fornecedor && p.getCod() == codFornecedor) {
+                    sc = new Scanner(linha).useDelimiter(";");
+                    Fornecedor f = null;
+                    String stringId = sc.next();
+                    String modelo = sc.next();
+                    String descricao = sc.next();
+                    String stringValorBase = sc.next();
+                    String stringPeso = sc.next();
+                    String stringTemperatura = sc.next();
+                    String stringFornecedor = sc.next();
+                    long id = Long.parseLong(stringId);
+                    double valorBase = Double.parseDouble(stringValorBase);
+                    double peso = Double.parseDouble(stringPeso);
+                    double temperatura = Double.parseDouble(stringTemperatura);
+                    long fornecedor = Long.parseLong(stringFornecedor);
+                    for(Participante p : participantes.getParticipantes()) {
+                        if(p instanceof Fornecedor) {
+                            if(p.getCod() == fornecedor) {
                                 f = (Fornecedor) p;
                             }
                         }
-                        if (f == null) {
-                            System.out.println("Fornecedor não encontrado para tecnologia id " + id);
-                            continue;
-                        }
-                        f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
-                        continue;
                     }
-                    else if (n >= 15) {
-                        String num = campos[0];
-                        String data = campos[1];
-                        long codComprador = Long.parseLong(campos[3]);
-                        long idTec = Long.parseLong(campos[7]);
-                        Comprador comp = null;
-                        Tecnologia tec = null;
-                        for (Participante p : participantes.getParticipantes()) {
-                            if (p.getCod() == codComprador) {
-                                if (p instanceof Fornecedor) {
-                                    participantes.fornecedorParaComprador(codComprador);
-                                }
-                            }
-                        }
-                        for (Participante p : participantes.getParticipantes()) {
-                            if (p instanceof Comprador && p.getCod() == codComprador) {
-                                comp = (Comprador)p;
-                            }
-                        }
-                        for (Participante p : participantes.getParticipantes()) {
-                            if (p instanceof Fornecedor) {
-                                Fornecedor f = (Fornecedor)p;
-                                for (Tecnologia t : f.getArrayTecnologia()) {
-                                    if (t.getId() == idTec) {
-                                        tec = t;
-                                    }
-                                }
-                            }
-                        }
-                        if (comp == null || tec == null) {
-                            System.out.println("Erro ao cadastrar venda " + num);
-                            continue;
-                        }
-                        comp.cadastrarVenda(num, data, comp, tec);
-                        continue;
-                    }
-                } catch (Exception e) {
-                    System.out.println("Erro ao carregar linha: " + linha);
+                    System.out.println(f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f));
+                } catch (NumberFormatException e) {
+                    System.out.println("ERRO:formato invalido.");
+                    continue;
+                } catch(NoSuchElementException e) {
+                    System.out.println("ERRO:formato invalido.");
+                    continue;
                 }
             }
-            System.out.println("Carregamento concluído.");
-
         } catch (Exception e) {
-            System.out.println("Erro: Ocorreu um erro ao carregar os dados");
+            System.out.println("Erro ao carregar o arquivo: ");
         }
+        System.out.println("Carregamento concluído.");
     }
-
-    
 }
