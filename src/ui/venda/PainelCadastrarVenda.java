@@ -11,6 +11,9 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     private JButton voltar = new JButton("Voltar");
     private JButton botao1= new JButton("Enviar");
     private JButton botao2= new JButton("Limpar");
+    private JTextField campTexto1 = new JTextField(20);
+    private JTextField campTexto2 = new JTextField(20);
+    private 
     private HomePage home;
 
     public PainelCadastrarVenda(HomePage home){
@@ -75,7 +78,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNumero = new JLabel("Número: ");
-                    JTextField campTexto1 = new JTextField(20);
+                    //campTexto1 = new JTextField(20);
                     tituloNumero.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -89,7 +92,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloData = new JLabel("Data: ");
-                    JTextField campTexto2 = new JTextField(20);
+                    //campTexto2 = new JTextField(20);
                     tituloData.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -175,12 +178,13 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == voltar) { //compradorr
+        if(e.getSource() == voltar) { //voltar
             home.mudaPainel(4);
-        } else if(e.getSource() == botao1) { //fornecedor
-            //mudaPainel(2);
-        } else if(e.getSource() == botao2) { //tecnolog
-            //mudaPainel(3);
+        } else if(e.getSource() == botao1) { //enviar
+            
+        } else if(e.getSource() == botao2) { //limpar
+            campTexto2.setText("");
+            campTexto1.setText("");
         }
     }
 }

@@ -1,12 +1,21 @@
 package src.ui.salvar;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.ui.HomePage;
 
-public class PainelSalvarCarregar extends JPanel {
+public class PainelSalvarCarregar extends JPanel implements ActionListener{
+    private JButton botao21;
+    private JButton botao22;
+    // private JButton botao23;
+    // private JButton botao24;
+    private JButton voltar;
+    private HomePage home;
 
-    public PainelSalvarCarregar(){
+    public PainelSalvarCarregar(HomePage home){
         super();
         this.setSize(1200,700);
         // this.setTitle("Salvar/Carregar"); // nome da janela
@@ -16,10 +25,11 @@ public class PainelSalvarCarregar extends JPanel {
         this.setBackground(corFundo);
         this.setLayout(layout);
         //===============================================
+        this.home = home;
             // JPanel body = new JPanel();
             // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             // Color corFundo = new Color(238, 236, 194);
-            JButton voltar = new JButton("Voltar");
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, Color.BLACK);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -94,11 +104,31 @@ public class PainelSalvarCarregar extends JPanel {
             // body.add(comp1);
             // body.add(comp2);
         //===============================================
+        botao21.addActionListener(this);
+        botao22.addActionListener(this);
+        // botao23.addActionListener(this);
+        // botao24.addActionListener(this);
+        voltar.addActionListener(this);
+        //===============================================
         //this.add(body);
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
         // this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao21) { //cadastrar
+            home.mudaPainel(7);
+        } else if(e.getSource() == botao22) { //mostrar relatorio
+
+        // } else if(e.getSource() == botao23) { //alterar dados
+
+        // } else if(e.getSource() == botao24) { //consultar maior
+        
+        } else if(e.getSource() == voltar) { //consultar maior
+            home.mudaPainel(0);
+        } 
     }
 }

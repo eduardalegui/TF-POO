@@ -9,6 +9,7 @@ import src.ui.comprador.*;
 import src.ui.fornecedor.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
+import src.ui.salvar.*;
 
 public class HomePage extends JFrame implements ActionListener {
     private JButton botao21 = new JButton("Comprador");
@@ -25,6 +26,7 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor(this);
     private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia(this);
     private PainelCadastrarVenda painelCadastrarVenda = new PainelCadastrarVenda(this);
+    private PainelSalvarCarregar painelSalvarCarregar = new PainelSalvarCarregar(this);
     private JPanel painelPrincipal;
 
     public HomePage(int f){
@@ -289,10 +291,10 @@ public class HomePage extends JFrame implements ActionListener {
                 //this.pack();
                 //this.setSize(1200, 700);
                 break;
-            // case 5: 
-            //     this.setContentPane();
-            //     this.pack();
-            //     break;
+            case 5: 
+                this.setContentPane(painelSalvarCarregar);
+                //this.pack();
+                break;
             case 6:
                 this.setContentPane(painelCadastrarFornecedor);
                 this.pack();
