@@ -157,7 +157,7 @@ public class PainelComprador extends JPanel implements ActionListener{
         } else if(e.getSource() == botao22) { //mostrar relatorio
 
         } else if(e.getSource() == botao23) { //alterar dados
-
+            home.mudaPainel(10);
         } else if(e.getSource() == botao24) { //consultar maior
         
         } else if(e.getSource() == voltar) { //consultar maior

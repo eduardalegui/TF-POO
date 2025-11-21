@@ -53,7 +53,7 @@ public class ACMETech {
 
     public void executar() {
         inicializar();
-        HomePage minhaJanela = new HomePage();
+        HomePage minhaJanela = new HomePage(participantes);
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();

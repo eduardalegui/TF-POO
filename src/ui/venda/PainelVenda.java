@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.ui.HomePage;
+import src.entidades.*;
+
 
 public class PainelVenda extends JPanel implements ActionListener{
     private JButton voltar;
@@ -151,15 +153,15 @@ public class PainelVenda extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //compradorr
+        if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(9);
-        } else if(e.getSource() == botao22) { //fornecedor
-            //mudaPainel(2);
-        } else if(e.getSource() == botao23) { //tecnolog
+        } else if(e.getSource() == botao22) { //mostrar relatorio
+            
+        } else if(e.getSource() == botao23) { //remover dados
             //mudaPainel(3);
-        } else if(e.getSource() == botao24) { //venda
+        } else if(e.getSource() == botao24) { //consultar maior
             //mudaPainel(4);
-        } else if(e.getSource() == voltar) { //salvar/carregar
+        } else if(e.getSource() == voltar) { //voltar
             home.mudaPainel(0);
         }
     }

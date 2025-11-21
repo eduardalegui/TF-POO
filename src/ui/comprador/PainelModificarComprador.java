@@ -1,4 +1,4 @@
-package src.ui.venda;
+package src.ui.comprador;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,42 +6,37 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.ui.HomePage;
-import src.entidades.*;
 
 
-public class PainelCadastrarVenda extends JPanel implements ActionListener {
-    private CatalogoParticipantes catalogoParticipantes;
-    private JButton voltar = new JButton("Voltar");
-    private JButton botao1= new JButton("Enviar");
-    private JButton botao2= new JButton("Limpar");
-    private JTextField campTexto1 = new JTextField(20);
-    private JTextField campTexto2 = new JTextField(20);
-    private JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"Coyote", "Alianca rebelde"});
-    private JComboBox<String> selecionaTecnologia = new JComboBox<>(new String[]{"101", "444", "202", "303", "555"});
+
+public class PainelModificarComprador extends JPanel implements ActionListener{
+    private JButton botao1;
+    private JButton botao2;
+    private JButton voltar;
     private HomePage home;
 
-    public PainelCadastrarVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
+    public PainelModificarComprador(HomePage home){
         super();
-        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
-        //this.setTitle("Cadastrar Venda"); // nome da janela
+        //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
         //===============================================
-            this.home = home;
+        this.home = home;
             // JPanel body = new JPanel();
             // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             // Color corFundo = new Color(238, 236, 194);
-            Color amarelo = new Color(255, 194, 62);
+            Color vermelho = new Color(233, 37, 37);
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, amarelo);
+            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             JPanel botaoVoltar = new JPanel();
             botaoVoltar.setMaximumSize(new Dimension(1200, 52));
-            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 25, 0));
+            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 70, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
             voltar.setOpaque(true);
@@ -60,9 +55,9 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
-                JLabel titulo = new JLabel("CADASTRAR VENDA");
+                JLabel titulo = new JLabel("MODIFICAR COMPRADOR");
                 comp1.setLayout(layout11);
-                comp1.setBackground(amarelo);
+                comp1.setBackground(vermelho);
                 comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
@@ -72,89 +67,95 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 JPanel comp2 = new JPanel();
                 GridLayout layout2 = new GridLayout(4,1);
                 comp2.setLayout(layout2);
-                comp2.setMaximumSize(new Dimension(1000, 400));
+                comp2.setMaximumSize(new Dimension(900, 300));
                 comp2.setOpaque(false);
-                comp2.setBorder(BorderFactory.createEmptyBorder(40, 130, 0, 150));
+                comp2.setBorder(BorderFactory.createEmptyBorder(30, 140, 0, 140));
                 FlowLayout  layout1 = new FlowLayout(FlowLayout.RIGHT);
-                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, amarelo);
+                FlowLayout  layout3 = new FlowLayout(FlowLayout.LEFT);
+                MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, vermelho);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JLabel tituloNumero = new JLabel("Número: ");
-                    //campTexto1 = new JTextField(20);
-                    tituloNumero.setFont(fontDosTitulos);
+                    JLabel tituloNome = new JLabel("Nome: ");
+                    JTextField campTexto1 = new JTextField(20);
+                    tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
                     campTexto1.setFont(fontDosCampTexto);
                     comp21.setLayout(layout1);
-                    comp21.add(tituloNumero);
+                    comp21.add(tituloNome);
                     comp21.add(campTexto1);
                     comp21.setFont(fontDosTitulos);
                     comp21.setOpaque(false);
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JLabel tituloData = new JLabel("Data: ");
-                    //campTexto2 = new JTextField(20);
-                    tituloData.setFont(fontDosTitulos);
+                    JLabel tituloEmail = new JLabel("Email: ");
+                    JTextField campTexto2 = new JTextField(20);
+                    tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
                     campTexto2.setFont(fontDosCampTexto);
                     comp22.setLayout(layout1);
-                    comp22.add(tituloData);
+                    comp22.add(tituloEmail);
                     comp22.add(campTexto2);
                     comp22.setFont(fontDosTitulos);
                     comp22.setOpaque(false);
                 //===============================================
                 //===============================================
-                    //JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp23 = new JPanel();
-                    JLabel tituloComprador = new JLabel("Comprador: ");
-                    selecionaComprador.setPreferredSize(new Dimension(500, 50));
-                    selecionaComprador.setFont(fontDosCampTexto);
-                    tituloComprador.setFont(fontDosTitulos);
+                    JLabel tituloPais = new JLabel("Pais: ");
+                    JTextField campTexto3 = new JTextField(20);
+                    tituloPais.setFont(fontDosTitulos);
+                    campTexto3.setOpaque(false);
+                    campTexto3.setBorder(bordaCampTexto);
+                    campTexto3.setFont(fontDosCampTexto);
                     comp23.setLayout(layout1);
-                    comp23.add(tituloComprador);
-                    comp23.add(selecionaComprador);
+                    comp23.add(tituloPais);
+                    comp23.add(campTexto3);
                     comp23.setFont(fontDosTitulos);
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
-                    // JComboBox<String> selecionaTecnologia = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp24 = new JPanel();
-                    JLabel tituloTecnologia = new JLabel("Tecnologia: ");
-                    selecionaTecnologia.setPreferredSize(new Dimension(500, 50));
-                    selecionaTecnologia.setFont(fontDosCampTexto);
-                    tituloTecnologia.setFont(fontDosTitulos);
-                    comp24.setLayout(layout1);
-                    comp24.add(tituloTecnologia);
-                    comp24.add(selecionaTecnologia);
+                    JLabel tituloCodIncerido = new JLabel("Código inserido: " + "comprador.getCodigo()");
+                    JTextField campTexto41 = new JTextField(20);
+                    //campTexto41.setText("Código inserido: " + painelAlterarDadosComprador.getCampTexto4());
+                    tituloCodIncerido.setFont(fontDosTitulos);
+                    campTexto41.setOpaque(false);
+                    campTexto41.setBorder(bordaCampTexto);
+                    campTexto41.setFont(fontDosCampTexto);
+                    comp24.setLayout(layout3);
+                    comp24.add(tituloCodIncerido);
+                    //comp24.add(campTexto41);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
 
-                comp2.add(comp22);
-                comp2.add(comp21);
-                comp2.add(comp23);
                 comp2.add(comp24);
+                comp2.add(comp21);
+                comp2.add(comp22);
+                comp2.add(comp23);               
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
+                JButton botao1= new JButton("Enviar");
+                JButton botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
                 botao1.setPreferredSize(new Dimension(150, 60));
                 botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
-                botao1.setBackground(amarelo);
+                botao1.setBackground(vermelho);
                 botao1.setFont(fontBotoes);
 
                 botao2.setPreferredSize(new Dimension(150, 60));
                 botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
-                botao2.setBackground(amarelo);
+                botao2.setBackground(vermelho);
                 botao2.setFont(fontBotoes);
 
                 comp3.setLayout(layout21);
@@ -169,10 +170,10 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             // body.add(comp2);
             // body.add(comp3);
         //===============================================
-            botao1.addActionListener(this);
-            botao2.addActionListener(this);
-            voltar.addActionListener(this);
-        //===============================================
+        botao1.addActionListener(this);
+        //botao2.addActionListener(this);
+        voltar.addActionListener(this);
+        //==============================================
         //this.add(body);
         this.add(botaoVoltar);
         this.add(comp1);
@@ -183,46 +184,12 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == voltar) { //voltar
-            home.mudaPainel(4);
-        } else if(e.getSource() == botao1) { //enviar
-            String compradorSelecionado = (String) selecionaComprador.getSelectedItem();
-            String tecnologiaSelec = (String) selecionaTecnologia.getSelectedItem();
-            long tecnologiaSelecionada = Long.parseLong(tecnologiaSelec);
-            String date = campTexto1.getText();
-            String num = campTexto2.getText();
-            if(catalogoParticipantes.getParticipantes().isEmpty()){
-                System.out.println("Catalago vazio");
-                return;
-            }
-            for (Participante participante : catalogoParticipantes.getParticipantes()) {
-                if(participante instanceof Comprador){
-                    Comprador comprador = (Comprador) participante;
-                    if(compradorSelecionado.equals(comprador.getNome())){
-                        comprador.cadastrarVenda(num, date, comprador, achaTecnologia(tecnologiaSelecionada));
-                        System.out.println(comprador.getNome());
-                    }
-                }
-            }
+        if(e.getSource() == botao1) { //enviar
+            
         } else if(e.getSource() == botao2) { //limpar
-            campTexto2.setText("");
-            campTexto1.setText("");
-        }
-    }
-
-    public Tecnologia achaTecnologia(long tecnologiaSelecionada){
-        for (Participante participante : catalogoParticipantes.getParticipantes()) {
-            if(participante instanceof Fornecedor){
-                Fornecedor fornecedor = (Fornecedor) participante;
-                for (Tecnologia tec : fornecedor.getArrayTecnologia()){
-                    if(tec.getId() == tecnologiaSelecionada){
-                        Tecnologia tecnologia = tec;
-                        return tecnologia;
-                    }
-                }
-                
-            }
-        }
-        return null;
+            
+        } else if(e.getSource() == voltar) { //voltar
+            home.mudaPainel(10);
+        } 
     }
 }
