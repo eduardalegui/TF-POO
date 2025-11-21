@@ -1,12 +1,10 @@
 package src.ui.venda;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 import src.ui.HomePage;
 
 public class PainelVenda extends JPanel implements ActionListener{
@@ -22,11 +20,15 @@ public class PainelVenda extends JPanel implements ActionListener{
         this.setSize(1200,700);
         //this.setTitle("Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        Color corFundo = new Color(238, 236, 194);
+        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        this.setBackground(corFundo);
+        this.setLayout(layout);
         //===============================================
             this.home = home;
-            JPanel body = new JPanel();
-            BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
-            Color corFundo = new Color(238, 236, 194);
+            // JPanel body = new JPanel();
+            // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
+            // Color corFundo = new Color(238, 236, 194);
             Color amarelo = new Color(255, 194, 62);
             voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
@@ -34,8 +36,8 @@ public class PainelVenda extends JPanel implements ActionListener{
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
             JPanel botaoVoltar = new JPanel();
-            botaoVoltar.setMaximumSize(new Dimension(1200, 40));
-            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 70, 0));
+            botaoVoltar.setMaximumSize(new Dimension(1200, 60));
+            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 70, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
             voltar.setOpaque(true);
@@ -45,11 +47,11 @@ public class PainelVenda extends JPanel implements ActionListener{
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
-            body.add(botaoVoltar);
-            body.setLayout(layout);
-            body.setBackground(corFundo);
-            body.setOpaque(true); //não o torna tranparente
-            body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+            // body.add(botaoVoltar);
+            // body.setLayout(layout);
+            // body.setBackground(corFundo);
+            // body.setOpaque(true); //não o torna tranparente
+            // body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
             //===============================================
                 JPanel comp1 = new JPanel();
@@ -61,7 +63,7 @@ public class PainelVenda extends JPanel implements ActionListener{
                 comp1.add(tituloTF);
                 comp1.setLayout(layout11);
                 comp1.setSize(1200,40);
-                comp1.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+                //comp1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
                 comp1.setOpaque(false);
             //===============================================
             //===============================================
@@ -130,8 +132,8 @@ public class PainelVenda extends JPanel implements ActionListener{
                 comp2.setOpaque(false);
             //===============================================
 
-            body.add(comp1);
-            body.add(comp2);
+            // body.add(comp1);
+            // body.add(comp2);
         //===============================================
             botao21.addActionListener(this);
             botao22.addActionListener(this);
@@ -139,7 +141,10 @@ public class PainelVenda extends JPanel implements ActionListener{
             botao24.addActionListener(this);
             voltar.addActionListener(this);
         //===============================
-        this.add(body);
+        //this.add(body);
+        this.add(botaoVoltar);
+        this.add(comp1);
+        this.add(comp2);
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
