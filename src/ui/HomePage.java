@@ -1,17 +1,14 @@
 package src.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.ui.comprador.*;
 import src.ui.fornecedor.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
-import src.ui.salvar.*;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class HomePage extends JFrame implements ActionListener {
     private JButton botao21 = new JButton("Comprador");
@@ -269,13 +266,13 @@ public class HomePage extends JFrame implements ActionListener {
         switch(painel) {
             case 0:
                 this.setContentPane(painelPrincipal);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 1:
                 this.setContentPane(painelComprador);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 2:
                 this.setContentPane(painelFornecedor);
@@ -284,13 +281,13 @@ public class HomePage extends JFrame implements ActionListener {
                 break;
             case 3:
                 this.setContentPane(painelTecnologia);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 4:
                 this.setContentPane(painelVenda);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             // case 5: 
             //     this.setContentPane();
