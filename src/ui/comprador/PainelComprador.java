@@ -4,8 +4,16 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelComprador extends JPanel{
+import src.ui.HomePage;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+public class PainelComprador extends JPanel implements ActionListener{
+    private JButton botao21;
+    private JButton botao22;
+    private JButton botao23;
+    private JButton botao24;
+    private HomePage home = new HomePage();
     public PainelComprador(){
         super();
         this.setSize(1200,700);
@@ -125,5 +133,20 @@ public class PainelComprador extends JPanel{
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao21) { //comprador
+            home.mudaPainel(7);
+        } else if(e.getSource() == botao22) { //fornecedor
+
+        } else if(e.getSource() == botao23) { //tecnolog
+
+        } else if(e.getSource() == botao24) { //venda
+        
+        } 
+    }
+
+    
 }
 

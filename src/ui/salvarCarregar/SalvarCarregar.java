@@ -1,35 +1,24 @@
-package src.ui.venda;
+package src.ui.salvarCarregar;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class SalvarCarregar extends JPainel{
 
-import src.ui.HomePage;
-
-public class PainelVenda extends JPanel {
-    private JButton voltar;
-    private JButton botao21;
-    private JButton botao22;
-    private JButton botao23;
-    private JButton botao24;
-    private HomePage home = new HomePage();
-
-    public PainelVenda(){
+    public SalvarCarregar(){
         super();
         this.setSize(1200,700);
-        //this.setTitle("Venda"); // nome da janela
+        //this.setTitle("Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
-            Color amarelo = new Color(255, 194, 62);
-            voltar = new JButton("Voltar");
+            Color vermelho = new Color(233, 37, 37);
+            JButton voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, amarelo);
+            MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             FlowLayout  layout11 = new FlowLayout(FlowLayout.CENTER);
             JPanel botaoVoltar = new JPanel();
@@ -52,8 +41,8 @@ public class PainelVenda extends JPanel {
 
             //===============================================
                 JPanel comp1 = new JPanel();
-                MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, amarelo);
-                JLabel tituloTF = new JLabel("Métodos de Venda");
+                MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, vermelho);
+                JLabel tituloTF = new JLabel("Métodos de Comprador");
                 Font fontTF = new Font("SansSerif", Font.BOLD, 60);
                 tituloTF.setBorder(bordaTF);
                 tituloTF.setFont(fontTF);
@@ -71,12 +60,12 @@ public class PainelVenda extends JPanel {
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    botao21= new JButton("Cadastrar");
-                    MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, amarelo);
+                    JButton botao21= new JButton("Cadastrar");
+                    MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao21.setPreferredSize(new Dimension(250, 100));
                     botao21.setOpaque(true);
                     botao21.setBorder(bordaBotoes21);
-                    botao21.setBackground(amarelo);
+                    botao21.setBackground(vermelho);
                     botao21.setFont(fontBotoes);
                     comp21.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 25));
                     comp21.add(botao21);
@@ -84,12 +73,12 @@ public class PainelVenda extends JPanel {
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    botao22= new JButton("Mostrar Relatório");
-                    MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, amarelo);
+                    JButton botao22= new JButton("Mostrar Relatório");
+                    MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao22.setPreferredSize(new Dimension(250, 100));
                     botao22.setOpaque(true);
                     botao22.setBorder(bordaBotoes22);
-                    botao22.setBackground(amarelo);
+                    botao22.setBackground(vermelho);
                     botao22.setFont(fontBotoes);
                     comp22.setBorder(BorderFactory.createEmptyBorder(0, 25, 20, 0));
                     comp22.add(botao22);
@@ -97,12 +86,12 @@ public class PainelVenda extends JPanel {
                 //===============================================
                 //===============================================
                     JPanel comp23 = new JPanel();
-                    botao23= new JButton("Remover Dados");
-                    MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, amarelo);
+                    JButton botao23= new JButton("Alterar Dados");
+                    MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao23.setPreferredSize(new Dimension(250, 100));
                     botao23.setOpaque(true);
                     botao23.setBorder(bordaBotoes23);
-                    botao23.setBackground(amarelo);
+                    botao23.setBackground(vermelho);
                     botao23.setFont(fontBotoes);
                     comp23.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
                     comp23.add(botao23);
@@ -110,12 +99,12 @@ public class PainelVenda extends JPanel {
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    botao24= new JButton("Consultar Maior");
-                    MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, amarelo);
+                    JButton botao24= new JButton("Consultar Maior");
+                    MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao24.setPreferredSize(new Dimension(250, 100));
                     botao24.setOpaque(true);
                     botao24.setBorder(bordaBotoes24);
-                    botao24.setBackground(amarelo);
+                    botao24.setBackground(vermelho);
                     botao24.setFont(fontBotoes);
                     comp24.setBorder(BorderFactory.createEmptyBorder(0, 25, 0, 0));
                     comp24.add(botao24);
@@ -137,18 +126,18 @@ public class PainelVenda extends JPanel {
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //compradorr
-            home.mudaPainel(1);
-        } else if(e.getSource() == botao22) { //fornecedor
-            mudaPainel(2);
-        } else if(e.getSource() == botao23) { //tecnolog
-            mudaPainel(3);
-        } else if(e.getSource() == botao24) { //venda
-            mudaPainel(4);
-        } else if(e.getSource() == voltar) { //salvar/carregar
-            mudaPainel(5);
-        }
+    private void setVisible(boolean b) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setVisible'");
+    }
+
+    private void add(JPanel body) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    }
+
+    private void setSize(int i, int j) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setSize'");
     }
 }

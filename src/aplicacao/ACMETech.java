@@ -18,13 +18,17 @@ import src.entidades.Fornecedor;
 import src.entidades.Participante;
 import src.entidades.Tecnologia;
 import src.entidades.Venda;
-// import src.ui.PainelHomePage;
+ import src.ui.HomePage;
+// import src.ui.comprador.DialogRelatorioComprador;
 // import src.ui.comprador.PainelCadastrarComprador;
 // import src.ui.comprador.PainelComprador;
+// import src.ui.fornecedor.DialogRelatorioFornecedor;
 // import src.ui.fornecedor.PainelCadastrarFornecedor;
 // import src.ui.fornecedor.PainelFornecedor;
+// import src.ui.tecnologia.DialogRelatorioTecnologia;
 // import src.ui.tecnologia.PainelCadastrarTecnologia;
 // import src.ui.tecnologia.PainelTecnologia;
+// import src.ui.venda.DialogRelatorioVenda;
 // import src.ui.venda.PainelCadastrarVenda;
 // import src.ui.venda.PainelVenda;
 public class ACMETech {
@@ -49,7 +53,7 @@ public class ACMETech {
 
     public void executar() {
         inicializar();
-        // PainelHomePage minhaJanela = new PainelHomePage();
+        HomePage minhaJanela = new HomePage();
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
@@ -62,7 +66,7 @@ public class ACMETech {
 
     public List<String> lerArquivoParticipantes(String caminho) {
         String nomeArquivo = caminho + ".CSV";
-        Path path = Paths.get("recursos",nomeArquivo);
+        Path path = Paths.get("src", "recursos", nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -98,7 +102,7 @@ public class ACMETech {
 
     public List<String> lerArquivoTecnologia(String caminho) {
         String nomeArquivo = caminho + ".CSV";
-        Path path = Paths.get("recursos",nomeArquivo);
+        Path path = Paths.get("src", "recursos",nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {
@@ -145,7 +149,7 @@ public class ACMETech {
 
     public List<String> lerArquivoVendas(String caminho) {
         String nomeArquivo = caminho + ".CSV";
-        Path path = Paths.get("recursos", nomeArquivo);
+        Path path = Paths.get("src", "recursos", nomeArquivo);
         List<String> retorno = new ArrayList<>();
         Scanner sc = null;
         try (BufferedReader br = Files.newBufferedReader(path,Charset.forName("UTF-8"))) {

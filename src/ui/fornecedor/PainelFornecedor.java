@@ -4,7 +4,17 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelFornecedor extends JPanel{
+import src.ui.HomePage;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+public class PainelFornecedor extends JPanel implements ActionListener{
+    private JButton voltar;
+    private JButton botao21;
+    private JButton botao22;
+    private JButton botao24;
+    private HomePage home =  new HomePage();
+
 
     public PainelFornecedor(){
         super();
@@ -16,7 +26,7 @@ public class PainelFornecedor extends JPanel{
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color verde = new Color(0, 150, 0);
-            JButton voltar = new JButton("Voltar");
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, verde);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -60,7 +70,7 @@ public class PainelFornecedor extends JPanel{
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JButton botao21= new JButton("Cadastrar");
+                    botao21= new JButton("Cadastrar");
                     MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, verde);
                     botao21.setPreferredSize(new Dimension(250, 100));
                     botao21.setOpaque(true);
@@ -73,7 +83,7 @@ public class PainelFornecedor extends JPanel{
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JButton botao22= new JButton("Mostrar Relatório");
+                    botao22= new JButton("Mostrar Relatório");
                     MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, verde);
                     botao22.setPreferredSize(new Dimension(250, 100));
                     botao22.setOpaque(true);
@@ -86,7 +96,7 @@ public class PainelFornecedor extends JPanel{
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JButton botao24= new JButton("Consultar Maior");
+                    botao24= new JButton("Consultar Maior");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, verde);
                     botao24.setPreferredSize(new Dimension(250, 100));
                     botao24.setOpaque(true);
@@ -111,4 +121,16 @@ public class PainelFornecedor extends JPanel{
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao21) { //comprador
+            home.mudaPainel(6);
+        } else if(e.getSource() == botao22) { //fornecedor
+            
+        } else if(e.getSource() == botao24) { //tecnolog
+            
+        }
+    }
+
+    
 }

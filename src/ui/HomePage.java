@@ -4,14 +4,36 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
+import src.ui.comprador.*;
+import src.ui.fornecedor.*;
+import src.ui.tecnologia.*;
+import src.ui.venda.*;
+import src.ui.salvarCarregar.*;
 
-public class HomePage extends JFrame {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-    public HomePage(){
+public class HomePage extends JFrame implements ActionListener {
+    private JButton botao21 = new JButton("Comprador");
+    private JButton botao22 = new JButton("Fornecedor");
+    private JButton botao23 = new JButton("Tecnologia");
+    private JButton botao24 = new JButton("Venda");
+    private JButton botao31 = new JButton("Salvar/Carregar");
+    private JButton botao32 = new JButton("Sair");
+    private PainelVenda painelVenda = new PainelVenda();
+    private PainelTecnologia painelTecnologia = new PainelTecnologia();
+    private PainelComprador painelComprador = new PainelComprador();
+    private PainelFornecedor painelFornecedor = new PainelFornecedor();
+    private PainelCadastrarComprador painelCadastrarComprador= new PainelCadastrarComprador();
+    private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor();
+    private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia();
+    private PainelCadastrarVenda painelCadastrarVenda = new PainelCadastrarVenda();
+
+    public HomePage() {
         super();
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
-        setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
@@ -72,7 +94,7 @@ public class HomePage extends JFrame {
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JButton botao21= new JButton("Comprador");
+                    //botao21= new JButton("Comprador");
                     MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao21.setPreferredSize(new Dimension(200, 100));
                     botao21.setOpaque(true);
@@ -85,7 +107,7 @@ public class HomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JButton botao22= new JButton("Fornecedor");
+                    // botao22 = new JButton("Fornecedor");
                     MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, verde);
                     botao22.setPreferredSize(new Dimension(200, 100));
                     botao22.setOpaque(true);
@@ -97,7 +119,7 @@ public class HomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp23 = new JPanel();
-                    JButton botao23= new JButton("Tecnologia");
+                    // botao23 = new JButton("Tecnologia");
                     MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, azul);
                     botao23.setPreferredSize(new Dimension(200, 100));
                     botao23.setOpaque(true);
@@ -110,7 +132,6 @@ public class HomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JButton botao24= new JButton("Venda");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, amarelo);
                     botao24.setPreferredSize(new Dimension(200, 100));
                     botao24.setOpaque(true);
@@ -133,7 +154,6 @@ public class HomePage extends JFrame {
                 
                 //===============================================
                     JPanel comp31 = new JPanel();
-                    JButton botao31= new JButton("Salvar/Carregar");
                     botao31.setPreferredSize(new Dimension(230, 50));
                     botao31.setOpaque(true);
                     botao31.setBorder(bordaBotoes3);
@@ -145,7 +165,6 @@ public class HomePage extends JFrame {
                 //===============================================
                 //===============================================
                     JPanel comp32 = new JPanel();
-                    JButton botao32= new JButton("Sair");
                     botao32.setPreferredSize(new Dimension(230, 50));
                     botao32.setOpaque(true);
                     botao32.setBorder(bordaBotoes3);
@@ -214,5 +233,71 @@ public class HomePage extends JFrame {
         this.add(body);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao21) { //comprador
+            mudaPainel(1);
+        } else if(e.getSource() == botao22) { //fornecedor
+            mudaPainel(2);
+        } else if(e.getSource() == botao23) { //tecnolog
+            mudaPainel(3);
+        } else if(e.getSource() == botao24) { //venda
+            mudaPainel(4);
+        } else if(e.getSource() == botao31) { //salvar/carregar
+            mudaPainel(5);
+        } else if(e.getSource() == botao32) { //sair
+            System.exit(0);
+        }
+    }
+    public void mudaPainel(int painel) {
+        switch(painel) {
+            case 1:
+                // painelUm.atualiza();
+                this.setContentPane(painelComprador);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 2:
+                this.setContentPane(painelFornecedor);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 3:
+                this.setContentPane(painelTecnologia);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 4:
+                this.setContentPane(painelVenda);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            // case 5: 
+            //     this.setContentPane();
+            //     this.pack();
+            //     break;
+            case 6:
+                this.setContentPane(painelCadastrarFornecedor);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 7:
+                this.setContentPane(painelCadastrarComprador);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 8:
+                this.setContentPane(painelCadastrarTecnologia);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+            case 9:
+                this.setContentPane(painelCadastrarVenda);
+                this.pack();
+                this.setSize(1200,700);
+                break;
+        }
     }
 }

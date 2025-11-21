@@ -4,19 +4,32 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelTecnologia extends JPanel {
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import src.ui.HomePage;
+
+public class PainelTecnologia extends JPanel implements ActionListener {
+    private JButton voltar;
+    private JButton botao21;
+    private JButton botao22;
+    private JButton botao24;
+    private HomePage home;
 
     public PainelTecnologia(){
         super();
         this.setSize(1200,700);
         //this.setTitle("Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+
+        //Inicializando o home page
+        home = new HomePage();
         //===============================================
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color azul = new Color(0, 100, 250);
-            JButton voltar = new JButton("Voltar");
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, azul);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -60,7 +73,7 @@ public class PainelTecnologia extends JPanel {
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JButton botao21= new JButton("Cadastrar");
+                    botao21= new JButton("Cadastrar");
                     MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, azul);
                     botao21.setPreferredSize(new Dimension(250, 100));
                     botao21.setOpaque(true);
@@ -73,7 +86,7 @@ public class PainelTecnologia extends JPanel {
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JButton botao22= new JButton("Mostrar Relatório");
+                    botao22= new JButton("Mostrar Relatório");
                     MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, azul);
                     botao22.setPreferredSize(new Dimension(250, 100));
                     botao22.setOpaque(true);
@@ -86,7 +99,7 @@ public class PainelTecnologia extends JPanel {
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JButton botao24= new JButton("Consultar Maior");
+                    botao24= new JButton("Consultar Maior");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, azul);
                     botao24.setPreferredSize(new Dimension(250, 100));
                     botao24.setOpaque(true);
@@ -111,5 +124,18 @@ public class PainelTecnologia extends JPanel {
         this.add(body);
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao21) { //comprador
+            home.mudaPainel(8);
+        } else if(e.getSource() == botao22) { //fornecedor
+            mudaPainel(2);
+        } else if(e.getSource() == voltar) { //tecnolog
+            mudaPainel(3);
+        } else if(e.getSource() == botao24) { //venda
+            mudaPainel(4);
+        }
     }
 }

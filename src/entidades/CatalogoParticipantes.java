@@ -194,14 +194,5 @@ public class CatalogoParticipantes {
         return "ERRO:não existe comprador com este código";
     }
 
-    public Comprador fornecedorParaComprador(long cod) {
-        for (Participante participante : participantes) {
-            if (participante instanceof Comprador) {
-                if (cod == participante.getCod()) {
-                    return (Comprador)participante;
-                }
-            }
-        }
-        return null;
-    }
+    
 }
