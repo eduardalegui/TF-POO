@@ -193,3 +193,14 @@
         }
     }
 }
+[1]
+[1, "Stark Industries"]
+[1, "Stark Industries", "05/05/2005"]
+[1, "Stark Industries", "05/05/2005", "EMERGENTE"]
+ERRO:formato invalido.
+4
+1
+"Stark Industries"
+"05/05/2005"
+"EMERGENTE"
+Carregamento concluído.

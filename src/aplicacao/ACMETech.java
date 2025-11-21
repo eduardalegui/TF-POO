@@ -33,9 +33,11 @@ import src.entidades.Venda;
 // import src.ui.venda.PainelVenda;
 public class ACMETech {
     private CatalogoParticipantes participantes;
+    private List<String> fornecedores;
 
     public void inicializar() {
         participantes = new CatalogoParticipantes();
+        fornecedores = new ArrayList<>();
         List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
@@ -49,11 +51,12 @@ public class ACMETech {
             System.out.println(s);
         }
         salvarDados("relatorio");
+        carregarDadosJson("novosDados");
     }
 
     public void executar() {
         inicializar();
-        HomePage minhaJanela = new HomePage();
+        //HomePage minhaJanela = new HomePage();
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
@@ -323,38 +326,43 @@ public class ACMETech {
         Locale.setDefault(Locale.ENGLISH);
     }
 
-    public void carregarDadosCsv(String caminho) {
-        String nomeArquivo = caminho + ".csv";
-        Path path = Paths.get("resursos", nomeArquivo);
-        participantes = new CatalogoParticipantes();
+    public void carregarDadosJson(String caminho) {
+        String nomeArquivo = caminho + ".json";
+        Path path = Paths.get("src","recursos", nomeArquivo);
         Scanner sc = null;
+        List<String> fornecedores = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
             String linha = null;
             br.readLine();
             while ((linha = br.readLine()) != null) {
                 try {
-                    sc = new Scanner(linha).useDelimiter(";");
-                    Fornecedor f = null;
-                    String stringId = sc.next();
-                    String modelo = sc.next();
-                    String descricao = sc.next();
-                    String stringValorBase = sc.next();
-                    String stringPeso = sc.next();
-                    String stringTemperatura = sc.next();
-                    String stringFornecedor = sc.next();
-                    long id = Long.parseLong(stringId);
-                    double valorBase = Double.parseDouble(stringValorBase);
-                    double peso = Double.parseDouble(stringPeso);
-                    double temperatura = Double.parseDouble(stringTemperatura);
-                    long fornecedor = Long.parseLong(stringFornecedor);
-                    for(Participante p : participantes.getParticipantes()) {
-                        if(p instanceof Fornecedor) {
-                            if(p.getCod() == fornecedor) {
-                                f = (Fornecedor) p;
-                            }
-                        }
+                    fornecedores = listaCarregarDados(linha, br, linha, sc);
+                    for(String s : fornecedores) {
+                        System.out.println(s);
                     }
-                    System.out.println(f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f));
+                    // if(linha.contains("Compradores")) {
+                    //     linha = br.readLine().trim();
+                    //     sc = new Scanner(linha).useDelimiter("[:,]");
+                    //     sc.next();
+                    //     String stringCod = sc.next().trim();
+                    //     int cod = Integer.parseInt(stringCod);
+                    //     System.out.println(cod);
+                    //     linha = br.readLine().trim();
+                    //     sc = new Scanner(linha).useDelimiter("[:,]");
+                    //     sc.next();
+                    //     String nome = sc.next().trim();
+                    //     System.out.println(nome);
+                    //     linha = br.readLine().trim();
+                    //     sc = new Scanner(linha).useDelimiter("[:,]");
+                    //     sc.next();
+                    //     String fundacao = sc.next().trim();
+                    //     System.out.println(fundacao);
+                    //     linha = br.readLine().trim();
+                    //     sc = new Scanner(linha).useDelimiter("[:,]");
+                    //     sc.next();
+                    //     String area = sc.next().trim();
+                    //     System.out.println(area);
+                    // }
                 } catch (NumberFormatException e) {
                     System.out.println("ERRO:formato invalido.");
                     continue;
@@ -364,8 +372,25 @@ public class ACMETech {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Erro ao carregar o arquivo: ");
+            System.out.println("Erro ao carregar o arquivo:");
         }
         System.out.println("Carregamento concluído.");
+    }
+
+    private List<String> listaCarregarDados(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Fornecedores")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    fornecedores.add(conteudo);
+                }
+            }
+            return fornecedores;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return fornecedores;
     }
 }
