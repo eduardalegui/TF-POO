@@ -1,13 +1,11 @@
 package src.ui.fornecedor;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.ui.HomePage;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
@@ -21,19 +19,23 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Fornecedor"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        Color corFundo = new Color(238, 236, 194);
+        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        this.setBackground(corFundo);
+        this.setLayout(layout);
         //===============================================
         this.home = home;
-            JPanel body = new JPanel();
-            BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
-            Color corFundo = new Color(238, 236, 194);
+            // JPanel body = new JPanel();
+            // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
+            // Color corFundo = new Color(238, 236, 194);
             Color verde = new Color(0, 150, 0);
             voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, verde);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             JPanel botaoVoltar = new JPanel();
-            botaoVoltar.setMaximumSize(new Dimension(1200, 40));
-            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 10, 25, 0));
+            botaoVoltar.setMaximumSize(new Dimension(1200, 52));
+            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 25, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
             voltar.setOpaque(true);
@@ -43,11 +45,11 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
-            body.add(botaoVoltar);
-            body.setLayout(layout);
-            body.setBackground(corFundo);
-            body.setOpaque(true); //não o torna tranparente
-            body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+            // body.add(botaoVoltar);
+            // body.setLayout(layout);
+            // body.setBackground(corFundo);
+            // body.setOpaque(true); //não o torna tranparente
+            // body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
             
             //===============================================
                 JPanel comp1 = new JPanel();
@@ -159,15 +161,19 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 comp3.add(botao1);
                 comp3.add(botao2);
             //===============================================
-            body.add(comp1);
-            body.add(comp2);
-            body.add(comp3);
+            // body.add(comp1);
+            // body.add(comp2);
+            // body.add(comp3);
         //===============================================
         botao1.addActionListener(this);
         botao2.addActionListener(this);
         voltar.addActionListener(this);
         //===============================================
-        this.add(body);
+        //this.add(body);
+        this.add(botaoVoltar);
+        this.add(comp1);
+        this.add(comp2);
+        this.add(comp3);
         //this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }
