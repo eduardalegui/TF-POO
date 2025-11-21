@@ -16,15 +16,14 @@ public class PainelTecnologia extends JPanel implements ActionListener {
     private JButton botao24;
     private HomePage home;
 
-    public PainelTecnologia(){
+    public PainelTecnologia(HomePage home) {
         super();
         this.setSize(1200,700);
         //this.setTitle("Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
 
-        //Inicializando o home page
-        home = new HomePage();
         //===============================================
+            this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
@@ -117,7 +116,11 @@ public class PainelTecnologia extends JPanel implements ActionListener {
                 comp2.add(comp24);
                 comp2.setOpaque(false);
             //===============================================
-
+            botao21.addActionListener(this);
+            botao22.addActionListener(this);
+            botao24.addActionListener(this);
+            voltar.addActionListener(this);
+            //==============================================
             body.add(comp1);
             body.add(comp2);
         //===============================================
@@ -131,11 +134,11 @@ public class PainelTecnologia extends JPanel implements ActionListener {
         if(e.getSource() == botao21) { //comprador
             home.mudaPainel(8);
         } else if(e.getSource() == botao22) { //fornecedor
-            mudaPainel(2);
+            //mudaPainel(2);
         } else if(e.getSource() == voltar) { //tecnolog
-            mudaPainel(3);
+            home.mudaPainel(0);
         } else if(e.getSource() == botao24) { //venda
-            mudaPainel(4);
+            //mudaPainel(4);
         }
     }
 }

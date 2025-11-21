@@ -1,22 +1,31 @@
 package src.ui.tecnologia;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelCadastrarTecnologia extends JPanel{
-    
-    public PainelCadastrarTecnologia(){
+import src.ui.HomePage;
+
+public class PainelCadastrarTecnologia extends JPanel implements ActionListener {
+    private JButton botao1= new JButton("Enviar");
+    private JButton botao2= new JButton("Limpar");
+    private JButton voltar = new JButton("Voltar");
+    private HomePage home;
+
+    public PainelCadastrarTecnologia(HomePage home){
         super();
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+            this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color azul = new Color(0, 100, 250);
-            JButton voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, azul);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -155,8 +164,6 @@ public class PainelCadastrarTecnologia extends JPanel{
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Enviar");
-                JButton botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
@@ -198,8 +205,23 @@ public class PainelCadastrarTecnologia extends JPanel{
             body.add(comp2);
             body.add(comp3);
         //===============================================
+            botao1.addActionListener(this);
+            botao2.addActionListener(this);
+            voltar.addActionListener(this);
+        //=====================================
         this.add(body);
         //this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao1) { //comprador
+            //home.mudaPainel(8);
+        } else if(e.getSource() == botao2) { //fornecedor
+            //mudaPainel(2);
+        } else if(e.getSource() == voltar) { //tecnolog
+            home.mudaPainel(3);
+        }
     }
 }

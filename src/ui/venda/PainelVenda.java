@@ -9,20 +9,21 @@ import java.awt.event.ActionEvent;
 
 import src.ui.HomePage;
 
-public class PainelVenda extends JPanel {
+public class PainelVenda extends JPanel implements ActionListener{
     private JButton voltar;
     private JButton botao21;
     private JButton botao22;
     private JButton botao23;
     private JButton botao24;
-    private HomePage home = new HomePage();
+    private HomePage home;
 
-    public PainelVenda(){
+    public PainelVenda(HomePage home){
         super();
         this.setSize(1200,700);
         //this.setTitle("Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+            this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
@@ -132,6 +133,12 @@ public class PainelVenda extends JPanel {
             body.add(comp1);
             body.add(comp2);
         //===============================================
+            botao21.addActionListener(this);
+            botao22.addActionListener(this);
+            botao23.addActionListener(this);
+            botao24.addActionListener(this);
+            voltar.addActionListener(this);
+        //===============================
         this.add(body);
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -140,15 +147,15 @@ public class PainelVenda extends JPanel {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao21) { //compradorr
-            home.mudaPainel(1);
+            home.mudaPainel(9);
         } else if(e.getSource() == botao22) { //fornecedor
-            mudaPainel(2);
+            //mudaPainel(2);
         } else if(e.getSource() == botao23) { //tecnolog
-            mudaPainel(3);
+            //mudaPainel(3);
         } else if(e.getSource() == botao24) { //venda
-            mudaPainel(4);
+            //mudaPainel(4);
         } else if(e.getSource() == voltar) { //salvar/carregar
-            mudaPainel(5);
+            home.mudaPainel(0);
         }
     }
 }

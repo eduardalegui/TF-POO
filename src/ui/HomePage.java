@@ -8,7 +8,7 @@ import src.ui.comprador.*;
 import src.ui.fornecedor.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
-import src.ui.salvarCarregar.*;
+import src.ui.salvar.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -20,14 +20,19 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton botao24 = new JButton("Venda");
     private JButton botao31 = new JButton("Salvar/Carregar");
     private JButton botao32 = new JButton("Sair");
-    private PainelVenda painelVenda = new PainelVenda();
-    private PainelTecnologia painelTecnologia = new PainelTecnologia();
-    private PainelComprador painelComprador = new PainelComprador();
-    private PainelFornecedor painelFornecedor = new PainelFornecedor();
-    private PainelCadastrarComprador painelCadastrarComprador= new PainelCadastrarComprador();
-    private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor();
-    private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia();
-    private PainelCadastrarVenda painelCadastrarVenda = new PainelCadastrarVenda();
+    private PainelVenda painelVenda = new PainelVenda(this);
+    private PainelTecnologia painelTecnologia = new PainelTecnologia(this);
+    private PainelComprador painelComprador = new PainelComprador(this);
+    private PainelFornecedor painelFornecedor = new PainelFornecedor(this);
+    private PainelCadastrarComprador painelCadastrarComprador= new PainelCadastrarComprador(this);
+    private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor(this);
+    private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia(this);
+    private PainelCadastrarVenda painelCadastrarVenda = new PainelCadastrarVenda(this);
+    private JPanel painelPrincipal;
+
+    public HomePage(int f){
+
+    }
 
     public HomePage() {
         super();
@@ -229,7 +234,16 @@ public class HomePage extends JFrame implements ActionListener {
             body.add(comp2);
             body.add(comp3);
             body.add(comp4);
+            painelPrincipal = body;
         //===============================================
+            botao21.addActionListener(this);
+            botao22.addActionListener(this);
+            botao23.addActionListener(this);
+            botao24.addActionListener(this);
+            botao31.addActionListener(this);
+            botao32.addActionListener(this);
+        //========================
+        
         this.add(body);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -253,26 +267,30 @@ public class HomePage extends JFrame implements ActionListener {
     }
     public void mudaPainel(int painel) {
         switch(painel) {
+            case 0:
+                this.setContentPane(painelPrincipal);
+                this.pack();
+                this.setSize(1200, 700);
+                break;
             case 1:
-                // painelUm.atualiza();
                 this.setContentPane(painelComprador);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 2:
                 this.setContentPane(painelFornecedor);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 3:
                 this.setContentPane(painelTecnologia);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 4:
                 this.setContentPane(painelVenda);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             // case 5: 
             //     this.setContentPane();
@@ -281,22 +299,22 @@ public class HomePage extends JFrame implements ActionListener {
             case 6:
                 this.setContentPane(painelCadastrarFornecedor);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 7:
                 this.setContentPane(painelCadastrarComprador);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 8:
                 this.setContentPane(painelCadastrarTecnologia);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
             case 9:
                 this.setContentPane(painelCadastrarVenda);
                 this.pack();
-                this.setSize(1200,700);
+                this.setSize(1200, 700);
                 break;
         }
     }

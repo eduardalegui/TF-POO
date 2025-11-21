@@ -1,22 +1,31 @@
 package src.ui.venda;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
-public class PainelCadastrarVenda extends JPanel{
-    
-    public PainelCadastrarVenda(){
+import src.ui.HomePage;
+
+public class PainelCadastrarVenda extends JPanel implements ActionListener {
+    private JButton voltar = new JButton("Voltar");
+    private JButton botao1= new JButton("Enviar");
+    private JButton botao2= new JButton("Limpar");
+    private HomePage home;
+
+    public PainelCadastrarVenda(HomePage home){
         super();
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+            this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color amarelo = new Color(255, 194, 62);
-            JButton voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, amarelo);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -123,8 +132,6 @@ public class PainelCadastrarVenda extends JPanel{
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Enviar");
-                JButton botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
@@ -152,8 +159,22 @@ public class PainelCadastrarVenda extends JPanel{
             body.add(comp2);
             body.add(comp3);
         //===============================================
+            botao1.addActionListener(this);
+            botao2.addActionListener(this);
+            voltar.addActionListener(this);
+        //===============================================
         this.add(body);
         //this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == voltar) { //compradorr
+            home.mudaPainel(4);
+        } else if(e.getSource() == botao1) { //fornecedor
+            //mudaPainel(2);
+        } else if(e.getSource() == botao2) { //tecnolog
+            //mudaPainel(3);
+        }
     }
 }

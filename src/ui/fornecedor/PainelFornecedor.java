@@ -13,16 +13,17 @@ public class PainelFornecedor extends JPanel implements ActionListener{
     private JButton botao21;
     private JButton botao22;
     private JButton botao24;
-    private HomePage home =  new HomePage();
+    private HomePage home;
 
-
-    public PainelFornecedor(){
+    public PainelFornecedor(HomePage home){
         super();
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Fornecedor"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+            this.home = home;
             JPanel body = new JPanel();
+            body.setMaximumSize(new Dimension(1200, 700));
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color verde = new Color(0, 150, 0);
@@ -117,18 +118,25 @@ public class PainelFornecedor extends JPanel implements ActionListener{
             body.add(comp1);
             body.add(comp2);
         //===============================================
+        botao21.addActionListener(this);
+        botao22.addActionListener(this);
+        botao24.addActionListener(this);
+        voltar.addActionListener(this);
+        //===============================================
         this.add(body);
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //comprador
+        if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(6);
-        } else if(e.getSource() == botao22) { //fornecedor
+        } else if(e.getSource() == botao22) { //mostrar relatorio
             
-        } else if(e.getSource() == botao24) { //tecnolog
+        } else if(e.getSource() == botao24) { //consultar maior
             
+        } else if(e.getSource() == voltar) {
+            home.mudaPainel(0);
         }
     }
 

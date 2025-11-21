@@ -4,21 +4,30 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
+import src.ui.HomePage;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class PainelCadastrarComprador extends JPanel{
-    
-    public PainelCadastrarComprador(){
+
+public class PainelCadastrarComprador extends JPanel implements ActionListener{
+    private JButton botao1;
+    private JButton botao2;
+    private JButton voltar;
+    private HomePage home;
+
+    public PainelCadastrarComprador(HomePage home){
         super();
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+        this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color vermelho = new Color(233, 37, 37);
-            JButton voltar = new JButton("Voltar");
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -156,8 +165,22 @@ public class PainelCadastrarComprador extends JPanel{
             body.add(comp2);
             body.add(comp3);
         //===============================================
+        botao1.addActionListener(this);
+        botao2.addActionListener(this);
+        voltar.addActionListener(this);
+        //==============================================
         this.add(body);
         //this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botao1) { //enviar
+            
+        } else if(e.getSource() == botao2) { //limpar
+            
+        } else if(e.getSource() == voltar) { //voltar
+            home.mudaPainel(1);
+        } 
     }
 }

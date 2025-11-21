@@ -201,7 +201,7 @@ public class ACMETech {
 
     public void salvarDados(String nome) {
         try {
-            Path path = Paths.get("recursos", nome + ".json");
+            Path path = Paths.get("src", "recursos", nome + ".json");
             PrintStream streamSaida = new PrintStream(path.toFile(), Charset.forName("UTF-8"));
             System.setOut(streamSaida);
             List<Fornecedor> fornecedores = new ArrayList<>();

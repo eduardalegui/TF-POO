@@ -13,18 +13,22 @@ public class PainelComprador extends JPanel implements ActionListener{
     private JButton botao22;
     private JButton botao23;
     private JButton botao24;
-    private HomePage home = new HomePage();
-    public PainelComprador(){
+    private JButton voltar;
+    private HomePage home;
+
+    public PainelComprador(HomePage home){
         super();
         this.setSize(1200,700);
+        this.setMinimumSize(new Dimension(1200, 700));
         //this.setTitle("Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         //===============================================
+        this.home = home;
             JPanel body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color corFundo = new Color(238, 236, 194);
             Color vermelho = new Color(233, 37, 37);
-            JButton voltar = new JButton("Voltar");
+            voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
@@ -68,7 +72,7 @@ public class PainelComprador extends JPanel implements ActionListener{
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JButton botao21= new JButton("Cadastrar");
+                    botao21= new JButton("Cadastrar");
                     MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao21.setPreferredSize(new Dimension(250, 100));
                     botao21.setOpaque(true);
@@ -81,7 +85,7 @@ public class PainelComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JButton botao22= new JButton("Mostrar Relatório");
+                    botao22= new JButton("Mostrar Relatório");
                     MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao22.setPreferredSize(new Dimension(250, 100));
                     botao22.setOpaque(true);
@@ -94,7 +98,7 @@ public class PainelComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp23 = new JPanel();
-                    JButton botao23= new JButton("Alterar Dados");
+                    botao23= new JButton("Alterar Dados");
                     MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao23.setPreferredSize(new Dimension(250, 100));
                     botao23.setOpaque(true);
@@ -107,7 +111,7 @@ public class PainelComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JButton botao24= new JButton("Consultar Maior");
+                    botao24= new JButton("Consultar Maior");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao24.setPreferredSize(new Dimension(250, 100));
                     botao24.setOpaque(true);
@@ -129,6 +133,12 @@ public class PainelComprador extends JPanel implements ActionListener{
             body.add(comp1);
             body.add(comp2);
         //===============================================
+        botao21.addActionListener(this);
+        botao22.addActionListener(this);
+        botao23.addActionListener(this);
+        botao24.addActionListener(this);
+        voltar.addActionListener(this);
+        //===============================================
         this.add(body);
         //this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -136,14 +146,16 @@ public class PainelComprador extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //comprador
+        if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(7);
-        } else if(e.getSource() == botao22) { //fornecedor
+        } else if(e.getSource() == botao22) { //mostrar relatorio
 
-        } else if(e.getSource() == botao23) { //tecnolog
+        } else if(e.getSource() == botao23) { //alterar dados
 
-        } else if(e.getSource() == botao24) { //venda
+        } else if(e.getSource() == botao24) { //consultar maior
         
+        } else if(e.getSource() == voltar) { //consultar maior
+            home.mudaPainel(0);
         } 
     }
 
