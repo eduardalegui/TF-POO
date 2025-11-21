@@ -1,19 +1,20 @@
 package src.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.ui.comprador.*;
 import src.ui.fornecedor.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
 import src.ui.salvar.*;
+import src.entidades.*;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class HomePage extends JFrame implements ActionListener {
+    private CatalogoParticipantes catalogoParticipantes;
     private JButton botao21 = new JButton("Comprador");
     private JButton botao22 = new JButton("Fornecedor");
     private JButton botao23 = new JButton("Tecnologia");
@@ -27,15 +28,19 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelCadastrarComprador painelCadastrarComprador= new PainelCadastrarComprador(this);
     private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor(this);
     private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia(this);
-    private PainelCadastrarVenda painelCadastrarVenda = new PainelCadastrarVenda(this);
+    private PainelCadastrarVenda painelCadastrarVenda;
+    private PainelSalvarCarregar painelSalvarCarregar = new PainelSalvarCarregar(this);
+    private PainelAlterarDadosComprador painelAlterarDadosComprador= new PainelAlterarDadosComprador(this);
+    private PainelModificarComprador painelModificarComprador= new PainelModificarComprador(this);
     private JPanel painelPrincipal;
-
     public HomePage(int f){
 
     }
 
-    public HomePage() {
+    public HomePage(CatalogoParticipantes catalogoParticipantes) {
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
+        painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    
@@ -269,13 +274,13 @@ public class HomePage extends JFrame implements ActionListener {
         switch(painel) {
             case 0:
                 this.setContentPane(painelPrincipal);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 1:
                 this.setContentPane(painelComprador);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 2:
                 this.setContentPane(painelFornecedor);
@@ -284,18 +289,18 @@ public class HomePage extends JFrame implements ActionListener {
                 break;
             case 3:
                 this.setContentPane(painelTecnologia);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
             case 4:
                 this.setContentPane(painelVenda);
-                this.pack();
-                this.setSize(1200, 700);
+                //this.pack();
+                //this.setSize(1200, 700);
                 break;
-            // case 5: 
-            //     this.setContentPane();
-            //     this.pack();
-            //     break;
+            case 5: 
+                this.setContentPane(painelSalvarCarregar);
+                //this.pack();
+                break;
             case 6:
                 this.setContentPane(painelCadastrarFornecedor);
                 this.pack();
@@ -316,6 +321,16 @@ public class HomePage extends JFrame implements ActionListener {
                 this.pack();
                 this.setSize(1200, 700);
                 break;
+            case 10:
+                this.setContentPane(painelAlterarDadosComprador);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
+            case 11:
+                this.setContentPane(painelModificarComprador);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
         }
     }
 }
