@@ -189,21 +189,24 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             String compradorSelecionado = (String) selecionaComprador.getSelectedItem();
             String tecnologiaSelec = (String) selecionaTecnologia.getSelectedItem();
             long tecnologiaSelecionada = Long.parseLong(tecnologiaSelec);
-            String date = campTexto1.getText();
-            String num = campTexto2.getText();
+            String date = campTexto2.getText();
+            String num = campTexto1.getText();
+            Comprador comprador = null;
+            Comprador c = null;
             if(catalogoParticipantes.getParticipantes().isEmpty()){
                 System.out.println("Catalago vazio");
                 return;
             }
             for (Participante participante : catalogoParticipantes.getParticipantes()) {
                 if(participante instanceof Comprador){
-                    Comprador comprador = (Comprador) participante;
+                    comprador = (Comprador) participante;
                     if(compradorSelecionado.equals(comprador.getNome())){
-                        comprador.cadastrarVenda(num, date, comprador, achaTecnologia(tecnologiaSelecionada));
-                        System.out.println(comprador.getNome());
+                        c = comprador;
                     }
                 }
             }
+            comprador.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelecionada));
+            
         } else if(e.getSource() == botao2) { //limpar
             campTexto2.setText("");
             campTexto1.setText("");
@@ -211,12 +214,14 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     }
 
     public Tecnologia achaTecnologia(long tecnologiaSelecionada){
+        Fornecedor fornecedor = null;
+        Tecnologia tecnologia = null;
         for (Participante participante : catalogoParticipantes.getParticipantes()) {
             if(participante instanceof Fornecedor){
-                Fornecedor fornecedor = (Fornecedor) participante;
+                fornecedor = (Fornecedor) participante;
                 for (Tecnologia tec : fornecedor.getArrayTecnologia()){
                     if(tec.getId() == tecnologiaSelecionada){
-                        Tecnologia tecnologia = tec;
+                        tecnologia = tec;
                         return tecnologia;
                     }
                 }

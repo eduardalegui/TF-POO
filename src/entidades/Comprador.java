@@ -41,7 +41,6 @@ public class Comprador extends Participante{
                     return "ERRO:numero repetido";
                 }
             }
-
             Venda venda = new Venda(num, date, comprador, tecnologia);
             arrayVenda.add(venda);
             return "Venda cadastrada";
