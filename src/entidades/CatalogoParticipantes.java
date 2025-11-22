@@ -22,7 +22,7 @@ public class CatalogoParticipantes {
             long cod = Long.parseLong(stringCod);
             Date fundacao = date.parse(stringFundacao.trim());
 
-            if(nome == null || fundacao == null || cod == 0 || stringArea == null) {
+            if(nome == null || fundacao == null || cod == 0 || stringArea.equals("")) {
                 return "ERRO:Preencha todos os campos corretamente";
             }
 

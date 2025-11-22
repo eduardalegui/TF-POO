@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.entidades.*;
 import src.ui.HomePage;
 
 
@@ -12,10 +13,16 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
     private JButton botao1;
     private JButton botao2;
     private JButton voltar;
+    private JTextField campTexto1 = new JTextField(20);
+    private JTextField campTexto2 = new JTextField(20);
+    private JTextField campTexto3 = new JTextField(20);
+    private JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"", "TI", "Androides", "Emergente", "Alimentos"});
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
     
-    public PainelCadastrarFornecedor(HomePage home){
+    public PainelCadastrarFornecedor(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Fornecedor"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -77,7 +84,7 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNome = new JLabel("Cod: ");
-                    JTextField campTexto1 = new JTextField(20);
+                    // JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -91,7 +98,7 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloEmail = new JLabel("Nome: ");
-                    JTextField campTexto2 = new JTextField(20);
+                    // JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -105,7 +112,7 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp23 = new JPanel();
                     JLabel tituloPais = new JLabel("Data: ");
-                    JTextField campTexto3 = new JTextField(20);
+                    // JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
                     campTexto3.setBorder(bordaCampTexto);
@@ -117,7 +124,7 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
-                    JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
+                    //JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp24 = new JPanel();
                     JLabel tituloCod = new JLabel("Area: ");
                     selecionaArea.setPreferredSize(new Dimension(500, 50));
@@ -180,12 +187,28 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //enviar
-            
+            String cod = campTexto1.getText();
+            String nome = campTexto2.getText();
+            String data = campTexto3.getText();
+            String area = (String) selecionaArea.getSelectedItem();
+
+            if(catalogoParticipantes.getParticipantes().isEmpty()){
+                System.out.println("Catalago vazio");
+                return;
+            }
+            System.out.println(catalogoParticipantes.cadastrarFornecedor(cod, nome, data, area));
         } else if(e.getSource() == botao2) { //limpar
-            
+            limpar();
         } else if(e.getSource() == voltar) { //voltar
+            limpar();
             home.mudaPainel(2);
         } 
+    }
+
+    public void limpar(){
+        campTexto1.setText("");
+        campTexto2.setText("");
+        campTexto3.setText("");
     }
 }
 

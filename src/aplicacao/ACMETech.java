@@ -19,7 +19,8 @@ import src.entidades.Fornecedor;
 import src.entidades.Participante;
 import src.entidades.Tecnologia;
 import src.entidades.Venda;
- import src.ui.HomePage;
+import src.ui.comprador.DialogRelatorioComprador;
+import src.ui.HomePage;
 // import src.ui.comprador.DialogRelatorioComprador;
 // import src.ui.comprador.PainelCadastrarComprador;
 // import src.ui.comprador.PainelComprador;
@@ -59,8 +60,14 @@ public class ACMETech {
     }
 
     public void executar() {
+<<<<<<< HEAD
         inicializar();
         //HomePage minhaJanela = new HomePage(participantes);
+=======
+        //inicializar();
+        //HomePage minhaJanela = new HomePage(participantes);
+        DialogRelatorioComprador dialog = new DialogRelatorioComprador();
+>>>>>>> fd0100bd6419f5cff4799b43f15d4fcce18f581b
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
@@ -126,10 +133,10 @@ public class ACMETech {
                 String stringPeso = sc.next();
                 String stringTemperatura = sc.next();
                 String stringFornecedor = sc.next();
-                long id = Long.parseLong(stringId);
-                double valorBase = Double.parseDouble(stringValorBase);
-                double peso = Double.parseDouble(stringPeso);
-                double temperatura = Double.parseDouble(stringTemperatura);
+                // long id = Long.parseLong(stringId);
+                // double valorBase = Double.parseDouble(stringValorBase);
+                // double peso = Double.parseDouble(stringPeso);
+                // double temperatura = Double.parseDouble(stringTemperatura);
                 long fornecedor = Long.parseLong(stringFornecedor);
                 for(Participante p : participantes.getParticipantes()) {
                     if(p instanceof Fornecedor) {
@@ -138,7 +145,7 @@ public class ACMETech {
                         }
                     }
                 }
-                retorno.add(f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f));
+                retorno.add(f.cadastrarTecnologia(stringId, modelo, descricao, stringValorBase, stringPeso, stringTemperatura, f));
             } catch (NumberFormatException e) {
                 retorno.add("ERRO:formato invalido.");
                 continue;

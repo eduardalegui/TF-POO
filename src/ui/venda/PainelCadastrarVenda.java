@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-import src.ui.HomePage;
 import src.entidades.*;
+import src.ui.HomePage;
 
 
 public class PainelCadastrarVenda extends JPanel implements ActionListener {
@@ -184,6 +184,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == voltar) { //voltar
+            limpar();
             home.mudaPainel(4);
         } else if(e.getSource() == botao1) { //enviar
             String compradorSelecionado = (String) selecionaComprador.getSelectedItem();
@@ -208,9 +209,13 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             comprador.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelecionada));
             
         } else if(e.getSource() == botao2) { //limpar
-            campTexto2.setText("");
-            campTexto1.setText("");
+            limpar();
         }
+    }
+
+    public void limpar(){
+        campTexto2.setText("");
+        campTexto1.setText("");
     }
 
     public Tecnologia achaTecnologia(long tecnologiaSelecionada){

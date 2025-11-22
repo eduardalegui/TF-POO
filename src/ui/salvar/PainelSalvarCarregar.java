@@ -76,7 +76,7 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
 
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    JButton botao21= new JButton("Salvar Dados");
+                    botao21= new JButton("Salvar Dados");
                     botao21.setPreferredSize(new Dimension(250, 100));
                     botao21.setOpaque(true);
                     botao21.setBorder(bordaBotaoVoltar);
@@ -88,7 +88,7 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    JButton botao22= new JButton("Carregar Dados");
+                    botao22= new JButton("Carregar Dados");
                     botao22.setPreferredSize(new Dimension(250, 100));
                     botao22.setOpaque(true);
                     botao22.setBorder(bordaBotaoVoltar);
@@ -122,10 +122,10 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //cadastrar
-            home.mudaPainel(7);
-        } else if(e.getSource() == botao22) { //mostrar relatorio
-
+        if(e.getSource() == botao21) { //Salvar Dados
+            home.mudaPainel(13);
+        } else if(e.getSource() == botao22) { //Carregar Dados
+            home.mudaPainel(14);
         // } else if(e.getSource() == botao23) { //alterar dados
 
         // } else if(e.getSource() == botao24) { //consultar maior
