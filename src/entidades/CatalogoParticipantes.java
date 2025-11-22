@@ -1,6 +1,7 @@
 package src.entidades;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 
 public class CatalogoParticipantes {
@@ -19,7 +20,7 @@ public class CatalogoParticipantes {
             DateFormat date = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
             boolean cadastrado = false;
             long cod = Long.parseLong(stringCod);
-            Date fundacao = date.parse(stringFundacao);
+            Date fundacao = date.parse(stringFundacao.trim());
 
             if(nome == null || fundacao == null || cod == 0 || stringArea == null) {
                 return "ERRO:Preencha todos os campos corretamente";
@@ -49,8 +50,8 @@ public class CatalogoParticipantes {
             return "Fornecedor cadastrado";
         } catch(NullPointerException e) {
             return "ERRO:Preencha todos os campos corretamente";
-        } catch (Exception e) {
-            return "ERRO:Revise seus dados e tente novamente";
+        } catch (ParseException e) {
+            return "ERRO:Data no formato incorreto";
         }
     }
 

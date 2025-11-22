@@ -34,16 +34,13 @@ import src.entidades.Venda;
 // import src.ui.venda.PainelVenda;
 public class ACMETech {
     private CatalogoParticipantes participantes;
-    //private List<String> retorno;
-    private List<String> retorno1 = new ArrayList<>();
-    private List<String> retorno2 = new ArrayList<>();
-    private List<String> retorno3 = new ArrayList<>(); 
-    private List<String> retorno4 = new ArrayList<>();  
+    private List<String> retornoFornecedores = new ArrayList<>();
+    private List<String> retornoCompradores = new ArrayList<>();
+    private List<String> retornoTecnologias = new ArrayList<>(); 
+    private List<String> retornoVendas = new ArrayList<>();  
 
     public void inicializar() {
-        participantes = new CatalogoParticipantes();
-        //retorno = new ArrayList<>();
-       
+        participantes = new CatalogoParticipantes();       
 
         List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
         for(String s : retornoParticipantes) {
@@ -346,11 +343,26 @@ public class ACMETech {
             br.readLine();
             while ((linha = br.readLine()) != null) {
                 try {
+                    Fornecedor f = null;
                     fornecedores = listaCarregarDadosFornecedores(linha, br, linha, sc);
                     compradores = listaCarregarDadosCompradores(linha, br, linha, sc);
-                    // System.out.println(compradores);
                     tecnologias = listaCarregarDadosTecnologias(linha, br, linha, sc);
                     vendas = listaCarregarDadosVendas(linha, br, linha, sc);
+                    for(int i = 0; i < fornecedores.size(); i += 4) {
+                        System.out.println(participantes.cadastrarFornecedor(fornecedores.get(i), fornecedores.get(i + 1), fornecedores.get(i + 2), fornecedores.get(i + 3)));
+                    }
+                    for(int i = 0; i < compradores.size(); i += 4) {
+                        System.out.println(participantes.cadastrarComprador(compradores.get(i), compradores.get(i + 1), compradores.get(i + 2), compradores.get(i + 3))); 
+                    }
+                    for(int i = 0; i < tecnologias.size(); i += 6) {
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Fornecedor) {
+                                if(p.getCod() == tecnologias.get(i + 5)) {
+                                    f = (Fornecedor) p;
+                                }
+                            }
+                        }
+                    }
                 } catch (NumberFormatException e) {
                         System.out.println("ERRO:formato.");
                         continue;
@@ -369,18 +381,16 @@ public class ACMETech {
     }
 
     private List<String> listaCarregarDadosFornecedores(String tipo, BufferedReader br, String linha, Scanner sc) {
-        //System.out.println(linha);
         try {
             if(tipo.contains("Fornecedores")) {
                 while ((linha = br.readLine()) != null) {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    retorno1.add(conteudo);
+                    retornoFornecedores.add(conteudo);
                 }
             }
-            //System.out.println(retorno);
-            return retorno1;
+            return retornoFornecedores;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
@@ -394,10 +404,10 @@ public class ACMETech {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    retorno2.add(conteudo);
+                    retornoCompradores.add(conteudo);
                 }
             } 
-            return retorno2;
+            return retornoCompradores;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
@@ -411,10 +421,10 @@ public class ACMETech {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    retorno3.add(conteudo);
+                    retornoTecnologias.add(conteudo);
                 }
             } 
-            return retorno3;
+            return retornoTecnologias;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
@@ -428,10 +438,10 @@ public class ACMETech {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    retorno4.add(conteudo);
+                    retornoVendas.add(conteudo);
                 }
-            } 
-            return retorno4;
+            }
+            return retornoVendas;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
