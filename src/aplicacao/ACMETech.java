@@ -60,14 +60,11 @@ public class ACMETech {
     }
 
     public void executar() {
-<<<<<<< HEAD
         inicializar();
         //HomePage minhaJanela = new HomePage(participantes);
-=======
         //inicializar();
         //HomePage minhaJanela = new HomePage(participantes);
-        DialogRelatorioComprador dialog = new DialogRelatorioComprador();
->>>>>>> fd0100bd6419f5cff4799b43f15d4fcce18f581b
+        //DialogRelatorioComprador dialog = new DialogRelatorioComprador();
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
@@ -351,40 +348,78 @@ public class ACMETech {
             while ((linha = br.readLine()) != null) {
                 try {
                     Fornecedor f = null;
+                    Comprador c = null;
+                    Tecnologia tecnologia = null;
                     fornecedores = listaCarregarDadosFornecedores(linha, br, linha, sc);
                     compradores = listaCarregarDadosCompradores(linha, br, linha, sc);
                     tecnologias = listaCarregarDadosTecnologias(linha, br, linha, sc);
                     vendas = listaCarregarDadosVendas(linha, br, linha, sc);
                     for(int i = 0; i < fornecedores.size(); i += 4) {
-                        System.out.println(participantes.cadastrarFornecedor(fornecedores.get(i), fornecedores.get(i + 1), fornecedores.get(i + 2), fornecedores.get(i + 3)));
+                        String cod = fornecedores.get(i);
+                        String nome = fornecedores.get(i + 1).substring(1, fornecedores.get(i + 1).length() - 1);
+                        String fundacao = fornecedores.get(i + 2).substring(1,fornecedores.get(i + 2).length() - 1);
+                        String area = fornecedores.get(i + 3).substring(1, fornecedores.get(i + 3).length()  - 1);
+                        participantes.cadastrarFornecedor(cod, nome, fundacao, area);
                     }
                     for(int i = 0; i < compradores.size(); i += 4) {
-                        System.out.println(participantes.cadastrarComprador(compradores.get(i), compradores.get(i + 1), compradores.get(i + 2), compradores.get(i + 3))); 
+                        String cod = compradores.get(i);
+                        String nome = compradores.get(i + 1).substring(1, compradores.get(i + 1).length() - 1);
+                        String pais = compradores.get(i + 2).substring(1, compradores.get(i + 2).length() - 1);
+                        String email = compradores.get(i + 3).substring(1, compradores.get(i + 3).length() - 1);
+                        participantes.cadastrarComprador(cod, nome, pais, email); 
                     }
-                    for(int i = 0; i < tecnologias.size(); i += 6) {
+                    for(int i = 0; i < tecnologias.size(); i += 7) {
+                        long cod = Long.parseLong(tecnologias.get(i + 6));
                         for(Participante p : participantes.getParticipantes()) {
                             if(p instanceof Fornecedor) {
-                                if(p.getCod() == tecnologias.get(i + 5)) {
+                                if(p.getCod() == cod) {
                                     f = (Fornecedor) p;
                                 }
                             }
                         }
+                        String id = tecnologias.get(i);
+                        String modelo = tecnologias.get(i + 1).substring(1, tecnologias.get(i + 1).length() - 1);
+                        String descricao = tecnologias.get(i + 2).substring(1, tecnologias.get(i + 2).length() - 1);
+                        String valorBase = tecnologias.get(i + 3);
+                        String peso = tecnologias.get(i + 4);
+                        String temperatura = tecnologias.get(i + 5);
+                        f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f); 
+                    }
+                    
+                    for(int i = 0; i < vendas.size(); i += 4) {
+                        long cod = Long.parseLong(vendas.get(i + 2));
+                        long id = Long.parseLong(vendas.get(i + 3));
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Comprador) {
+                                if(p.getCod() == cod) {
+                                    c = (Comprador) p;
+                                }
+                            }
+                        }
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Fornecedor) {
+                                Fornecedor fornecedor = (Fornecedor) p;
+                                for(Tecnologia t : fornecedor.getArrayTecnologia()) {
+                                    if(t.getId() == id) {
+                                        tecnologia = t;
+                                    }
+                                }
+                            }
+                        }
+                        String num = vendas.get(i);
+                        String data = vendas.get(i + 1).substring(1, vendas.get(i + 1).length() - 1);
+                        c.cadastrarVenda(num, data, c, tecnologia);
                     }
                 } catch (NumberFormatException e) {
-                        System.out.println("ERRO:formato.");
+                        System.out.println("ERRO:formato invalido");
                         continue;
                 } catch(NoSuchElementException e) {
                     continue;
                 }
             }
-            System.out.println(fornecedores);
-            System.out.println(compradores);
-            System.out.println(tecnologias);
-            System.out.println(vendas);
-        } catch (Exception e) {
-            System.out.println("Erro ao carregar o arquivo:");
+        } catch (IOException e) {
+            System.out.println("Erro ao carregar o arquivo");
         }
-        System.out.println("Carregamento concluído.");
     }
 
     private List<String> listaCarregarDadosFornecedores(String tipo, BufferedReader br, String linha, Scanner sc) {
