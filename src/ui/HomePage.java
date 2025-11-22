@@ -5,12 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.entidades.*;
 import src.ui.comprador.*;
 import src.ui.fornecedor.*;
+import src.ui.salvar.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
-import src.ui.salvar.*;
-import src.entidades.*;
 
 
 public class HomePage extends JFrame implements ActionListener {
@@ -25,13 +25,16 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelTecnologia painelTecnologia = new PainelTecnologia(this);
     private PainelComprador painelComprador = new PainelComprador(this);
     private PainelFornecedor painelFornecedor = new PainelFornecedor(this);
-    private PainelCadastrarComprador painelCadastrarComprador= new PainelCadastrarComprador(this);
-    private PainelCadastrarFornecedor painelCadastrarFornecedor = new PainelCadastrarFornecedor(this);
-    private PainelCadastrarTecnologia painelCadastrarTecnologia = new PainelCadastrarTecnologia(this);
+    private PainelCadastrarComprador painelCadastrarComprador;
+    private PainelCadastrarFornecedor painelCadastrarFornecedor;
+    private PainelCadastrarTecnologia painelCadastrarTecnologia;
     private PainelCadastrarVenda painelCadastrarVenda;
+    private PainelRemoverDadosVenda painelRemoverDadosVenda= new PainelRemoverDadosVenda(this);
     private PainelSalvarCarregar painelSalvarCarregar = new PainelSalvarCarregar(this);
     private PainelAlterarDadosComprador painelAlterarDadosComprador= new PainelAlterarDadosComprador(this);
     private PainelModificarComprador painelModificarComprador= new PainelModificarComprador(this);
+    private PainelSalvarDadosSalvarCarregar painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this);
+    private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this);
     private JPanel painelPrincipal;
     public HomePage(int f){
 
@@ -41,6 +44,9 @@ public class HomePage extends JFrame implements ActionListener {
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
+        painelCadastrarComprador = new PainelCadastrarComprador(this, catalogoParticipantes);
+        painelCadastrarFornecedor = new PainelCadastrarFornecedor(this, catalogoParticipantes);
+        painelCadastrarTecnologia = new PainelCadastrarTecnologia(this, catalogoParticipantes);
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    
@@ -328,6 +334,21 @@ public class HomePage extends JFrame implements ActionListener {
             break;
             case 11:
                 this.setContentPane(painelModificarComprador);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
+            case 12:
+                this.setContentPane(painelRemoverDadosVenda);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
+            case 13:
+                this.setContentPane(painelSalvarDadosSalvarCarregar);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
+            case 14:
+                this.setContentPane(painelCarregarDadosSalvarCarregar);
                 this.pack();
                 this.setSize(1200, 700);
             break;
