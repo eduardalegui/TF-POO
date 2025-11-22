@@ -1,5 +1,6 @@
 package src.entidades;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.*;
@@ -20,7 +21,8 @@ public class CatalogoParticipantes {
             DateFormat date = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
             boolean cadastrado = false;
             long cod = Long.parseLong(stringCod);
-            Date fundacao = date.parse(stringFundacao.trim());
+            String data = stringFundacao.trim();
+            Date fundacao = date.parse(data);
 
             if(nome == null || fundacao == null || cod == 0 || stringArea.equals("")) {
                 return "ERRO:Preencha todos os campos corretamente";

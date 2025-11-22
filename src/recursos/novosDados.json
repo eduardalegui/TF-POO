@@ -16,7 +16,8 @@
         "modelo": "PC Gamer",
         "descricao": "Pczinho lindo",
         "valorBase": 10000,
-        "peso": 30,
+        "peso": 20,
+        "temperatura": 30,
         "fornecedor": 2
     },
     "Vendas": {
