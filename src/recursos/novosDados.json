@@ -1,8 +1,28 @@
 {
     "Fornecedores": {
-        "cod": 1,
-        "nome": "Stark Industries",
-        "fundacao": "05/05/2005",
+        "cod": 2,
+        "nome": "Amauri Tintas",
+        "fundacao": "02/02/2002",
         "area": "EMERGENTE"
+    },
+    "Compradores": {
+        "cod": 11,
+        "nome": "Maria",
+        "pais": "Brasil",
+        "email": "maria@email.com"
+    },
+    "Tecnologias": {
+        "id": 404,
+        "modelo": "PC Gamer",
+        "descricao": "Pczinho lindo",
+        "valorBase": 10000,
+        "peso": 30,
+        "fornecedor": 2
+    },
+    "Vendas": {
+        "num": 1111,
+        "data": "22/11/2025",
+        "cod": 11,
+        "id": 404
     }
 }

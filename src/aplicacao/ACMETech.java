@@ -1,5 +1,6 @@
 package src.aplicacao;
 
+import java.awt.Container;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -33,11 +34,17 @@ import src.entidades.Venda;
 // import src.ui.venda.PainelVenda;
 public class ACMETech {
     private CatalogoParticipantes participantes;
-    private List<String> fornecedores;
+    //private List<String> retorno;
+    private List<String> retorno1 = new ArrayList<>();
+    private List<String> retorno2 = new ArrayList<>();
+    private List<String> retorno3 = new ArrayList<>(); 
+    private List<String> retorno4 = new ArrayList<>();  
 
     public void inicializar() {
         participantes = new CatalogoParticipantes();
-        fornecedores = new ArrayList<>();
+        //retorno = new ArrayList<>();
+       
+
         List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
@@ -56,7 +63,7 @@ public class ACMETech {
 
     public void executar() {
         inicializar();
-        HomePage minhaJanela = new HomePage(participantes);
+        //HomePage minhaJanela = new HomePage(participantes);
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
@@ -329,68 +336,105 @@ public class ACMETech {
     public void carregarDadosJson(String caminho) {
         String nomeArquivo = caminho + ".json";
         Path path = Paths.get("src","recursos", nomeArquivo);
-        Scanner sc = null;
-        List<String> fornecedores = new ArrayList<>();
+        Scanner sc = null;        
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
+            List<String> fornecedores = new ArrayList<>();
+            List<String> compradores = new ArrayList<>();
+            List<String> tecnologias = new ArrayList<>();
+            List<String> vendas = new ArrayList<>();
             String linha = null;
             br.readLine();
             while ((linha = br.readLine()) != null) {
                 try {
-                    fornecedores = listaCarregarDados(linha, br, linha, sc);
-                    for(String s : fornecedores) {
-                        System.out.println(s);
-                    }
-                    // if(linha.contains("Compradores")) {
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String stringCod = sc.next().trim();
-                    //     int cod = Integer.parseInt(stringCod);
-                    //     System.out.println(cod);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String nome = sc.next().trim();
-                    //     System.out.println(nome);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String fundacao = sc.next().trim();
-                    //     System.out.println(fundacao);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String area = sc.next().trim();
-                    //     System.out.println(area);
-                    // }
+                    fornecedores = listaCarregarDadosFornecedores(linha, br, linha, sc);
+                    compradores = listaCarregarDadosCompradores(linha, br, linha, sc);
+                    // System.out.println(compradores);
+                    tecnologias = listaCarregarDadosTecnologias(linha, br, linha, sc);
+                    vendas = listaCarregarDadosVendas(linha, br, linha, sc);
                 } catch (NumberFormatException e) {
-                    System.out.println("ERRO:formato invalido.");
-                    continue;
+                        System.out.println("ERRO:formato.");
+                        continue;
                 } catch(NoSuchElementException e) {
-                    System.out.println("ERRO:formato invalido.");
                     continue;
                 }
             }
+            System.out.println(fornecedores);
+            System.out.println(compradores);
+            System.out.println(tecnologias);
+            System.out.println(vendas);
         } catch (Exception e) {
             System.out.println("Erro ao carregar o arquivo:");
         }
         System.out.println("Carregamento concluído.");
     }
 
-    private List<String> listaCarregarDados(String tipo, BufferedReader br, String linha, Scanner sc) {
+    private List<String> listaCarregarDadosFornecedores(String tipo, BufferedReader br, String linha, Scanner sc) {
+        //System.out.println(linha);
         try {
             if(tipo.contains("Fornecedores")) {
                 while ((linha = br.readLine()) != null) {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    fornecedores.add(conteudo);
+                    retorno1.add(conteudo);
                 }
             }
-            return fornecedores;
+            //System.out.println(retorno);
+            return retorno1;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
-        return fornecedores;
+        return null;
+    }
+
+    private List<String> listaCarregarDadosCompradores(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Compradores")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retorno2.add(conteudo);
+                }
+            } 
+            return retorno2;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private List<String> listaCarregarDadosTecnologias(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Tecnologias")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retorno3.add(conteudo);
+                }
+            } 
+            return retorno3;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private List<String> listaCarregarDadosVendas(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Vendas")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retorno4.add(conteudo);
+                }
+            } 
+            return retorno4;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }
