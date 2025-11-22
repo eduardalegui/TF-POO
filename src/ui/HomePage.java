@@ -21,10 +21,10 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton botao24 = new JButton("Venda");
     private JButton botao31 = new JButton("Salvar/Carregar");
     private JButton botao32 = new JButton("Sair");
-    private PainelVenda painelVenda = new PainelVenda(this);
-    private PainelTecnologia painelTecnologia = new PainelTecnologia(this);
+    private PainelVenda painelVenda = new PainelVenda(this, catalogoParticipantes);
+    private PainelTecnologia painelTecnologia = new PainelTecnologia(this, catalogoParticipantes);
     private PainelComprador painelComprador = new PainelComprador(this, catalogoParticipantes);
-    private PainelFornecedor painelFornecedor = new PainelFornecedor(this);
+    private PainelFornecedor painelFornecedor = new PainelFornecedor(this, catalogoParticipantes);
     private PainelCadastrarComprador painelCadastrarComprador;
     private PainelCadastrarFornecedor painelCadastrarFornecedor;
     private PainelCadastrarTecnologia painelCadastrarTecnologia;
@@ -35,10 +35,10 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelModificarComprador painelModificarComprador= new PainelModificarComprador(this);
     private PainelSalvarDadosSalvarCarregar painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this);
     private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this);
-    private DialogRelatorioComprador dialogRelatorioComprador = new DialogRelatorioComprador(catalogoParticipantes);
-    private DialogRelatorioFornecedor dialogRelatorioFornecedor = new DialogRelatorioFornecedor(catalogoParticipantes);
-    private DialogRelatorioTecnologia dialogRelatorioTecnologia = new DialogRelatorioTecnologia(catalogoParticipantes);
-    private DialogRelatorioVenda dialogRelatorioVenda = new DialogRelatorioVenda(catalogoParticipantes);
+    // private DialogRelatorioComprador dialogRelatorioComprador = new DialogRelatorioComprador(catalogoParticipantes);
+    // private DialogRelatorioFornecedor dialogRelatorioFornecedor = new DialogRelatorioFornecedor(catalogoParticipantes);
+    // private DialogRelatorioTecnologia dialogRelatorioTecnologia = new DialogRelatorioTecnologia(catalogoParticipantes);
+    // private DialogRelatorioVenda dialogRelatorioVenda = new DialogRelatorioVenda(catalogoParticipantes);
     private JPanel painelPrincipal;
     public HomePage(int f){
 
@@ -361,12 +361,12 @@ public class HomePage extends JFrame implements ActionListener {
             //     this.pack();
             //     this.setSize(1200, 700);
             // break;
-            case 16:
-                dialogRelatorioComprador.setVisible(true);
+            //case 16:
+                //dialogRelatorioComprador.setVisible(true);
                 //this.setContentPane(dialogRelatorioComprador);
                 //this.pack();
                 //this.setSize(1200, 700);
-            break;
+            //break;
             // case 17:
             //     this.setContentPane(dialogRelatorioTecnologia);
             //     this.pack();

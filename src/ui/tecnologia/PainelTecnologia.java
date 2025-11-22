@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 
 public class PainelTecnologia extends JPanel implements ActionListener {
@@ -13,9 +15,11 @@ public class PainelTecnologia extends JPanel implements ActionListener {
     private JButton botao22;
     private JButton botao24;
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelTecnologia(HomePage home) {
+    public PainelTecnologia(HomePage home, CatalogoParticipantes catalogoParticipantes) {
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -135,13 +139,13 @@ public class PainelTecnologia extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == botao21) { //comprador
+        if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(8);
-        } else if(e.getSource() == botao22) { //fornecedor
-            //mudaPainel(2);
-        } else if(e.getSource() == voltar) { //tecnolog
+        } else if(e.getSource() == botao22) { //mostrar relatorio
+            new DialogRelatorioTecnologia(catalogoParticipantes);
+        } else if(e.getSource() == voltar) { //voltar
             home.mudaPainel(0);
-        } else if(e.getSource() == botao24) { //venda
+        } else if(e.getSource() == botao24) { //consultar maior
             //mudaPainel(4);
         }
     }

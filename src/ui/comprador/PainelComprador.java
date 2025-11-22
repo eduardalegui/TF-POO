@@ -17,7 +17,7 @@ public class PainelComprador extends JPanel implements ActionListener{
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelComprador(HomePage home,CatalogoParticipantes catalogoParticipantes){
+    public PainelComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
@@ -159,7 +159,7 @@ public class PainelComprador extends JPanel implements ActionListener{
         if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(7);
         } else if(e.getSource() == botao22) { //mostrar relatorio
-            home.mudaPainel(16);
+            new DialogRelatorioComprador(catalogoParticipantes);
         } else if(e.getSource() == botao23) { //alterar dados
             home.mudaPainel(10);
         } else if(e.getSource() == botao24) { //consultar maior

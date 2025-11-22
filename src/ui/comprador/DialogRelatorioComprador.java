@@ -25,7 +25,7 @@ public class DialogRelatorioComprador extends JDialog{
         MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, vermelho);
         ////FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
         JPanel botaoVoltar = new JPanel();
-        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        BoxLayout layout = new BoxLayout(botaoVoltar, BoxLayout.Y_AXIS);
         //GridBagLayout layout11 = new GridBagLayout();
         botaoVoltar.setMaximumSize(new Dimension(700, 500));
         botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -47,8 +47,8 @@ public class DialogRelatorioComprador extends JDialog{
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 10));
                 comp1.add(titulo);
 
-        //this.add(comp1);
-        botaoVoltar.add(comp1);
+        this.add(comp1);
+        //botaoVoltar.add(comp1);
         this.add(botaoVoltar);
         this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!

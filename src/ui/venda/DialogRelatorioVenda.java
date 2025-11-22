@@ -10,7 +10,7 @@ import src.entidades.*;
 public class DialogRelatorioVenda extends JDialog{
     private CatalogoParticipantes catalogoParticipantes;
     public DialogRelatorioVenda(CatalogoParticipantes catalogoParticipantes){
-
+        this.catalogoParticipantes = catalogoParticipantes;
     }
     
     public List<String> mostrarRelatorio(){

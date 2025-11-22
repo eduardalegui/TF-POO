@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 public class PainelFornecedor extends JPanel implements ActionListener{
     private JButton voltar;
@@ -12,9 +14,11 @@ public class PainelFornecedor extends JPanel implements ActionListener{
     private JButton botao22;
     private JButton botao24;
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelFornecedor(HomePage home){
+    public PainelFornecedor(HomePage home,  CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         //this.setSize(1200,700);
         //this.setTitle("Fornecedor"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -136,7 +140,7 @@ public class PainelFornecedor extends JPanel implements ActionListener{
         if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(6);
         } else if(e.getSource() == botao22) { //mostrar relatorio
-            
+            new DialogRelatorioFornecedor(catalogoParticipantes);
         } else if(e.getSource() == botao24) { //consultar maior
             
         } else if(e.getSource() == voltar) {

@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
+import src.ui.fornecedor.DialogRelatorioFornecedor;
 
 
 public class PainelVenda extends JPanel implements ActionListener{
@@ -15,12 +18,14 @@ public class PainelVenda extends JPanel implements ActionListener{
     private JButton botao23;
     private JButton botao24;
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelVenda(HomePage home){
+    public PainelVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.setSize(1200,700);
         //this.setTitle("Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        this.catalogoParticipantes = catalogoParticipantes;
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
@@ -155,7 +160,7 @@ public class PainelVenda extends JPanel implements ActionListener{
         if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(9);
         } else if(e.getSource() == botao22) { //mostrar relatorio
-            
+            new DialogRelatorioVenda(catalogoParticipantes);
         } else if(e.getSource() == botao23) { //remover dados
             home.mudaPainel(12);
         } else if(e.getSource() == botao24) { //consultar maior
