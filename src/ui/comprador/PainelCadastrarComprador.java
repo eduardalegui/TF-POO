@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.entidades.*;
 import src.ui.HomePage;
 
 
@@ -13,10 +14,16 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
     private JButton botao1;
     private JButton botao2;
     private JButton voltar;
+    private JTextField campTexto1 = new JTextField(20); 
+    private JTextField campTexto2 = new JTextField(20);
+    private JTextField campTexto3 = new JTextField(20);
+    private JTextField campTexto4 = new JTextField(20);
+    private CatalogoParticipantes catalogoParticipantes;
     private HomePage home;
 
-    public PainelCadastrarComprador(HomePage home){
+    public PainelCadastrarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -78,7 +85,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNome = new JLabel("Nome: ");
-                    JTextField campTexto1 = new JTextField(20);
+                    //JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -92,7 +99,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloEmail = new JLabel("Email: ");
-                    JTextField campTexto2 = new JTextField(20);
+                    //JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -106,7 +113,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp23 = new JPanel();
                     JLabel tituloPais = new JLabel("Pais: ");
-                    JTextField campTexto3 = new JTextField(20);
+                    //JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
                     campTexto3.setBorder(bordaCampTexto);
@@ -120,7 +127,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp24 = new JPanel();
                     JLabel tituloCod = new JLabel("Cod: ");
-                    JTextField campTexto4 = new JTextField(20);
+                    //JTextField campTexto4 = new JTextField(20);
                     tituloCod.setFont(fontDosTitulos);
                     campTexto4.setOpaque(false);
                     campTexto4.setBorder(bordaCampTexto);
@@ -139,8 +146,8 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Enviar");
-                JButton botao2= new JButton("Limpar");
+                botao1= new JButton("Enviar");
+                botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
@@ -183,11 +190,28 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //enviar
-            
+            String nome = campTexto1.getText();
+            String email = campTexto2.getText();
+            String pais = campTexto3.getText();
+            String cod = campTexto4.getText();
+
+            if(catalogoParticipantes.getParticipantes().isEmpty()){
+                System.out.println("Catalago vazio");
+                return;
+            }
+            catalogoParticipantes.cadastrarComprador(cod, nome, pais, email);
         } else if(e.getSource() == botao2) { //limpar
-            
+            limpar();
         } else if(e.getSource() == voltar) { //voltar
+            limpar();
             home.mudaPainel(1);
         } 
+    }
+
+    public void limpar(){
+        campTexto1.setText("");
+        campTexto2.setText("");
+            campTexto3.setText("");
+        campTexto4.setText("");
     }
 }
