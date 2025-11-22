@@ -88,27 +88,29 @@
             Cria uma nova janela mostrando todos os dados da venda com maior valor junto da tecnologia e comprador correspondentes;
         Botão Voltar: volta para a página anterior.
 
-==10==
-Página Alterar Dados de um Determinado Comprador:
-    Campo de texto Código: campo de texto para escrever o código do comprador;
-    Botão Confirmar: busca um comprador com código fornecido, se achar abre uma página chamada Modificar Comprador.
-    Botão Voltar: volta para a página anterior.
+    ==10==
+    Página Alterar Dados de um Determinado Comprador:
+        Campo de texto Código: campo de texto para escrever o código do comprador;
+        Botão Confirmar: busca um comprador com código fornecido, se achar abre uma página chamada Modificar Comprador.
+        Botão Voltar: volta para a página anterior.
 
-==11==
-Página Modificar Comprador:
-    Área de texto: mostra todos os dados do comprador localizado;
-    Campo de texto Nome: campo de texto para escrever o nome do comprador;
-    Campo de texto Pais: campo de texto para escrever o pais do comprador;
-    Campo de texto Email: campo de texto para escrever o email do comprador;
-    Botão Limpar: limpa todos os campos de texto da página;
-    Botão Enviar: tenta cadastrar um fornecedor no sistema;
-    Botão Voltar: volta para a página anterior.
+    ==11==
+    Página Modificar Comprador:
+        Área de texto: mostra todos os dados do comprador localizado;
+        Campo de texto Nome: campo de texto para escrever o nome do comprador;
+        Campo de texto Pais: campo de texto para escrever o pais do comprador;
+        Campo de texto Email: campo de texto para escrever o email do comprador;
+        Botão Limpar: limpa todos os campos de texto da página;
+        Botão Enviar: tenta cadastrar um fornecedor no sistema;
+        Botão Voltar: volta para a página anterior.
 
-==12==
-Página Remover Dados de uma Determinada Venda:
-    Campo de texto Número: campo de texto para escrever o número da venda;
-    Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
-    Botão Voltar: volta para a página anterior.
+    ==12==
+    Página Remover Dados de uma Determinada Venda:
+        Campo de texto Número: campo de texto para escrever o número da venda;
+        Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
+        Botão Voltar: volta para a página anterior.
+
+//ia ser bom uma mensagem em JDialog com  mesagem 'Venda (dados da venda) removida com sucesso.'
 
     ==13==
     Página Salvar/Carregar Dados:
@@ -116,28 +118,31 @@ Página Remover Dados de uma Determinada Venda:
         Botão Carregar Dados: redireciona a interface para a página de carregar dados.
         Botão Voltar: volta para a página anterior.
 
-==14==
-Página Salvar Dados:
-    Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser salvo todos os dados cadastrados no sistema;
-    Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
-    Botão Voltar: volta para a página anterior.
+    ==14==
+    Página Salvar Dados:
+        Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser salvo todos os dados cadastrados no sistema;
+        Botão Confirmar: salva todos os dados em um arquivo.
+        Botão Voltar: volta para a página anterior.
 
-==15==
-Página Carregar Dados:
-    Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser carregado todos os dados contidos nele;
-    Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
-    Botão Voltar: volta para a página anterior.
-    
+//ia ser bom uma mensagem em JDialog com  mesagem 'Salvamento de dados realizada com sucesso.'
+
+    ==15==
+    Página Carregar Dados:
+        Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser carregado todos os dados contidos nele;
+        Botão Confirmar: carrega todos os dados de um determinado arquivo.
+        Botão Voltar: volta para a página anterior.
+
+//ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
 
 /*OPCIONAIS*/
 ==16==
-Página Mostrar Relatório de Fornecedores:
-    Área de texto: área de texto com todos os dados de todos os fornecedores cadastrados;
+Página Mostrar Relatório de Compradores:
+    Área de texto: área de texto com todos os dados de todos os compradores cadastrados;
     Botão Voltar: volta para a página anterior.
 
 ==17==
-Página Consultar Fornecedor com Maior Número de Tecnologias:
-    Área de texto: mostra todos os dados do fornecedor com maior número de tecnologias junto com o número de tecnologias que ele possui;
+Página Mostrar Relatório de Fornecedores:
+    Área de texto: área de texto com todos os dados de todos os fornecedores cadastrados;
     Botão Voltar: volta para a página anterior.
 
 ==18==
@@ -146,23 +151,23 @@ Página Mostrar Relatório de Tecnologias:
     Botão Voltar: volta para a página anterior.
 
 ==19==
+Página Mostrar Relatório de Vendas:
+    Área de texto: área de texto com todos os dados de todos as vendas cadastradas junto dos dados correspondentes de comprador e tecnologia;
+    Botão Voltar: volta para a página anterior.
+
+==20==
+Página Consultar Fornecedor com Maior Número de Tecnologias:
+    Área de texto: mostra todos os dados do fornecedor com maior número de tecnologias junto com o número de tecnologias que ele possui;
+    Botão Voltar: volta para a página anterior.
+
+==21==
 Página Consultar Tecnologia com maior valor:
     Área de texto: mostra todos os dados da tecnologia com maior valor;
     Botão Voltar: volta para a página anterior.
 
-==20==
-Página Mostrar Relatório de Compradores:
-    Área de texto: área de texto com todos os dados de todos os compradores cadastrados;
-    Botão Voltar: volta para a página anterior.
-
-==21==
+==22==
 Página Consultar Comprador com maior Número de Vendas:
     Área de texto: mostra todos os dados do comprador com maior número de vendas;
-    Botão Voltar: volta para a página anterior.
-
-==22==
-Página Mostrar Relatório de Vendas:
-    Área de texto: área de texto com todos os dados de todos as vendas cadastradas junto dos dados correspondentes de comprador e tecnologia;
     Botão Voltar: volta para a página anterior.
 
 ==23==

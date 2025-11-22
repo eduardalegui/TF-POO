@@ -26,8 +26,12 @@ public class Fornecedor extends Participante{
         return arrayTecnologias;
     }
 
-    public String cadastrarTecnologia(long id, String modelo, String descricao, double valorBase, double peso, double temperatura, Fornecedor fornecedor){
+    public String cadastrarTecnologia(String idT, String modelo, String descricao, String valorBaseT, String pesoT, String temperaturaT, Fornecedor fornecedor){
         try {
+            long id = Long.parseLong(idT);
+            double valorBase = Double.parseDouble(valorBaseT);
+            double peso = Double.parseDouble(pesoT);
+            double temperatura = Double.parseDouble(temperaturaT);
             for (Tecnologia tecnologia : arrayTecnologias) {
                 if (tecnologia.getId() == id) {
                     return "ERRO:id repetido no sistema";
