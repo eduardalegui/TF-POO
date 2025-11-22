@@ -34,18 +34,34 @@ public class Comprador extends Participante{
         try {
             long num = Long.parseLong(stringNum);
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
-            Date date = dateFormat.parse(stringDate);
-            
+
+            if (stringDate.length() < 10) {
+                return "ERRO: Data inválida";
+            }
+            if (stringDate.equals("")) {
+                return "ERRO: A data não pode estar vazia";
+            }
+            if(comprador == null){
+                return "ERRO: Comprador não pode ser nulo";
+            }
+            if(tecnologia == null){
+                return "ERRO: Tecnologia não pode ser nula";
+            }
             for(Venda v : arrayVenda) {
                 if(v.getNum() == num) {
                     return "ERRO:numero repetido";
                 }
             }
+            Date date = dateFormat.parse(stringDate);
+
             Venda venda = new Venda(num, date, comprador, tecnologia);
             arrayVenda.add(venda);
+
             return "Venda cadastrada";
         } catch(NullPointerException e) {
             return "Preencha os dados corretamente e tente novamente";
+        } catch(NumberFormatException e){
+            return "ERRO: " + e.getLocalizedMessage();
         } catch (Exception e) {
             return "Revise seus dados e tente novamente";
         }

@@ -196,7 +196,8 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 System.out.println("Catalago vazio");
                 return;
             }
-            System.out.println(catalogoParticipantes.cadastrarFornecedor(cod, nome, data, area));
+            String msg = catalogoParticipantes.cadastrarFornecedor(cod, nome, data, area);
+            JOptionPane.showMessageDialog(null, msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //voltar

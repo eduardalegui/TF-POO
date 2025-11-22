@@ -19,15 +19,30 @@ public class CatalogoParticipantes {
             DateFormat date = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
             boolean cadastrado = false;
             long cod = Long.parseLong(stringCod);
+            
+
+            if(nome.equals("")) {
+                return "ERRO: O nome não pode estar vazio";
+            }
+            if (nome.matches(".*\\d.*")) {
+                return "ERRO: O nome não pode conter números";
+            }
+            if (stringFundacao.length() < 10) {
+                return "ERRO: Data inválida";
+            }
+            if (stringFundacao.equals("")) {
+                return "ERRO: A data não pode estar vazia";
+            }
+            if (stringArea.equals("")) {
+                return "ERRO: A área não pode estar vazia";
+            }
             Date fundacao = date.parse(stringFundacao);
 
-            if(nome == null || fundacao == null || cod == 0 || stringArea.equals("")) {
-                return "ERRO:Preencha todos os campos corretamente";
-            }
-
             for(Participante p : participantes) {
-                if(p.getCod() == cod) {
-                    return "ERRO:Codigo repetido";
+                if (p instanceof Fornecedor) {
+                    if(p.getCod() == cod) {
+                        return "ERRO: Codigo repetido";
+                    }
                 }
             }
 
@@ -48,10 +63,10 @@ public class CatalogoParticipantes {
 
             return "Fornecedor cadastrado";
         } catch(NullPointerException e) {
-            return "ERRO:Preencha todos os campos corretamente";
+            return "ERRO: Preencha todos os campos corretamente";
         } catch (Exception e) {
-            return "ERRO:Revise seus dados e tente novamente";
-        }
+            return "ERRO: Revise seus dados e tente novamente";
+        } 
     }
 
     public String cadastrarComprador(String stringCod, String nome, String pais, String email) {
@@ -59,13 +74,30 @@ public class CatalogoParticipantes {
             boolean cadastrado = false;
             long cod = Long.parseLong(stringCod);
 
-            if (nome == null || pais == null || cod <= 0 || email == null || !email.contains("@")) {
-                return "Preencha todos os campos corretamente";
+            if(nome.equals("")) {
+                return "ERRO: O nome não pode estar vazio";
+            }
+            if (nome.matches(".*\\d.*")) {
+                return "ERRO: O nome não pode conter números";
+            }
+            if (pais.matches(".*\\d.*")) {
+                return "ERRO: O pais não pode conter números";
+            }
+            if (email.equals("")) {
+                return "ERRO: O email não pode estar vazio";
+            }
+            if (!email.contains("@")) {
+                return "ERRO: O email deve conter '@'";
+            }
+            if (email.length() < 6) {
+                return "ERRO: Email muito curto";
             }
 
-            for (Participante p : participantes) {
-                if (p.getCod() == cod) {
-                    return "ERRO:codigo repetido";
+            for(Participante p : participantes) {
+                if (p instanceof Comprador) {
+                    if(p.getCod() == cod) {
+                        return "ERRO: Codigo repetido";
+                    }
                 }
             }
 
@@ -84,9 +116,9 @@ public class CatalogoParticipantes {
 
             return "Comprador cadastrado";
         } catch (NullPointerException e) {
-            return "Preencha todos os campos corretamente";
+            return "ERRO: Preencha todos os campos corretamente";
         } catch (Exception e) {
-            return "Revise seus dados e tente novamente";
+            return "ERRO: Revise seus dados e tente novamente";
         }
     }
 

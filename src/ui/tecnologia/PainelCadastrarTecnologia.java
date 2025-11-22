@@ -246,6 +246,11 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
 
             long fornecedorSelecionado = Long.parseLong(fornecedorT);
 
+            if(catalogoParticipantes.getParticipantes().isEmpty()){
+                System.out.println("Catalago vazio");
+                return;
+            }
+            
             for (Participante participante : catalogoParticipantes.getParticipantes()) {
                 if (participante instanceof Fornecedor) {
                     fornecedor = (Fornecedor) participante;
@@ -255,7 +260,8 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
                 }
             }
 
-            System.out.println(fornecedor.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f));
+            String msg = fornecedor.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
+            JOptionPane.showMessageDialog(null, msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //volta

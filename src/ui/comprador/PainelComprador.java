@@ -1,11 +1,13 @@
 package src.ui.comprador;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import java.awt.*;
+import java.util.*;
+import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
+
 public class PainelComprador extends JPanel implements ActionListener{
     private JButton botao21;
     private JButton botao22;
@@ -13,9 +15,11 @@ public class PainelComprador extends JPanel implements ActionListener{
     private JButton botao24;
     private JButton voltar;
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelComprador(HomePage home){
+    public PainelComprador(HomePage home,CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         //this.setTitle("Comprador"); // nome da janela
@@ -155,16 +159,17 @@ public class PainelComprador extends JPanel implements ActionListener{
         if(e.getSource() == botao21) { //cadastrar
             home.mudaPainel(7);
         } else if(e.getSource() == botao22) { //mostrar relatorio
-
+            home.mudaPainel(16);
         } else if(e.getSource() == botao23) { //alterar dados
             home.mudaPainel(10);
         } else if(e.getSource() == botao24) { //consultar maior
-        
-        } else if(e.getSource() == voltar) { //consultar maior
+
+        } else if(e.getSource() == voltar) {
             home.mudaPainel(0);
         } 
     }
 
+    
     
 }
 

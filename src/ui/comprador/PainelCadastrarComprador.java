@@ -138,11 +138,11 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
-
-                comp2.add(comp21);
-                comp2.add(comp22);
-                comp2.add(comp23);
+                
                 comp2.add(comp24);
+                comp2.add(comp23);
+                comp2.add(comp22);
+                comp2.add(comp21);
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
@@ -199,7 +199,8 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 System.out.println("Catalago vazio");
                 return;
             }
-            catalogoParticipantes.cadastrarComprador(cod, nome, pais, email);
+            String msg = catalogoParticipantes.cadastrarComprador(cod, nome, pais, email);
+            JOptionPane.showMessageDialog(null, msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //voltar
@@ -211,7 +212,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
     public void limpar(){
         campTexto1.setText("");
         campTexto2.setText("");
-            campTexto3.setText("");
+        campTexto3.setText("");
         campTexto4.setText("");
     }
 }

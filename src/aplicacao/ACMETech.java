@@ -19,7 +19,6 @@ import src.entidades.Participante;
 import src.entidades.Tecnologia;
 import src.entidades.Venda;
 import src.ui.comprador.DialogRelatorioComprador;
-import src.ui.HomePage;
 // import src.ui.comprador.DialogRelatorioComprador;
 // import src.ui.comprador.PainelCadastrarComprador;
 // import src.ui.comprador.PainelComprador;
@@ -32,6 +31,7 @@ import src.ui.HomePage;
 // import src.ui.venda.DialogRelatorioVenda;
 // import src.ui.venda.PainelCadastrarVenda;
 // import src.ui.venda.PainelVenda;
+ import src.ui.HomePage;
 public class ACMETech {
     private CatalogoParticipantes participantes;
     private List<String> fornecedores;
@@ -56,9 +56,9 @@ public class ACMETech {
     }
 
     public void executar() {
-        //inicializar();
-        //HomePage minhaJanela = new HomePage(participantes);
-        DialogRelatorioComprador dialog = new DialogRelatorioComprador();
+        inicializar();
+        HomePage minhaJanela = new HomePage(participantes);
+        
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
