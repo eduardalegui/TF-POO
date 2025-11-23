@@ -1,6 +1,7 @@
 package src.entidades;
 
 import java.io.IOException;
+import java.io.PipedInputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.*;
@@ -369,5 +370,40 @@ public class CatalogoParticipantes {
             retorno = retorno + venda.geraDescricao() + "\n";
         }
         return retorno;
+    }
+
+    public ArrayList<String> getArrayNomesCompradores(){
+        ArrayList<String> array = new ArrayList<>();
+        for (Participante p : participantes) {
+            if (p instanceof Comprador) {
+                Comprador c = (Comprador) p;
+                array.add(c.getNome());
+            }
+        }
+        return array;
+    }
+
+    public ArrayList<String> getIdsTecnologias(){
+        ArrayList<String> array = new ArrayList<>();
+        for (Participante p : participantes) {
+            if (p instanceof Fornecedor) {
+                Fornecedor f = (Fornecedor) p;
+                for (Tecnologia t : f.getArrayTecnologia()) {
+                    array.add(String.valueOf(t.getId()));
+                }
+            }
+        }
+        return array;
+    }
+
+    public ArrayList<String> getArrayIdsFornecedores(){
+        ArrayList<String> array = new ArrayList<>();
+        for (Participante p : participantes) {
+            if (p instanceof Fornecedor) {
+                Fornecedor f = (Fornecedor) p;
+                array.add(String.valueOf(f.getCod()));
+            }
+        }
+        return array;
     }
 }

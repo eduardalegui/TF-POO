@@ -341,11 +341,13 @@ public class HomePage extends JFrame implements ActionListener {
                 this.setSize(1200, 700);
                 break;
             case 8:
+                painelCadastrarTecnologia = new PainelCadastrarTecnologia(this, catalogoParticipantes);
                 this.setContentPane(painelCadastrarTecnologia);
                 this.pack();
                 this.setSize(1200, 700);
                 break;
             case 9:
+                painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
                 this.setContentPane(painelCadastrarVenda);
                 this.pack();
                 this.setSize(1200, 700);

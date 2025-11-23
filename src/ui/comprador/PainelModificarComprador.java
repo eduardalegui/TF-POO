@@ -213,5 +213,5 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
         campTexto2.setText("");
         campTexto3.setText("");
         //campTexto41.setText("");
-}
+    }
 }

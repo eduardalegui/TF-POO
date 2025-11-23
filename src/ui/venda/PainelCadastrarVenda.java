@@ -16,13 +16,22 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     private JButton botao2= new JButton("Limpar");
     private JTextField campTexto1 = new JTextField(20);
     private JTextField campTexto2 = new JTextField(20);
-    private JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"Coyote", "Alianca rebelde"});
-    private JComboBox<String> selecionaTecnologia = new JComboBox<>(new String[]{"101", "444", "202", "303", "555"});
+    //private JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"Coyote", "Alianca rebelde"});
+    private DefaultComboBoxModel<String> modeloNomes;
+    private DefaultComboBoxModel<String> modeloIds;
+    private JComboBox<String> selecionaComprador;
+    private JComboBox<String> selecionaTecnologia;
     private HomePage home;
 
     public PainelCadastrarVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        modeloNomes = new DefaultComboBoxModel<>();
+        modeloIds = new DefaultComboBoxModel<>();
+        adicionaComboBoxNomes();
+        adicionaComboBoxIds();
+        selecionaComprador = new JComboBox<>(modeloNomes);
+        selecionaTecnologia = new JComboBox<>(modeloIds);
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -235,5 +244,16 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             }
         }
         return null;
+    }
+
+    public void adicionaComboBoxNomes(){
+        for (String nome : catalogoParticipantes.getArrayNomesCompradores()) {
+            modeloNomes.addElement(nome);
+        }
+    }
+    public void adicionaComboBoxIds(){
+        for (String id : catalogoParticipantes.getIdsTecnologias()) {
+            modeloIds.addElement(id);
+        }
     }
 }

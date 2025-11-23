@@ -19,13 +19,17 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
     private JTextField campTexto4 = new JTextField(15);
     private JTextField campTexto5 = new JTextField(15);
     private JTextField campTexto6 = new JTextField(15);
-    private JComboBox<String> selecionaArea = new JComboBox<>(new String[]{"101", "404", "555", "202", "303"});
+    private DefaultComboBoxModel<String> modeloIds;
+    private JComboBox<String> selecionaArea;
     private CatalogoParticipantes catalogoParticipantes;
     private HomePage home;
 
     public PainelCadastrarTecnologia(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        modeloIds = new DefaultComboBoxModel<>();
+        adicionaComboBoxNomes();
+        selecionaArea = new JComboBox<>(modeloIds);
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -259,7 +263,7 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
                     }
                 }
             }
-
+            System.out.println(f);
             String msg = fornecedor.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
             JOptionPane.showMessageDialog(null, msg);
         } else if(e.getSource() == botao2) { //limpar
@@ -267,6 +271,12 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
         } else if(e.getSource() == voltar) { //volta
             limpar();
             home.mudaPainel(3);
+        }
+    }
+
+    public void adicionaComboBoxNomes(){
+        for (String id : catalogoParticipantes.getArrayIdsFornecedores()) {
+            modeloIds.addElement(id);
         }
     }
 
