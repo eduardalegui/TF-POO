@@ -216,7 +216,8 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 }
             }
             String msg = comprador.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelecionada));
-            JOptionPane.showMessageDialog(null, msg);
+            new DialogMensagemSucesso();
+            //JOptionPane.showMessageDialog(null, msg);
             
         } else if(e.getSource() == botao2) { //limpar
             limpar();
