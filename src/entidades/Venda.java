@@ -17,7 +17,7 @@ public class Venda{
         this.tecnologia = tecnologia;
     }
 
-    public double calculaValorFinal(){
+    public void calculaValorFinal(){
         double valorFinal = 0;
         double valorBase = tecnologia.getValorBase();
         Area area = tecnologia.getFornecedor().getArea();
@@ -41,8 +41,7 @@ public class Venda{
         if (area == Area.EMERGENTE) {
             valorFinal = valorBase + (valorBase * ((25 - qtdVendas) / 100));
         }
-
-        return valorFinal;
+        setValorFinal(valorFinal);
     }
 
     public long getNum() {
@@ -72,6 +71,10 @@ public class Venda{
     public String geraData() {
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
         return data.format(this.date);
+    }
+
+    public void setValorFinal(double valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
 }           
