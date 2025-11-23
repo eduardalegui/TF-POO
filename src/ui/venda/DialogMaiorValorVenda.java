@@ -36,7 +36,7 @@ public class DialogMaiorValorVenda extends JDialog{
         comp1.add(titulo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(20, 55);
-        areaTexto.setText(mostrarRelatorio());
+        areaTexto.setText(maiorValor());
         MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, amarelo);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
         areaTexto.setBorder(bordaAreaTexto);
@@ -55,21 +55,7 @@ public class DialogMaiorValorVenda extends JDialog{
         setVisible(true); // ultima linha!!
     }
     
-    public String mostrarRelatorio(){
-        for(Participante p : catalogoParticipantes.getParticipantes()){
-            if(p instanceof Comprador){
-                Comprador c = (Comprador) p;
-                return c.mostrarRelatorioDeVendas();
-            }
-        }
-        return null;
+    public String maiorValor() {
+        return catalogoParticipantes.consultarVendaComMaiorValor();
     }
-
-    // public String relatorio(){
-    //     String retorno = "";
-    //     for(String s : mostrarRelatorio()){
-    //         retorno = retorno + s + "\n";
-    //     }
-    //     return c.mostrarRelatoriod;
-    // } 
 }

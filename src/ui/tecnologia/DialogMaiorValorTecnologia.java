@@ -36,6 +36,7 @@ public class DialogMaiorValorTecnologia extends JDialog{
         comp1.add(titulo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(20, 55);
+        areaTexto.setText(maiorValor());
         MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, azul);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
         areaTexto.setBorder(bordaAreaTexto);
@@ -54,13 +55,7 @@ public class DialogMaiorValorTecnologia extends JDialog{
         setVisible(true); // ultima linha!!
     }
     
-    public List<String> mostrarRelatorio(){
-        for(Participante p : catalogoParticipantes.getParticipantes()){
-            if(p instanceof Fornecedor){
-                Fornecedor f = (Fornecedor) p;
-                return f.mostrarRelatorioDeTecnologias();
-            }
-        }
-        return null;
+    public String maiorValor(){
+        return catalogoParticipantes.consultarTecnologiaComMaiorValor();
     }
 }
