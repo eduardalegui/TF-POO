@@ -1,5 +1,6 @@
 package src.aplicacao;
 
+import java.awt.Container;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -34,11 +35,14 @@ import src.ui.comprador.DialogRelatorioComprador;
  import src.ui.HomePage;
 public class ACMETech {
     private CatalogoParticipantes participantes;
-    private List<String> fornecedores;
+    private List<String> retornoFornecedores = new ArrayList<>();
+    private List<String> retornoCompradores = new ArrayList<>();
+    private List<String> retornoTecnologias = new ArrayList<>(); 
+    private List<String> retornoVendas = new ArrayList<>();  
 
     public void inicializar() {
-        participantes = new CatalogoParticipantes();
-        fornecedores = new ArrayList<>();
+        participantes = new CatalogoParticipantes();       
+
         List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
         for(String s : retornoParticipantes) {
             System.out.println(s);
@@ -331,45 +335,83 @@ public class ACMETech {
     public String carregarDadosJson(String caminho) {
         String nomeArquivo = caminho + ".json";
         Path path = Paths.get("src","recursos", nomeArquivo);
-        Scanner sc = null;
-        List<String> fornecedores = new ArrayList<>();
+        Scanner sc = null;        
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
+            List<String> fornecedores = new ArrayList<>();
+            List<String> compradores = new ArrayList<>();
+            List<String> tecnologias = new ArrayList<>();
+            List<String> vendas = new ArrayList<>();
             String linha = null;
             br.readLine();
             while ((linha = br.readLine()) != null) {
                 try {
-                    fornecedores = listaCarregarDados(linha, br, linha, sc);
-                    for(String s : fornecedores) {
-                        System.out.println(s);
+                    Fornecedor f = null;
+                    Comprador c = null;
+                    Tecnologia tecnologia = null;
+                    fornecedores = listaCarregarDadosFornecedores(linha, br, linha, sc);
+                    compradores = listaCarregarDadosCompradores(linha, br, linha, sc);
+                    tecnologias = listaCarregarDadosTecnologias(linha, br, linha, sc);
+                    vendas = listaCarregarDadosVendas(linha, br, linha, sc);
+                    for(int i = 0; i < fornecedores.size(); i += 4) {
+                        String cod = fornecedores.get(i);
+                        String nome = fornecedores.get(i + 1).substring(1, fornecedores.get(i + 1).length() - 1);
+                        String fundacao = fornecedores.get(i + 2).substring(1,fornecedores.get(i + 2).length() - 1);
+                        String area = fornecedores.get(i + 3).substring(1, fornecedores.get(i + 3).length()  - 1);
+                        participantes.cadastrarFornecedor(cod, nome, fundacao, area);
                     }
-                    // if(linha.contains("Compradores")) {
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String stringCod = sc.next().trim();
-                    //     int cod = Integer.parseInt(stringCod);
-                    //     System.out.println(cod);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String nome = sc.next().trim();
-                    //     System.out.println(nome);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String fundacao = sc.next().trim();
-                    //     System.out.println(fundacao);
-                    //     linha = br.readLine().trim();
-                    //     sc = new Scanner(linha).useDelimiter("[:,]");
-                    //     sc.next();
-                    //     String area = sc.next().trim();
-                    //     System.out.println(area);
-                    // }
+                    for(int i = 0; i < compradores.size(); i += 4) {
+                        String cod = compradores.get(i);
+                        String nome = compradores.get(i + 1).substring(1, compradores.get(i + 1).length() - 1);
+                        String pais = compradores.get(i + 2).substring(1, compradores.get(i + 2).length() - 1);
+                        String email = compradores.get(i + 3).substring(1, compradores.get(i + 3).length() - 1);
+                        participantes.cadastrarComprador(cod, nome, pais, email); 
+                    }
+                    for(int i = 0; i < tecnologias.size(); i += 7) {
+                        long cod = Long.parseLong(tecnologias.get(i + 6));
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Fornecedor) {
+                                if(p.getCod() == cod) {
+                                    f = (Fornecedor) p;
+                                }
+                            }
+                        }
+                        String id = tecnologias.get(i);
+                        String modelo = tecnologias.get(i + 1).substring(1, tecnologias.get(i + 1).length() - 1);
+                        String descricao = tecnologias.get(i + 2).substring(1, tecnologias.get(i + 2).length() - 1);
+                        String valorBase = tecnologias.get(i + 3);
+                        String peso = tecnologias.get(i + 4);
+                        String temperatura = tecnologias.get(i + 5);
+                        f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f); 
+                    }
+                    
+                    for(int i = 0; i < vendas.size(); i += 4) {
+                        long cod = Long.parseLong(vendas.get(i + 2));
+                        long id = Long.parseLong(vendas.get(i + 3));
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Comprador) {
+                                if(p.getCod() == cod) {
+                                    c = (Comprador) p;
+                                }
+                            }
+                        }
+                        for(Participante p : participantes.getParticipantes()) {
+                            if(p instanceof Fornecedor) {
+                                Fornecedor fornecedor = (Fornecedor) p;
+                                for(Tecnologia t : fornecedor.getArrayTecnologia()) {
+                                    if(t.getId() == id) {
+                                        tecnologia = t;
+                                    }
+                                }
+                            }
+                        }
+                        String num = vendas.get(i);
+                        String data = vendas.get(i + 1).substring(1, vendas.get(i + 1).length() - 1);
+                        c.cadastrarVenda(num, data, c, tecnologia);
+                    }
                 } catch (NumberFormatException e) {
-                    System.out.println("ERRO:formato invalido.");
-                    continue;
+                        System.out.println("ERRO:formato invalido");
+                        continue;
                 } catch(NoSuchElementException e) {
-                    System.out.println("ERRO:formato invalido.");
                     continue;
                 }
             }
@@ -379,20 +421,71 @@ public class ACMETech {
         return "Carregamento concluído";
     }
 
-    private List<String> listaCarregarDados(String tipo, BufferedReader br, String linha, Scanner sc) {
+    private List<String> listaCarregarDadosFornecedores(String tipo, BufferedReader br, String linha, Scanner sc) {
         try {
             if(tipo.contains("Fornecedores")) {
                 while ((linha = br.readLine()) != null) {
                     sc = new Scanner(linha).useDelimiter("[:,]");
                     sc.next();
                     String conteudo = sc.next().trim();
-                    fornecedores.add(conteudo);
+                    retornoFornecedores.add(conteudo);
                 }
             }
-            return fornecedores;
+            return retornoFornecedores;
         } catch(IOException e) {
             System.out.println(e.getMessage());
         }
-        return fornecedores;
+        return null;
+    }
+
+    private List<String> listaCarregarDadosCompradores(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Compradores")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retornoCompradores.add(conteudo);
+                }
+            } 
+            return retornoCompradores;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private List<String> listaCarregarDadosTecnologias(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Tecnologias")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retornoTecnologias.add(conteudo);
+                }
+            } 
+            return retornoTecnologias;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private List<String> listaCarregarDadosVendas(String tipo, BufferedReader br, String linha, Scanner sc) {
+        try {
+            if(tipo.contains("Vendas")) {
+                while ((linha = br.readLine()) != null) {
+                    sc = new Scanner(linha).useDelimiter("[:,]");
+                    sc.next();
+                    String conteudo = sc.next().trim();
+                    retornoVendas.add(conteudo);
+                }
+            }
+            return retornoVendas;
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 }

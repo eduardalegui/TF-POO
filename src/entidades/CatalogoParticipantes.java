@@ -1,6 +1,8 @@
 package src.entidades;
 
+import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.*;
 
 public class CatalogoParticipantes {
@@ -37,6 +39,8 @@ public class CatalogoParticipantes {
                 return "ERRO: A área não pode estar vazia";
             }
             Date fundacao = date.parse(stringFundacao);
+            String data = stringFundacao.trim();
+
 
             for(Participante p : participantes) {
                 if (p instanceof Fornecedor) {
@@ -64,9 +68,11 @@ public class CatalogoParticipantes {
             return "Fornecedor cadastrado";
         } catch(NullPointerException e) {
             return "ERRO: Preencha todos os campos corretamente";
+        } catch (ParseException e) {
+            return "ERRO:Data no formato incorreto";
         } catch (Exception e) {
             return "ERRO: Revise seus dados e tente novamente";
-        } 
+        }
     }
 
     public String cadastrarComprador(String stringCod, String nome, String pais, String email) {
