@@ -149,8 +149,8 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
-                JButton botao1= new JButton("Enviar");
-                JButton botao2= new JButton("Limpar");
+                botao1= new JButton("Enviar");
+                botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 
@@ -179,7 +179,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             // body.add(comp3);
         //===============================================
         botao1.addActionListener(this);
-        //botao2.addActionListener(this);
+        botao2.addActionListener(this);
         voltar.addActionListener(this);
         //==============================================
         //this.add(body);
@@ -196,13 +196,22 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             String nome = campTexto1.getText();
             String email = campTexto2.getText();
             String pais = campTexto3.getText();
-            String stringId = campTexto41.getText();
-
+            String stringId = Long.toString(home.getidCompradorEscolhidoParaModificacao());
             
+            String msg = catalogoParticipantes.alterarOsDadosDeUmDeterminadoComprador(stringId, nome, pais, email);
+            JOptionPane.showMessageDialog(null, msg);
         } else if(e.getSource() == botao2) { //limpar
-            
+            limpar();
         } else if(e.getSource() == voltar) { //voltar
+            limpar();
             home.mudaPainel(10);
         } 
     }
+
+    public void limpar(){
+        campTexto1.setText("");
+        campTexto2.setText("");
+        campTexto3.setText("");
+        //campTexto41.setText("");
+}
 }
