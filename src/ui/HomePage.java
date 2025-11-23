@@ -29,7 +29,7 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelCadastrarFornecedor painelCadastrarFornecedor;
     private PainelCadastrarTecnologia painelCadastrarTecnologia;
     private PainelCadastrarVenda painelCadastrarVenda;
-    private PainelRemoverDadosVenda painelRemoverDadosVenda= new PainelRemoverDadosVenda(this);
+    private PainelRemoverDadosVenda painelRemoverDadosVenda;
     private PainelSalvarCarregar painelSalvarCarregar = new PainelSalvarCarregar(this);
     private PainelAlterarDadosComprador painelAlterarDadosComprador= new PainelAlterarDadosComprador(this);
     private PainelModificarComprador painelModificarComprador= new PainelModificarComprador(this);
@@ -47,6 +47,7 @@ public class HomePage extends JFrame implements ActionListener {
     public HomePage(CatalogoParticipantes catalogoParticipantes) {
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        painelRemoverDadosVenda= new PainelRemoverDadosVenda(this, catalogoParticipantes);
         painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
         painelCadastrarComprador = new PainelCadastrarComprador(this, catalogoParticipantes);
         painelCadastrarFornecedor = new PainelCadastrarFornecedor(this, catalogoParticipantes);

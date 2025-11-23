@@ -76,14 +76,20 @@ public class Comprador extends Participante{
         return retorno;
     }
 
-    public String removerOsDadosDeUmaDeterminadaVenda(long num) {
-        for(Venda v : arrayVenda) {
-            if(v.getNum() == num) {
-                arrayVenda.remove(v);
-                return "Venda removida";
+    public String removerOsDadosDeUmaDeterminadaVenda(String stringNum) {
+        try {
+            long num = Long.parseLong(stringNum);
+            for(Venda v : arrayVenda) {
+                if(v.getNum() == num) {
+                    arrayVenda.remove(v);
+                    return "Venda removida";
+                }
             }
+        return "ERRO: não existe venda com o id fornecido";
+        } catch (Exception e) {
+            return "ERRO: Id inválido";
         }
-        return "ERRO:não existe venda com o id fornecido";
+        
     }
 
     public String consultarVendaComMaiorValor(){

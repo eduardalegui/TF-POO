@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.entidades.*;
 import src.ui.HomePage;
 
 
@@ -15,9 +16,11 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
     private JButton voltar;
     private HomePage home;
     private JTextField campTexto4;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelRemoverDadosVenda(HomePage home){
+    public PainelRemoverDadosVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -122,7 +125,7 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
                 // //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JLabel tituloCod = new JLabel("Número: ");
+                    JLabel tituloCod = new JLabel("Id: ");
                     campTexto4 = new JTextField(18);
                     tituloCod.setFont(fontDosTitulos);
                     campTexto4.setOpaque(false);
@@ -186,11 +189,20 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+        Comprador comprador = null;
         if(e.getSource() == botao1) { //confirmar
-            home.mudaPainel(0); //confirmar remoção com um JDialog
-        // } else if(e.getSource() == botao2) { //limpar
+            String id = campTexto4.getText();
+            for (Participante p : catalogoParticipantes.getParticipantes()) {
+                if (p instanceof Comprador) {
+                    comprador = (Comprador) p;
+                    
+                }
+            }
+            String msg = comprador.removerOsDadosDeUmaDeterminadaVenda(id);
+            JOptionPane.showMessageDialog(null, msg);
             
         } else if(e.getSource() == voltar) { //voltar
+            campTexto4.setText("");
             home.mudaPainel(4);
         } 
     }
