@@ -15,6 +15,10 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
     private JButton botao1;
     private JButton botao2;
     private JButton voltar;
+    private JTextField campTexto1 = new JTextField(20);
+    private JTextField campTexto2 = new JTextField(20);
+    private JTextField campTexto3 = new JTextField(20);
+    private JTextField campTexto41 = new JTextField(20);
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
 
@@ -83,7 +87,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNome = new JLabel("Nome: ");
-                    JTextField campTexto1 = new JTextField(20);
+                    // JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -97,7 +101,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloEmail = new JLabel("Email: ");
-                    JTextField campTexto2 = new JTextField(20);
+                    // JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -111,7 +115,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp23 = new JPanel();
                     JLabel tituloPais = new JLabel("Pais: ");
-                    JTextField campTexto3 = new JTextField(20);
+                    // JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
                     campTexto3.setBorder(bordaCampTexto);
@@ -124,9 +128,8 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    System.out.println(home.getidCompradorEscolhidoParaModificacao());
                     JLabel tituloCodInserido = new JLabel("Código inserido: " + home.getidCompradorEscolhidoParaModificacao());
-                    JTextField campTexto41 = new JTextField(20);
+                    // JTextField campTexto41 = new JTextField(20);
                     //campTexto41.setText("Código inserido: " + painelAlterarDadosComprador.getCampTexto4());
                     tituloCodInserido.setFont(fontDosTitulos);
                     campTexto41.setOpaque(false);
@@ -190,6 +193,11 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //enviar
+            String nome = campTexto1.getText();
+            String email = campTexto2.getText();
+            String pais = campTexto3.getText();
+            String stringId = campTexto41.getText();
+
             
         } else if(e.getSource() == botao2) { //limpar
             

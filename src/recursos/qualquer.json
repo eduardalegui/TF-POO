@@ -7,12 +7,18 @@
             "area": "EMERGENTE"
         },
         "2": {
+            "cod": 2,
+            "nome": "Amauri Tintas",
+            "fundacao": "02/02/2002",
+            "area": "EMERGENTE"
+        },
+        "3": {
             "cod": 4,
             "nome": "ACME Corp.",
             "fundacao": "03/03/1993",
             "area": "EMERGENTE"
         },
-        "3": {
+        "4": {
             "cod": 5,
             "nome": "Wayne Enterprises",
             "fundacao": "04/04/1984",
@@ -21,12 +27,18 @@
     },
     "Compradores": {
         "1": {
+            "cod": 11,
+            "nome": "Maria",
+            "pais": "Brasil",
+            "email": "maria@email.com"
+        },
+        "2": {
             "cod": 22,
             "nome": "Coyote",
             "pais": "Estados Unidos da America",
             "email": "coyote@toons.com"
         },
-        "2": {
+        "3": {
             "cod": 44,
             "nome": "Alianca rebelde",
             "pais": "Marrocos",
@@ -47,6 +59,18 @@
             "area_fornecedor": "EMERGENTE"
         },
         "2": {
+            "id": 404,
+            "modelo": "PC Gamer",
+            "descricao": "Pczinho lindo",
+            "valor_base": "10000.0",
+            "peso": "20.0",
+            "temperatura": "30.0",
+            "cod_fornecedor": 2,
+            "nome_fornecedor": "Amauri Tintas",
+            "fundacao_fornecedor": "02/02/2002",
+            "area_fornecedor": "EMERGENTE"
+        },
+        "3": {
             "id": 101,
             "modelo": "100 T Anvil",
             "descricao": "Bigorna de 100 toneladas",
@@ -58,7 +82,7 @@
             "fundacao_fornecedor": "03/03/1993",
             "area_fornecedor": "EMERGENTE"
         },
-        "3": {
+        "4": {
             "id": 444,
             "modelo": "Bird trap",
             "descricao": "Armadilha para passaros",
@@ -70,7 +94,7 @@
             "fundacao_fornecedor": "03/03/1993",
             "area_fornecedor": "EMERGENTE"
         },
-        "4": {
+        "5": {
             "id": 202,
             "modelo": "FR armor",
             "descricao": "Armadura resistente a fogo",
@@ -82,7 +106,7 @@
             "fundacao_fornecedor": "04/04/1984",
             "area_fornecedor": "EMERGENTE"
         },
-        "5": {
+        "6": {
             "id": 555,
             "modelo": "Shark repellent",
             "descricao": "Repelente de tubarao",
@@ -97,6 +121,25 @@
     },
    "Vendas": {
         "1": {
+            "num": 1111,
+            "data": "22/11/2025",
+            "valor_final": "0.0",
+            "cod_comprador": 11,
+            "nome_comprador": "Maria",
+            "pais_comprador": "Brasil",
+            "email_comprador": "maria@email.com",
+            "id_tecnologia": 404,
+            "modelo_tecnologia": "PC Gamer",
+            "descricao_tecnologia": "Pczinho lindo",
+            "valor_base_tecnologia": "10000.0",
+            "peso_tecnologia": "20.0",
+            "temperatura_tecnologia": "30.0",
+            "cod_fornecedor_tecnologia": 2,
+            "nome_fornecedor_tecnologia": "Amauri Tintas",
+            "fundacao_fornecedor_tecnologia": "02/02/2002",
+            "area_fornecedor_tecnologia": "EMERGENTE"
+        },
+        "2": {
             "num": 3333,
             "data": "03/03/2023",
             "valor_final": "0.0",
@@ -115,7 +158,7 @@
             "fundacao_fornecedor_tecnologia": "03/03/1993",
             "area_fornecedor_tecnologia": "EMERGENTE"
         },
-        "2": {
+        "3": {
             "num": 6666,
             "data": "04/04/2024",
             "valor_final": "0.0",
@@ -134,7 +177,7 @@
             "fundacao_fornecedor_tecnologia": "03/03/1993",
             "area_fornecedor_tecnologia": "EMERGENTE"
         },
-        "3": {
+        "4": {
             "num": 7777,
             "data": "07/07/2017",
             "valor_final": "0.0",
@@ -153,7 +196,7 @@
             "fundacao_fornecedor_tecnologia": "04/04/1984",
             "area_fornecedor_tecnologia": "EMERGENTE"
         },
-        "4": {
+        "5": {
             "num": 8888,
             "data": "08/08/2018",
             "valor_final": "0.0",
@@ -172,7 +215,7 @@
             "fundacao_fornecedor_tecnologia": "04/04/1984",
             "area_fornecedor_tecnologia": "EMERGENTE"
         },
-        "5": {
+        "6": {
             "num": 5555,
             "data": "01/01/2021",
             "valor_final": "0.0",

@@ -42,21 +42,9 @@ public class ACMETech {
 
     public void inicializar() {
         participantes = new CatalogoParticipantes();       
-
-        List<String> retornoParticipantes = lerArquivoParticipantes("PARTICIPANTESENTRADA");
-        for(String s : retornoParticipantes) {
-            System.out.println(s);
-        }
-        retornoParticipantes = lerArquivoTecnologia("TECNOLOGIASENTRADA");
-        for(String s : retornoParticipantes) {
-            System.out.println(s);
-        }
-        retornoParticipantes = lerArquivoVendas("VENDASENTRADA");
-        for(String s : retornoParticipantes) {
-            System.out.println(s);
-        }
-        salvarDados("relatorio");
-        carregarDadosJson("novosDados");
+        lerArquivoParticipantes("PARTICIPANTESENTRADA");
+        lerArquivoTecnologia("TECNOLOGIASENTRADA");
+        lerArquivoVendas("VENDASENTRADA");
     }
 
     public void executar() {

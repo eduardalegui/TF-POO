@@ -23,10 +23,10 @@ public class HomePage extends JFrame implements ActionListener {
     private JButton botao24 = new JButton("Venda");
     private JButton botao31 = new JButton("Salvar/Carregar");
     private JButton botao32 = new JButton("Sair");
-    private PainelVenda painelVenda = new PainelVenda(this, catalogoParticipantes);
-    private PainelTecnologia painelTecnologia = new PainelTecnologia(this, catalogoParticipantes);
-    private PainelComprador painelComprador = new PainelComprador(this, catalogoParticipantes);
-    private PainelFornecedor painelFornecedor = new PainelFornecedor(this, catalogoParticipantes);
+    private PainelVenda painelVenda;
+    private PainelTecnologia painelTecnologia;
+    private PainelComprador painelComprador;
+    private PainelFornecedor painelFornecedor;
     private PainelCadastrarComprador painelCadastrarComprador;
     private PainelCadastrarFornecedor painelCadastrarFornecedor;
     private PainelCadastrarTecnologia painelCadastrarTecnologia;
@@ -56,6 +56,10 @@ public class HomePage extends JFrame implements ActionListener {
         super();
         this.acme = acme;
         this.catalogoParticipantes = catalogoParticipantes;
+        painelVenda = new PainelVenda(this, catalogoParticipantes);
+        painelTecnologia = new PainelTecnologia(this, catalogoParticipantes);
+        painelComprador = new PainelComprador(this, catalogoParticipantes);
+        painelFornecedor = new PainelFornecedor(this, catalogoParticipantes);
         painelAlterarDadosComprador= new PainelAlterarDadosComprador(this, catalogoParticipantes);
         painelRemoverDadosVenda= new PainelRemoverDadosVenda(this, catalogoParticipantes);
         painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
@@ -352,6 +356,7 @@ public class HomePage extends JFrame implements ActionListener {
                 this.setSize(1200, 700);
             break;
             case 11:
+                painelModificarComprador = new PainelModificarComprador(this, catalogoParticipantes);
                 this.setContentPane(painelModificarComprador);
                 this.pack();
                 this.setSize(1200, 700);

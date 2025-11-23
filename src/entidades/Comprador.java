@@ -30,6 +30,14 @@ public class Comprador extends Participante{
         return this.arrayVenda;
     }
 
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    } 
+
     public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
         try {
             long num = Long.parseLong(stringNum);

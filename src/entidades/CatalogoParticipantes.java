@@ -232,5 +232,73 @@ public class CatalogoParticipantes {
         return "ERRO:não existe comprador com este código";
     }
 
+    public String mostrarOsDadosDeUmDeterminadoComprador(String stringCod) {
+        try {
+            long cod = Long.parseLong(stringCod);
+            for(Participante p : participantes) {
+                if(p instanceof Comprador) {
+                    Comprador c = (Comprador) p;
+                    if(c.getCod() == cod) {
+                        return c.getCod() + ";" + c.getNome() + ";" + c.getPais() + ";" + c.getEmail();
+                    }
+                }
+            }
+            return "Comprador nao encontrado";
+        } catch(NumberFormatException e) {
+            return "Codigo invalido";
+        } catch(NullPointerException e) {
+            return "Comprador nao encontrado";
+        }
+    }
+
+    public String alterarOsDadosDeUmDeterminadoComprador(String stringCod, String nome, String pais, String email) {
+        try {
+            Comprador c = null;
+            boolean modificado = false;
+            long cod = Long.parseLong(stringCod);
+            for(Participante p : participantes) {
+                if(p instanceof Comprador) {
+                    c = (Comprador) p;
+                    if(c.getCod() == cod) {
+                        if (nome.matches(".*\\d.*")) {
+                            return "ERRO: O nome não pode conter números";
+                        }
+                        if (!email.contains("@")) {
+                            return "ERRO: O email deve conter '@'";
+                        }
+                        if (email.length() < 6) {
+                            return "ERRO: Email muito curto";
+                        }
+                        if (pais.matches(".*\\d.*")) {
+                            return "ERRO: O pais não pode conter números";
+                        }
+                        if(!nome.equals("")) {
+                            modificado = true;
+                            c.setNome(nome);
+                        }
+                        if(!pais.equals("")) {
+                            modificado = true;
+                            c.setPais(pais);
+                        }
+                        if(!email.equals("")) {
+                            modificado = true;
+                            c.setEmail(email);
+                        }
+                    }
+                }
+            }
+            if(c == null) {
+                return "Comprador nao encontrado";
+            } else if(modificado) {
+                return "Comprador modificado";
+            } else {
+                return "Nenhum campo preenchido";
+            }            
+        } catch(NumberFormatException e) {
+            return "Codigo invalido";
+        } catch(NullPointerException e) {
+            return "Comprador nao encontrado";
+        }
+    }
     
 }
