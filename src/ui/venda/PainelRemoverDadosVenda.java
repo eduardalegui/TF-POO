@@ -194,8 +194,7 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
             String id = campTexto4.getText();
             for (Participante p : catalogoParticipantes.getParticipantes()) {
                 if (p instanceof Comprador) {
-                    comprador = (Comprador) p;
-                    
+                    comprador = (Comprador) p; 
                 }
             }
             String msg = comprador.removerOsDadosDeUmaDeterminadaVenda(id);

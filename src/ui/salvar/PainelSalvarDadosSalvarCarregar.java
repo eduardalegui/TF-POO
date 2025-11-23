@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.aplicacao.ACMETech;
 import src.ui.HomePage;
 
 
@@ -15,8 +17,9 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
     private JButton voltar;
     private HomePage home;
     private JTextField campTexto4;
+    private ACMETech acme;
 
-    public PainelSalvarDadosSalvarCarregar(HomePage home){
+    public PainelSalvarDadosSalvarCarregar(HomePage home, ACMETech acme){
         super();
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
@@ -27,6 +30,7 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
         this.setLayout(layout);
         //===============================================
         this.home = home;
+        this.acme = acme;
             // JPanel body = new JPanel();
             // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             // Color corFundo = new Color(238, 236, 194);
@@ -189,10 +193,10 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //confirmar
-            home.mudaPainel(0); //confirmar salvamento de dados com um JDialog
-        // } else if(e.getSource() == botao2) { //limpar
-            
+            String msg = acme.salvarDados(campTexto4.getText());
+            JOptionPane.showMessageDialog(null, msg);   
         } else if(e.getSource() == voltar) { //voltar
+            campTexto4.setText("");
             home.mudaPainel(5);
         } 
     }

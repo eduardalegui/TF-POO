@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.entidades.*;
 import src.ui.HomePage;
 
 
@@ -15,9 +17,11 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
     private JButton voltar;
     private HomePage home;
     private JTextField campTexto4;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelAlterarDadosComprador(HomePage home){
+    public PainelAlterarDadosComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -187,11 +191,37 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //confirmar
-            home.mudaPainel(11);
-        // } else if(e.getSource() == botao2) { //limpar
+            String stringId = campTexto4.getText();
+            if (validaId(stringId)) {
+                home.mudaPainel(11);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "ERRO: Id inválido");
+            }
             
         } else if(e.getSource() == voltar) { //voltar
+            campTexto4.setText("");
             home.mudaPainel(1);
         } 
+    }
+
+    public boolean validaId(String stringId){
+        try {
+            long id = Long.parseLong(stringId);
+            Comprador comprador = null;
+            for (Participante p : catalogoParticipantes.getParticipantes()) {
+                if (p instanceof Comprador) {
+                    comprador = (Comprador) p;
+                    if (comprador.getCod() == id) {
+                        home.setidCompradorEscolhidoParaModificacao(id);
+                        return true;
+                    }
+                }
+            }
+            return false;
+            
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

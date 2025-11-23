@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.aplicacao.ACMETech;
 import src.ui.HomePage;
 
 
@@ -17,8 +19,9 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
     // private JButton botao24;
     private JButton voltar;
     private HomePage home;
+    private ACMETech acme;
 
-    public PainelSalvarCarregar(HomePage home){
+    public PainelSalvarCarregar(HomePage home, ACMETech acme){
         super();
         this.setSize(1200,700);
         // this.setTitle("Salvar/Carregar"); // nome da janela
@@ -29,6 +32,7 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
         this.setLayout(layout);
         //===============================================
         this.home = home;
+        this.acme = acme;
             // JPanel body = new JPanel();
             // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             // Color corFundo = new Color(238, 236, 194);
@@ -126,10 +130,6 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
             home.mudaPainel(13);
         } else if(e.getSource() == botao22) { //Carregar Dados
             home.mudaPainel(14);
-        // } else if(e.getSource() == botao23) { //alterar dados
-
-        // } else if(e.getSource() == botao24) { //consultar maior
-        
         } else if(e.getSource() == voltar) { //consultar maior
             home.mudaPainel(0);
         } 

@@ -11,10 +11,12 @@ import src.ui.fornecedor.*;
 import src.ui.salvar.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
+import src.aplicacao.ACMETech;
 
 
 public class HomePage extends JFrame implements ActionListener {
     private CatalogoParticipantes catalogoParticipantes;
+    private ACMETech acme;
     private JButton botao21 = new JButton("Comprador");
     private JButton botao22 = new JButton("Fornecedor");
     private JButton botao23 = new JButton("Tecnologia");
@@ -30,28 +32,40 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelCadastrarTecnologia painelCadastrarTecnologia;
     private PainelCadastrarVenda painelCadastrarVenda;
     private PainelRemoverDadosVenda painelRemoverDadosVenda;
-    private PainelSalvarCarregar painelSalvarCarregar = new PainelSalvarCarregar(this);
-    private PainelAlterarDadosComprador painelAlterarDadosComprador= new PainelAlterarDadosComprador(this);
-    private PainelModificarComprador painelModificarComprador= new PainelModificarComprador(this);
-    private PainelSalvarDadosSalvarCarregar painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this);
-    private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this);
+    private PainelSalvarCarregar painelSalvarCarregar;
+    private PainelAlterarDadosComprador painelAlterarDadosComprador;
+    private PainelModificarComprador painelModificarComprador;
+    private PainelSalvarDadosSalvarCarregar painelSalvarDadosSalvarCarregar;
+    private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar;
+    private long idCompradorEscolhidoParaModificacao;
+
+    public long getidCompradorEscolhidoParaModificacao(){
+        return idCompradorEscolhidoParaModificacao;
+    }
+
+    public void setidCompradorEscolhidoParaModificacao(long idCompradorEscolhidoParaModificacao){
+        this.idCompradorEscolhidoParaModificacao = idCompradorEscolhidoParaModificacao;
+    }
     // private DialogRelatorioComprador dialogRelatorioComprador = new DialogRelatorioComprador(catalogoParticipantes);
     // private DialogRelatorioFornecedor dialogRelatorioFornecedor = new DialogRelatorioFornecedor(catalogoParticipantes);
     // private DialogRelatorioTecnologia dialogRelatorioTecnologia = new DialogRelatorioTecnologia(catalogoParticipantes);
     // private DialogRelatorioVenda dialogRelatorioVenda = new DialogRelatorioVenda(catalogoParticipantes);
     private JPanel painelPrincipal;
-    public HomePage(int f){
-
-    }
-
-    public HomePage(CatalogoParticipantes catalogoParticipantes) {
+    // public HomePage(int f){}
+    public HomePage(CatalogoParticipantes catalogoParticipantes, ACMETech acme) {
         super();
+        this.acme = acme;
         this.catalogoParticipantes = catalogoParticipantes;
+        painelAlterarDadosComprador= new PainelAlterarDadosComprador(this, catalogoParticipantes);
         painelRemoverDadosVenda= new PainelRemoverDadosVenda(this, catalogoParticipantes);
         painelCadastrarVenda = new PainelCadastrarVenda(this, catalogoParticipantes);
         painelCadastrarComprador = new PainelCadastrarComprador(this, catalogoParticipantes);
         painelCadastrarFornecedor = new PainelCadastrarFornecedor(this, catalogoParticipantes);
         painelCadastrarTecnologia = new PainelCadastrarTecnologia(this, catalogoParticipantes);
+        painelSalvarCarregar = new PainelSalvarCarregar(this, acme);
+        painelModificarComprador = new PainelModificarComprador(this, catalogoParticipantes);
+        painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this, acme);
+        painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this, acme);
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    

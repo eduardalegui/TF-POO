@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 
 
@@ -14,9 +16,11 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
     private JButton botao2;
     private JButton voltar;
     private HomePage home;
+    private CatalogoParticipantes catalogoParticipantes;
 
-    public PainelModificarComprador(HomePage home){
+    public PainelModificarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
@@ -120,15 +124,16 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JLabel tituloCodIncerido = new JLabel("Código inserido: " + "comprador.getCodigo()");
+                    System.out.println(home.getidCompradorEscolhidoParaModificacao());
+                    JLabel tituloCodInserido = new JLabel("Código inserido: " + home.getidCompradorEscolhidoParaModificacao());
                     JTextField campTexto41 = new JTextField(20);
                     //campTexto41.setText("Código inserido: " + painelAlterarDadosComprador.getCampTexto4());
-                    tituloCodIncerido.setFont(fontDosTitulos);
+                    tituloCodInserido.setFont(fontDosTitulos);
                     campTexto41.setOpaque(false);
                     campTexto41.setBorder(bordaCampTexto);
                     campTexto41.setFont(fontDosCampTexto);
                     comp24.setLayout(layout3);
-                    comp24.add(tituloCodIncerido);
+                    comp24.add(tituloCodInserido);
                     //comp24.add(campTexto41);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);

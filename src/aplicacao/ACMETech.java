@@ -57,7 +57,7 @@ public class ACMETech {
 
     public void executar() {
         inicializar();
-        HomePage minhaJanela = new HomePage(participantes);
+        HomePage minhaJanela = new HomePage(participantes, this);
         
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
@@ -204,7 +204,7 @@ public class ACMETech {
         return retorno;
     }
 
-    public void salvarDados(String nome) {
+    public String salvarDados(String nome) {
         try {
             Path path = Paths.get("src", "recursos", nome + ".json");
             PrintStream streamSaida = new PrintStream(path.toFile(), Charset.forName("UTF-8"));
@@ -322,13 +322,13 @@ public class ACMETech {
                 }            }
             System.out.println("    }");
             System.out.println("}");
-        } catch (Exception e) {
-            System.out.println(e);
+        } catch (IOException e) {
+            return "Erro ao salvar os dados no arquivo";
         }
-        Locale.setDefault(Locale.ENGLISH);
+        return "Dados salvos";
     }
 
-    public void carregarDadosJson(String caminho) {
+    public String carregarDadosJson(String caminho) {
         String nomeArquivo = caminho + ".json";
         Path path = Paths.get("src","recursos", nomeArquivo);
         Scanner sc = null;
@@ -373,10 +373,10 @@ public class ACMETech {
                     continue;
                 }
             }
-        } catch (Exception e) {
-            System.out.println("Erro ao carregar o arquivo:");
+        } catch (IOException e) {
+            return "Erro ao carregar o arquivo";
         }
-        System.out.println("Carregamento concluído.");
+        return "Carregamento concluído";
     }
 
     private List<String> listaCarregarDados(String tipo, BufferedReader br, String linha, Scanner sc) {
