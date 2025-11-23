@@ -1,21 +1,18 @@
 package src.entidades;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Comprador extends Participante{
     private String pais;
     private String email;
-    private List<Venda> arrayVenda;
+    private Queue<Venda> vendas;
 
     public Comprador(long cod, String nome, String pais, String email){
         super(cod, nome);
         this.pais = pais;
         this.email = email;
-        arrayVenda = new ArrayList<>();
+        vendas = new LinkedList<>();
     }
 
     public String getPais() {
@@ -26,8 +23,8 @@ public class Comprador extends Participante{
         return this.email;
     }
 
-    public List<Venda> getArrayVenda() {
-        return this.arrayVenda;
+    public Queue<Venda> getArrayVenda() {
+        return this.vendas;
     }
 
     public void setPais(String pais) {
@@ -55,7 +52,7 @@ public class Comprador extends Participante{
             if(tecnologia == null){
                 return "ERRO: Tecnologia não pode ser nula";
             }
-            for(Venda v : arrayVenda) {
+            for(Venda v : vendas) {
                 if(v.getNum() == num) {
                     return "ERRO:numero repetido";
                 }
@@ -63,7 +60,7 @@ public class Comprador extends Participante{
             Date date = dateFormat.parse(stringDate);
 
             Venda venda = new Venda(num, date, comprador, tecnologia);
-            arrayVenda.add(venda);
+            vendas.add(venda);
 
             return "Venda cadastrada";
         } catch(NullPointerException e) {
@@ -76,10 +73,10 @@ public class Comprador extends Participante{
         
     }
 
-    public List<String> mostrarRelatorioDeVendas() {
-        List<String> retorno = new ArrayList<>();
-        for(Venda v : arrayVenda) {
-            retorno.add(v.geraDescricao());
+    public String mostrarRelatorioDeVendas() {
+        String retorno = "";
+        for(Venda v : vendas) {
+            retorno = retorno + v.geraDescricao() + "\n" + "\n";
         }
         return retorno;
     }
@@ -87,9 +84,9 @@ public class Comprador extends Participante{
     public String removerOsDadosDeUmaDeterminadaVenda(String stringNum) {
         try {
             long num = Long.parseLong(stringNum);
-            for(Venda v : arrayVenda) {
+            for(Venda v : vendas) {
                 if(v.getNum() == num) {
-                    arrayVenda.remove(v);
+                    vendas.remove(v);
                     return "Venda removida";
                 }
             }
@@ -103,17 +100,17 @@ public class Comprador extends Participante{
     public String consultarVendaComMaiorValor(){
         ArrayList<Venda> vendasEmpatadas = new ArrayList<>();
         String retorno = "";
-        if (arrayVenda.isEmpty()) {
+        if (vendas.isEmpty()) {
             return "Erro: Não há vendas cadastradas";
         }
-        Venda maior = arrayVenda.get(0);
-        for (Venda venda : arrayVenda) {
+        Venda maior = vendas.peek();
+        for (Venda venda : vendas) {
             if (maior.calculaValorFinal() < venda.calculaValorFinal()) {
                 maior = venda;
             }
         }
         vendasEmpatadas.add(maior);
-        for (Venda venda : arrayVenda) {
+        for (Venda venda : vendas) {
             if (maior.calculaValorFinal() == venda.calculaValorFinal()) {
                 vendasEmpatadas.add(venda);
             }

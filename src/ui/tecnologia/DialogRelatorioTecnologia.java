@@ -36,6 +36,7 @@ public class DialogRelatorioTecnologia extends JDialog{
         comp1.add(titulo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(20, 55);
+        areaTexto.setText(mostrarRelatorio());
         MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, azul);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
         areaTexto.setBorder(bordaAreaTexto);
@@ -54,13 +55,14 @@ public class DialogRelatorioTecnologia extends JDialog{
         setVisible(true); // ultima linha!!
     }
     
-    public List<String> mostrarRelatorio(){
+    public String mostrarRelatorio(){
+        String retorno = "";
         for(Participante p : catalogoParticipantes.getParticipantes()){
             if(p instanceof Fornecedor){
                 Fornecedor f = (Fornecedor) p;
-                return f.mostrarRelatorioDeTecnologias();
+                retorno = retorno + f.mostrarRelatorioDeTecnologias();
             }
         }
-        return null;
+        return retorno;
     }
 }

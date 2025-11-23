@@ -94,10 +94,10 @@ public class Fornecedor extends Participante{
         return retorno;
     }
 
-    public List<String> mostrarRelatorioDeTecnologias() {
-        List<String> retorno = new ArrayList<>();
+    public String mostrarRelatorioDeTecnologias() {
+        String retorno = "";
         for(Tecnologia t : arrayTecnologias) {
-            retorno.add(t.geraDescricao());
+            retorno = retorno + t.geraDescricao() + "\n" + "\n";
         }
         return retorno; 
     }

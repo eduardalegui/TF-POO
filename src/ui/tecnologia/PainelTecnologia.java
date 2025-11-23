@@ -146,7 +146,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
         } else if(e.getSource() == voltar) { //voltar
             home.mudaPainel(0);
         } else if(e.getSource() == botao24) { //consultar maior
-            //mudaPainel(4);
+            new DialogMaiorValorTecnologia(catalogoParticipantes);
         }
     }
 }

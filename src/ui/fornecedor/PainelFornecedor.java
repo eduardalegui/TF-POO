@@ -142,7 +142,7 @@ public class PainelFornecedor extends JPanel implements ActionListener{
         } else if(e.getSource() == botao22) { //mostrar relatorio
             new DialogRelatorioFornecedor(catalogoParticipantes);
         } else if(e.getSource() == botao24) { //consultar maior
-            
+            new DialogMaiorValorFornecedor(catalogoParticipantes);
         } else if(e.getSource() == voltar) {
             home.mudaPainel(0);
         }

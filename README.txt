@@ -110,7 +110,7 @@
         Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
         Botão Voltar: volta para a página anterior.
 
-//ia ser bom uma mensagem em JDialog com  mesagem 'Venda (dados da venda) removida com sucesso.'
+//ia ser bom uma mensagem em JDialog com  mesagem 'Dados da venda, de número xxx, removido com sucesso.'
 
     ==13==
     Página Salvar/Carregar Dados:
@@ -134,43 +134,46 @@
 
 //ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
 
+//ia ser bom uma mensagem em JDialog com  uma mensagem pra cada erro.
+
+
 /*OPCIONAIS*/
-==16==
-Página Mostrar Relatório de Compradores:
-    Área de texto: área de texto com todos os dados de todos os compradores cadastrados;
-    Botão Voltar: volta para a página anterior.
+    ==16==
+    Página Mostrar Relatório de Compradores:
+        Área de texto: área de texto com todos os dados de todos os compradores cadastrados;
+        Botão Voltar: volta para a página anterior.
 
-==17==
-Página Mostrar Relatório de Fornecedores:
-    Área de texto: área de texto com todos os dados de todos os fornecedores cadastrados;
-    Botão Voltar: volta para a página anterior.
+    ==17==
+    Página Mostrar Relatório de Fornecedores:
+        Área de texto: área de texto com todos os dados de todos os fornecedores cadastrados;
+        Botão Voltar: volta para a página anterior.
 
-==18==
-Página Mostrar Relatório de Tecnologias:
-    Área de texto: área de texto com todos os dados de todos as tecnologias cadastradas junto com os dados do fornecedor correspondente;
-    Botão Voltar: volta para a página anterior.
+    ==18==
+    Página Mostrar Relatório de Tecnologias:
+        Área de texto: área de texto com todos os dados de todos as tecnologias cadastradas junto com os dados do fornecedor correspondente;
+        Botão Voltar: volta para a página anterior.
 
-==19==
-Página Mostrar Relatório de Vendas:
-    Área de texto: área de texto com todos os dados de todos as vendas cadastradas junto dos dados correspondentes de comprador e tecnologia;
-    Botão Voltar: volta para a página anterior.
+    ==19==
+    Página Mostrar Relatório de Vendas:
+        Área de texto: área de texto com todos os dados de todos as vendas cadastradas junto dos dados correspondentes de comprador e tecnologia;
+        Botão Voltar: volta para a página anterior.
 
-==20==
-Página Consultar Fornecedor com Maior Número de Tecnologias:
-    Área de texto: mostra todos os dados do fornecedor com maior número de tecnologias junto com o número de tecnologias que ele possui;
-    Botão Voltar: volta para a página anterior.
+    ==20==
+    Página Consultar Fornecedor com Maior Número de Tecnologias:
+        Área de texto: mostra todos os dados do fornecedor com maior número de tecnologias junto com o número de tecnologias que ele possui;
+        Botão Voltar: volta para a página anterior.
 
-==21==
-Página Consultar Tecnologia com maior valor:
-    Área de texto: mostra todos os dados da tecnologia com maior valor;
-    Botão Voltar: volta para a página anterior.
+    ==21==
+    Página Consultar Tecnologia com maior valor:
+        Área de texto: mostra todos os dados da tecnologia com maior valor;
+        Botão Voltar: volta para a página anterior.
 
-==22==
-Página Consultar Comprador com maior Número de Vendas:
-    Área de texto: mostra todos os dados do comprador com maior número de vendas;
-    Botão Voltar: volta para a página anterior.
+    ==22==
+    Página Consultar Comprador com maior Número de Vendas:
+        Área de texto: mostra todos os dados do comprador com maior número de vendas;
+        Botão Voltar: volta para a página anterior.
 
-==23==
-Página Consultar Venda com maior valor:
-    Área de texto: mostra todos os dados da venda com maior valor junto dos dados da tecnologia e comprador correspondentes;
-    Botão Voltar: volta para a página anterior.
+    ==23==
+    Página Consultar Venda com maior valor:
+        Área de texto: mostra todos os dados da venda com maior valor junto dos dados da tecnologia e comprador correspondentes;
+        Botão Voltar: volta para a página anterior.

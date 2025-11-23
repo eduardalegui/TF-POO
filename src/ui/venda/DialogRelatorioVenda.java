@@ -36,7 +36,7 @@ public class DialogRelatorioVenda extends JDialog{
         comp1.add(titulo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(20, 55);
-        areaTexto.setText(relatorio());
+        areaTexto.setText(mostrarRelatorio());
         MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, amarelo);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
         areaTexto.setBorder(bordaAreaTexto);
@@ -55,21 +55,14 @@ public class DialogRelatorioVenda extends JDialog{
         setVisible(true); // ultima linha!!
     }
     
-    public List<String> mostrarRelatorio(){
+    public String mostrarRelatorio(){
+        String retorno = "";
         for(Participante p : catalogoParticipantes.getParticipantes()){
             if(p instanceof Comprador){
                 Comprador c = (Comprador) p;
-                return c.mostrarRelatorioDeVendas();
+                retorno = retorno + c.mostrarRelatorioDeVendas();
             }
         }
-        return null;
-    }
-
-    public String relatorio(){
-        String retorno = "";
-        for(String s : mostrarRelatorio()){
-            retorno = retorno + s + "\n";
-        }
         return retorno;
-    } 
+    }
 }

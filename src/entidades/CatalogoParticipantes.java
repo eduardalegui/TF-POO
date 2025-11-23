@@ -187,7 +187,7 @@ public class CatalogoParticipantes {
         }
         compradoresEmpatados.add(maior);
         for (Comprador comprador : arrayCompradores) { 
-            if (maior.getArrayVenda().size()== comprador.getArrayVenda().size()) {
+            if (maior.getArrayVenda().size() == comprador.getArrayVenda().size()) {
                 arrayCompradores.add(comprador);
             }
         }

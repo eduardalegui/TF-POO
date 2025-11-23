@@ -2,7 +2,7 @@ package src;
 
 import src.aplicacao.ACMETech;
 
-public class Main {  //trabalhinho LEGAU do yama!
+public class Main {  //trabalhinho legal do yama!
 
     public static void main(String args[]) {
         ACMETech aplicacao = new ACMETech();
@@ -11,4 +11,3 @@ public class Main {  //trabalhinho LEGAU do yama!
     }               //trabalhinho legal do yama!
 }                   //trabalhinho legal do yama!
                     //trabalhinho legal do yama!
-

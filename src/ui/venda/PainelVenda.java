@@ -164,7 +164,7 @@ public class PainelVenda extends JPanel implements ActionListener{
         } else if(e.getSource() == botao23) { //remover dados
             home.mudaPainel(12);
         } else if(e.getSource() == botao24) { //consultar maior
-            //mudaPainel(4);
+            new DialogMaiorValorVenda(catalogoParticipantes);
         } else if(e.getSource() == voltar) { //voltar
             home.mudaPainel(0);
         }
