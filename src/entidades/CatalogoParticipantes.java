@@ -157,12 +157,12 @@ public class CatalogoParticipantes {
         }
         fornecedoresEmpatados.add(maior);
         for (Fornecedor f : arrayFornecedores) { 
-            if (maior.getArrayTecnologia().size()== f.getArrayTecnologia().size()) {
+            if (maior.getArrayTecnologia().size() == f.getArrayTecnologia().size() && maior.getCod() != f.getCod()) {
                 fornecedoresEmpatados.add(f);
             }
         }
         for (Fornecedor f : fornecedoresEmpatados) {
-            retorno = retorno + f.geraDescricao() + f.getArrayTecnologia().size() + "\n";
+            retorno = retorno + f.geraDescricao() + ";" + f.getArrayTecnologia().size() + "\n";
         }
         return retorno;
     }
@@ -188,7 +188,7 @@ public class CatalogoParticipantes {
         compradoresEmpatados.add(maior);
         for (Comprador comprador : arrayCompradores) { 
             if (maior.getArrayVenda().size() == comprador.getArrayVenda().size()) {
-                arrayCompradores.add(comprador);
+                compradoresEmpatados.add(comprador);
             }
         }
         for (Comprador comprador : compradoresEmpatados) {
@@ -300,5 +300,74 @@ public class CatalogoParticipantes {
             return "Comprador nao encontrado";
         }
     }
-    
+
+    public String consultarTecnologiaComMaiorValor(){
+        List<Fornecedor> fornecedores = new ArrayList<>();
+        List<Tecnologia> arrayTecnologias = new ArrayList<>();
+        for(Participante p : participantes) {
+            if(p instanceof Fornecedor) {
+                Fornecedor f = (Fornecedor) p;
+                fornecedores.add(f);
+            }
+        }
+        ArrayList<Tecnologia> tecnologiasEmpatadas = new ArrayList<>();
+        String retorno = "";
+        Tecnologia maior = null;
+        for(Fornecedor f : fornecedores) {
+            for(Tecnologia t : f.getArrayTecnologia()) {
+                arrayTecnologias.add(t);
+                if(maior == null) {
+                    maior = t;
+                } else if(maior.getValorBase() < t.getValorBase()) {
+                    maior = t;
+                }
+            }
+        }
+        if(maior == null) {
+            return "Nenhuma tecnologia cadastrada";
+        }
+        tecnologiasEmpatadas.add(maior);
+        for (Tecnologia tecnologia : arrayTecnologias) {
+            if (maior.getValorBase() == tecnologia.getValorBase() && maior.getId() != tecnologia.getId()) {
+                tecnologiasEmpatadas.add(tecnologia);
+            }
+        }
+        for (Tecnologia tecnologia : tecnologiasEmpatadas) {
+            retorno = retorno + tecnologia.geraDescricao() + "\n";
+        }
+        return retorno;
+    }
+
+    public String consultarVendaComMaiorValor(){
+        List<Venda> vendasEmpatadas = new ArrayList<>();
+        List<Venda> vendas = new ArrayList<>();
+        String retorno = "";
+        for(Participante p : participantes) {
+            if(p instanceof Comprador) {
+                Comprador c = (Comprador) p;
+                for(Venda v : c.getArrayVenda()) {
+                    vendas.add(v);
+                }
+            }
+        }
+        if (vendas.isEmpty()) {
+            return "Erro: Não há vendas cadastradas";
+        }
+        Venda maior = vendas.get(0);
+        for (Venda venda : vendas) {
+            if (maior.getValorFinal() < venda.getValorFinal()) {
+                maior = venda;
+            }
+        }
+        vendasEmpatadas.add(maior);
+        for (Venda venda : vendas) {
+            if (maior.getValorFinal() == venda.getValorFinal() && maior.getNum() != venda.getNum()) {
+                vendasEmpatadas.add(venda);
+            }
+        }
+        for (Venda venda : vendasEmpatadas) {
+            retorno = retorno + venda.geraDescricao() + "\n";
+        }
+        return retorno;
+    }
 }

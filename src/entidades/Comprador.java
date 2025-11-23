@@ -60,6 +60,7 @@ public class Comprador extends Participante{
             Date date = dateFormat.parse(stringDate);
 
             Venda venda = new Venda(num, date, comprador, tecnologia);
+            venda.calculaValorFinal();
             vendas.add(venda);
 
             return "Venda cadastrada";
@@ -97,29 +98,29 @@ public class Comprador extends Participante{
         
     }
 
-    public String consultarVendaComMaiorValor(){
-        ArrayList<Venda> vendasEmpatadas = new ArrayList<>();
-        String retorno = "";
-        if (vendas.isEmpty()) {
-            return "Erro: Não há vendas cadastradas";
-        }
-        Venda maior = vendas.peek();
-        for (Venda venda : vendas) {
-            if (maior.calculaValorFinal() < venda.calculaValorFinal()) {
-                maior = venda;
-            }
-        }
-        vendasEmpatadas.add(maior);
-        for (Venda venda : vendas) {
-            if (maior.calculaValorFinal() == venda.calculaValorFinal()) {
-                vendasEmpatadas.add(venda);
-            }
-        }
-        for (Venda venda : vendasEmpatadas) {
-            retorno = retorno + venda.geraDescricao() + "\n";
-        }
-        return retorno;
-    }
+    // public String consultarVendaComMaiorValor(){
+    //     ArrayList<Venda> vendasEmpatadas = new ArrayList<>();
+    //     String retorno = "";
+    //     if (vendas.isEmpty()) {
+    //         return "Erro: Não há vendas cadastradas";
+    //     }
+    //     Venda maior = vendas.peek();
+    //     for (Venda venda : vendas) {
+    //         if (maior.calculaValorFinal() < venda.calculaValorFinal()) {
+    //             maior = venda;
+    //         }
+    //     }
+    //     vendasEmpatadas.add(maior);
+    //     for (Venda venda : vendas) {
+    //         if (maior.calculaValorFinal() == venda.calculaValorFinal()) {
+    //             vendasEmpatadas.add(venda);
+    //         }
+    //     }
+    //     for (Venda venda : vendasEmpatadas) {
+    //         retorno = retorno + venda.geraDescricao() + "\n";
+    //     }
+    //     return retorno;
+    // }
 
     public String geraDescricao(){
         return this.getCod() + ";" + this.getNome() + ";" + this.getPais() + ";" + this.getEmail();
