@@ -26,49 +26,54 @@ public class Fornecedor extends Participante{
         return arrayTecnologias;
     }
 
-    public String cadastrarTecnologia(String idT, String modelo, String descricao, String valorBaseT, String pesoT, String temperaturaT, Fornecedor fornecedor){
-        try {
-            long id = Long.parseLong(idT);
-            double valorBase = Double.parseDouble(valorBaseT);
-            double peso = Double.parseDouble(pesoT);
-            double temperatura = Double.parseDouble(temperaturaT);
-
-            if(modelo.equals("")) {
-                return "ERRO: O modelo não pode estar vazio";
-            }
-            if(descricao.equals("")) {
-                return "ERRO: O descricao não pode estar vazio";
-            }
-            if(valorBase < 0){
-                return "ERRO: Valor base não pode ser negativo";
-            }
-            if(peso < 0){
-                return "ERRO: Peso não pode ser negativo";
-            }
-            if(temperatura < 0){
-                return "ERRO: Temperatura não pode ser negativo";
-            }
-            if(fornecedor == null){
-                return "ERRO: Fornecedor não pode ser nulo";
-            }
-            
-            for (Tecnologia tecnologia : arrayTecnologias) {
-                if (tecnologia.getId() == id) {
-                    return "ERRO: Id repetido";
-                }
-            }
-
-            Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
-            arrayTecnologias.add(novaTecnologia);
-            Collections.sort(arrayTecnologias, Comparator.comparing(Tecnologia::getId));
-            
-            return "Tecnologia cadastrada";
-        } catch(NumberFormatException e){
-            return "ERRO: " + e.getLocalizedMessage();
-        } catch (Exception e) {
-            return "Revise seus dados e tente novamente";
-        }
+    public void setArrayTecnologias(Tecnologia t) {
+        this.arrayTecnologias.add(t);
+        Collections.sort(arrayTecnologias, Comparator.comparing(Tecnologia::getId));
     }
+
+    // public String cadastrarTecnologia(String idT, String modelo, String descricao, String valorBaseT, String pesoT, String temperaturaT, Fornecedor fornecedor){
+    //     try {
+    //         long id = Long.parseLong(idT);
+    //         double valorBase = Double.parseDouble(valorBaseT);
+    //         double peso = Double.parseDouble(pesoT);
+    //         double temperatura = Double.parseDouble(temperaturaT);
+
+    //         if(modelo.equals("")) {
+    //             return "ERRO: O modelo não pode estar vazio";
+    //         }
+    //         if(descricao.equals("")) {
+    //             return "ERRO: O descricao não pode estar vazio";
+    //         }
+    //         if(valorBase < 0){
+    //             return "ERRO: Valor base não pode ser negativo";
+    //         }
+    //         if(peso < 0){
+    //             return "ERRO: Peso não pode ser negativo";
+    //         }
+    //         if(temperatura < 0){
+    //             return "ERRO: Temperatura não pode ser negativo";
+    //         }
+    //         if(fornecedor == null){
+    //             return "ERRO: Fornecedor não pode ser nulo";
+    //         }
+            
+    //         for (Tecnologia tecnologia : arrayTecnologias) {
+    //             if (tecnologia.getId() == id) {
+    //                 return "ERRO: Id repetido";
+    //             }
+    //         }
+
+    //         Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
+    //         arrayTecnologias.add(novaTecnologia);
+    //         Collections.sort(arrayTecnologias, Comparator.comparing(Tecnologia::getId));
+            
+    //         return "Tecnologia cadastrada";
+    //     } catch(NumberFormatException e){
+    //         return "ERRO: " + e.getLocalizedMessage();
+    //     } catch (Exception e) {
+    //         return "Revise seus dados e tente novamente";
+    //     }
+    // }
 
     // public String consultarTecnologiaComMaiorValor(){
     //     ArrayList<Tecnologia> tecnologiasEmpatadas = new ArrayList<>();

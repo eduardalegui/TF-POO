@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.*;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -197,7 +198,7 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
                 return;
             }
             String msg = catalogoParticipantes.cadastrarFornecedor(cod, nome, data, area);
-            JOptionPane.showMessageDialog(null, msg);
+            new DialogMensagens(msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //voltar

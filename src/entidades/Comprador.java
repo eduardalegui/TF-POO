@@ -33,46 +33,50 @@ public class Comprador extends Participante{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setVendas(Venda v) {
+        this.vendas.add(v);
     } 
 
-    public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
-        try {
-            long num = Long.parseLong(stringNum);
-            DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
+    // public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
+    //     try {
+    //         long num = Long.parseLong(stringNum);
+    //         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
 
-            if (stringDate.length() < 10) {
-                return "ERRO: Data inválida";
-            }
-            if (stringDate.equals("")) {
-                return "ERRO: A data não pode estar vazia";
-            }
-            if(comprador == null){
-                return "ERRO: Comprador não pode ser nulo";
-            }
-            if(tecnologia == null){
-                return "ERRO: Tecnologia não pode ser nula";
-            }
-            for(Venda v : vendas) {
-                if(v.getNum() == num) {
-                    return "ERRO:numero repetido";
-                }
-            }
-            Date date = dateFormat.parse(stringDate);
+    //         if (stringDate.length() < 10) {
+    //             return "ERRO: Data inválida";
+    //         }
+    //         if (stringDate.equals("")) {
+    //             return "ERRO: A data não pode estar vazia";
+    //         }
+    //         if(comprador == null){
+    //             return "ERRO: Comprador não pode ser nulo";
+    //         }
+    //         if(tecnologia == null){
+    //             return "ERRO: Tecnologia não pode ser nula";
+    //         }
+    //         for(Venda v : vendas) {
+    //             if(v.getNum() == num) {
+    //                 return "ERRO:numero repetido";
+    //             }
+    //         }
+    //         Date date = dateFormat.parse(stringDate);
 
-            Venda venda = new Venda(num, date, comprador, tecnologia);
-            venda.calculaValorFinal();
-            vendas.add(venda);
+    //         Venda venda = new Venda(num, date, comprador, tecnologia);
+    //         venda.calculaValorFinal();
+    //         vendas.add(venda);
 
-            return "Venda cadastrada";
-        } catch(NullPointerException e) {
-            return "Preencha os dados corretamente e tente novamente";
-        } catch(NumberFormatException e){
-            return "ERRO: " + e.getLocalizedMessage();
-        } catch (Exception e) {
-            return "Revise seus dados e tente novamente";
-        }
+    //         return "Venda cadastrada";
+    //     } catch(NullPointerException e) {
+    //         return "Preencha os dados corretamente e tente novamente";
+    //     } catch(NumberFormatException e){
+    //         return "ERRO: " + e.getLocalizedMessage();
+    //     } catch (Exception e) {
+    //         return "Revise seus dados e tente novamente";
+    //     }
         
-    }
+    // }
 
     public String mostrarRelatorioDeVendas() {
         String retorno = "";

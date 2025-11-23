@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 import src.entidades.CatalogoParticipantes;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -199,7 +200,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             String stringId = Long.toString(home.getidCompradorEscolhidoParaModificacao());
             
             String msg = catalogoParticipantes.alterarOsDadosDeUmDeterminadoComprador(stringId, nome, pais, email);
-            JOptionPane.showMessageDialog(null, msg);
+            new DialogMensagens(msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //voltar

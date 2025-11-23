@@ -1,12 +1,16 @@
 package src.ui.tecnologia;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.CatalogoParticipantes;
 import src.entidades.Fornecedor;
 import src.entidades.Participante;
+import src.entidades.Tecnologia;
 
 
 public class DialogRelatorioTecnologia extends JDialog{
@@ -56,12 +60,22 @@ public class DialogRelatorioTecnologia extends JDialog{
     }
     
     public String mostrarRelatorio(){
+        List<Tecnologia> tecnologias = new ArrayList<>();
         String retorno = "";
         for(Participante p : catalogoParticipantes.getParticipantes()){
             if(p instanceof Fornecedor){
                 Fornecedor f = (Fornecedor) p;
-                retorno = retorno + f.mostrarRelatorioDeTecnologias();
+                for(Tecnologia t : f.getArrayTecnologia()) {
+                    tecnologias.add(t);
+                }
             }
+        }
+        if(tecnologias.isEmpty()) {
+            return "Não existem tecnologias cadastradas";
+        }
+        Collections.sort(tecnologias, Comparator.comparing(Tecnologia::getId));
+        for(Tecnologia t : tecnologias) {
+            retorno = retorno + t.geraDescricao() + "\n" + "\n";
         }
         return retorno;
     }

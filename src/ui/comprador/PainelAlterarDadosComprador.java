@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 import src.entidades.*;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -196,7 +197,7 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
                 home.mudaPainel(11);
             }
             else{
-                JOptionPane.showMessageDialog(null, "ERRO: Id inválido");
+                new DialogMensagens("ERRO: Id inválido");
             }
             
         } else if(e.getSource() == voltar) { //voltar

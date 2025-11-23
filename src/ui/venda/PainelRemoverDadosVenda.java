@@ -3,9 +3,13 @@ package src.ui.venda;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.*;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -191,14 +195,31 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         Comprador comprador = null;
         if(e.getSource() == botao1) { //confirmar
-            String id = campTexto4.getText();
-            for (Participante p : catalogoParticipantes.getParticipantes()) {
-                if (p instanceof Comprador) {
-                    comprador = (Comprador) p; 
+            try {
+                String stringNum = campTexto4.getText();
+                long num = Long.parseLong(stringNum);
+                List<Comprador> compradores = new ArrayList<>();
+                for(Participante p : catalogoParticipantes.getParticipantes()) {
+                    if(p instanceof Comprador) {
+                        Comprador c = (Comprador) p;
+                        compradores.add(c);
+                    }
                 }
+                for(Comprador c : compradores) {
+                    for(Venda v : c.getArrayVenda()) {
+                        if(v.getNum() == num) {
+                            comprador = c;
+                        }
+                    }
+                }        
+                String msg = comprador.removerOsDadosDeUmaDeterminadaVenda(stringNum);
+                new DialogMensagens(msg);
+            } catch(NumberFormatException exception) {
+                new DialogMensagens("Id invalido");
+            }  catch(NullPointerException ex){
+                new DialogMensagens("ERRO: Id não encontrado");
             }
-            String msg = comprador.removerOsDadosDeUmaDeterminadaVenda(id);
-            JOptionPane.showMessageDialog(null, msg);
+            
             
         } else if(e.getSource() == voltar) { //voltar
             campTexto4.setText("");

@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.*;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -248,24 +249,29 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
             Fornecedor f = null;
             Fornecedor fornecedor = null;
 
-            long fornecedorSelecionado = Long.parseLong(fornecedorT);
-
-            if(catalogoParticipantes.getParticipantes().isEmpty()){
-                System.out.println("Catalago vazio");
-                return;
+            if (fornecedorT.equals("")) {
+                f = null;
             }
-            
-            for (Participante participante : catalogoParticipantes.getParticipantes()) {
-                if (participante instanceof Fornecedor) {
-                    fornecedor = (Fornecedor) participante;
-                    if (fornecedorSelecionado == participante.getCod()) {
-                        f = fornecedor;
+            else{
+                long fornecedorSelecionado = Long.parseLong(fornecedorT);
+
+                if(catalogoParticipantes.getParticipantes().isEmpty()){
+                    System.out.println("Catalago vazio");
+                    return;
+                }
+                
+                for (Participante participante : catalogoParticipantes.getParticipantes()) {
+                    if (participante instanceof Fornecedor) {
+                        fornecedor = (Fornecedor) participante;
+                        if (fornecedorSelecionado == participante.getCod()) {
+                            f = fornecedor;
+                        }
                     }
                 }
             }
-            System.out.println(f);
-            String msg = fornecedor.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
-            JOptionPane.showMessageDialog(null, msg);
+            
+            String msg = catalogoParticipantes.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f);
+            new DialogMensagens(msg);
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //volta

@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.MatteBorder;
 
 import src.aplicacao.ACMETech;
+import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
 
@@ -194,7 +195,7 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //confirmar
             String msg = acme.salvarDados(campTexto4.getText());
-            JOptionPane.showMessageDialog(null, msg);   
+            new DialogMensagens(msg);
         } else if(e.getSource() == voltar) { //voltar
             campTexto4.setText("");
             home.mudaPainel(5);

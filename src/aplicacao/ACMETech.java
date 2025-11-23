@@ -128,7 +128,7 @@ public class ACMETech {
                         }
                     }
                 }
-                retorno.add(f.cadastrarTecnologia(stringId, modelo, descricao, stringValorBase, stringPeso, stringTemperatura, f));
+                retorno.add(participantes.cadastrarTecnologia(stringId, modelo, descricao, stringValorBase, stringPeso, stringTemperatura, f));
             } catch (NumberFormatException e) {
                 retorno.add("ERRO:formato invalido.");
                 continue;
@@ -180,7 +180,7 @@ public class ACMETech {
                         }
                     }
                 }
-                retorno.add(comprador.cadastrarVenda(stringNum, stringData, comprador, tecnologia));
+                retorno.add(participantes.cadastrarVenda(stringNum, stringData, comprador, tecnologia));
             } catch (NumberFormatException e) {
                 retorno.add("ERRO:formato invalido.");
                 continue;
@@ -369,7 +369,7 @@ public class ACMETech {
                         String valorBase = tecnologias.get(i + 3);
                         String peso = tecnologias.get(i + 4);
                         String temperatura = tecnologias.get(i + 5);
-                        f.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f); 
+                        participantes.cadastrarTecnologia(id, modelo, descricao, valorBase, peso, temperatura, f); 
                     }
                     
                     for(int i = 0; i < vendas.size(); i += 4) {
@@ -394,7 +394,7 @@ public class ACMETech {
                         }
                         String num = vendas.get(i);
                         String data = vendas.get(i + 1).substring(1, vendas.get(i + 1).length() - 1);
-                        c.cadastrarVenda(num, data, c, tecnologia);
+                        participantes.cadastrarVenda(num, data, c, tecnologia);
                     }
                 } catch (NumberFormatException e) {
                         System.out.println("ERRO:formato invalido");

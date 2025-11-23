@@ -1,12 +1,16 @@
 package src.ui.venda;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.CatalogoParticipantes;
 import src.entidades.Comprador;
 import src.entidades.Participante;
+import src.entidades.Venda;
 
 
 public class DialogRelatorioVenda extends JDialog{
@@ -56,12 +60,22 @@ public class DialogRelatorioVenda extends JDialog{
     }
     
     public String mostrarRelatorio(){
+        List<Venda> vendas = new ArrayList<>();
         String retorno = "";
         for(Participante p : catalogoParticipantes.getParticipantes()){
             if(p instanceof Comprador){
                 Comprador c = (Comprador) p;
-                retorno = retorno + c.mostrarRelatorioDeVendas();
+                for(Venda v : c.getArrayVenda()) {
+                    vendas.add(v);
+                }
             }
+        }
+        if(vendas.isEmpty()) {
+            return "Não existem vendas cadastradas";
+        }
+        Collections.sort(vendas, Comparator.comparing(Venda::getNum));
+        for(int i = vendas.size() - 1; i >= 0; i--) {
+            retorno = retorno + vendas.get(i).geraDescricao() + "\n" + "\n";
         }
         return retorno;
     }

@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class DialogMensagens extends JDialog{
     private JLabel tituloCod;
-    public DialogMensagens(){
+    public DialogMensagens(String msg){
         super();
         this.setSize(500,300);             
         Color corFundo = new Color(238, 236, 194);
@@ -20,7 +20,7 @@ public class DialogMensagens extends JDialog{
         botaoVoltar.setBackground(corFundo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(9, 26);
-        areaTexto.setText("Salvamento de dados realizada com sucesso.");
+        areaTexto.setText(msg);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 20);
         areaTexto.setFont(fontAreaTexto);
         areaTexto.setLineWrap(true);

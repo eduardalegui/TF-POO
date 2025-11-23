@@ -8,9 +8,11 @@ import java.util.*;
 
 public class CatalogoParticipantes {
     private List<Participante> participantes;
+    private List<Tecnologia> tecnologiasVendidas;
 
     public CatalogoParticipantes() {
         this.participantes = new ArrayList<>();
+        this.tecnologiasVendidas = new ArrayList<>();
     }
 
     public List<Participante> getParticipantes() {
@@ -201,22 +203,37 @@ public class CatalogoParticipantes {
 
     public List<String> mostrarRelatorioDeFornecedores() {
         List<String> retorno = new ArrayList<>();
+        List<Fornecedor> fornecedores = new ArrayList<>();
         for(Participante p : participantes) {
             if(p instanceof Fornecedor) {
                 Fornecedor fornecedor = (Fornecedor) p;
-                retorno.add(fornecedor.geraDescricao());
+                fornecedores.add(fornecedor);
             }
+        }
+        if(fornecedores.size() == 0) {
+            retorno.add("Não existem fornecedores cadastrados");
+            return retorno;
+        }
+        for(Fornecedor f : fornecedores) {
+            retorno.add(f.geraDescricao());
         }
         return retorno;
     }
 
     public List<String> mostrarRelatorioDeCompradores() {
         List<String> retorno = new ArrayList<>();
+        List<Comprador> compradores = new ArrayList<>();
         for(Participante p : participantes) {
             if(p instanceof Comprador) {
                 Comprador comprador = (Comprador) p;
-                retorno.add(comprador.geraDescricao());
+                compradores.add(comprador);
             }
+        }
+        if(compradores.size() == 0) {
+            retorno.add("Não existem compradores cadastrados");
+        }
+        for(Comprador c : compradores) {
+            retorno.add(c.geraDescricao());
         }
         return retorno;
     }
@@ -398,6 +415,7 @@ public class CatalogoParticipantes {
 
     public ArrayList<String> getArrayIdsFornecedores(){
         ArrayList<String> array = new ArrayList<>();
+        array.add("");
         for (Participante p : participantes) {
             if (p instanceof Fornecedor) {
                 Fornecedor f = (Fornecedor) p;
@@ -406,4 +424,109 @@ public class CatalogoParticipantes {
         }
         return array;
     }
+
+    public String cadastrarVenda(String stringNum, String stringDate, Comprador comprador, Tecnologia tecnologia) {
+        try {
+            List<Comprador> compradores = new ArrayList<>();
+            long num = Long.parseLong(stringNum);
+            DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
+
+            if (stringDate.length() < 10) {
+                return "ERRO: Data inválida";
+            }
+            if (stringDate.equals("")) {
+                return "ERRO: A data não pode estar vazia";
+            }
+            if(comprador == null){
+                return "ERRO: Comprador não pode ser nulo";
+            }
+            if(tecnologia == null){
+                return "ERRO: Tecnologia não pode ser nula";
+            }
+            for(Participante p : participantes) {
+                if(p instanceof Comprador) {
+                    Comprador c = (Comprador) p;
+                    compradores.add(c);
+                }
+            }
+            for(Comprador c : compradores) {
+                for(Venda v : c.getArrayVenda()) {
+                    if(v.getNum() == num) {
+                        return "ERRO:numero repetido";
+                    }
+                }
+            }
+            for(Tecnologia t : tecnologiasVendidas) {
+                if(t.getId() == tecnologia.getId()) {
+                    return "Tecnologia ja foi vendida";
+                }
+            }
+            tecnologiasVendidas.add(tecnologia);
+            Date date = dateFormat.parse(stringDate);
+
+            Venda venda = new Venda(num, date, comprador, tecnologia);
+            venda.calculaValorFinal();
+            comprador.setVendas(venda);
+
+            return "Venda cadastrada";
+        } catch(NullPointerException e) {
+            return "Preencha os dados corretamente e tente novamente";
+        } catch(NumberFormatException e){
+            return "ERRO: " + e.getLocalizedMessage();
+        } catch (Exception e) {
+            return "Revise seus dados e tente novamente";
+        }
+    }
+
+    public String cadastrarTecnologia(String idT, String modelo, String descricao, String valorBaseT, String pesoT, String temperaturaT, Fornecedor fornecedor){
+        try {            
+            List<Fornecedor> fornecedores = new ArrayList<>();
+            long id = Long.parseLong(idT);
+            double valorBase = Double.parseDouble(valorBaseT);
+            double peso = Double.parseDouble(pesoT);
+            double temperatura = Double.parseDouble(temperaturaT);
+
+            if(modelo.equals("")) {
+                return "ERRO: O modelo não pode estar vazio";
+            }
+            if(descricao.equals("")) {
+                return "ERRO: O descricao não pode estar vazio";
+            }
+            if(valorBase < 0){
+                return "ERRO: Valor base não pode ser negativo";
+            }
+            if(peso < 0){
+                return "ERRO: Peso não pode ser negativo";
+            }
+            if(temperatura < 0){
+                return "ERRO: Temperatura não pode ser negativo";
+            }
+
+            for(Participante p : participantes) {
+                if(p instanceof Fornecedor) {
+                    Fornecedor f = (Fornecedor) p;
+                    fornecedores.add(f);
+                }
+            }
+            for(Fornecedor f : fornecedores) {
+                for (Tecnologia tecnologia : f.getArrayTecnologia()) {
+                    if (tecnologia.getId() == id) {
+                        return "ERRO: Id repetido";
+                    }
+                }
+            }
+            
+
+            Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
+            if (fornecedor != null) {
+                fornecedor.setArrayTecnologias(novaTecnologia);
+            }
+            
+            return "Tecnologia cadastrada";
+        } catch(NumberFormatException e){
+            return "ERRO: " + e.getLocalizedMessage();
+        } catch (Exception e) {
+            return "Revise seus dados e tente novamente";
+        }
+    } 
 }
