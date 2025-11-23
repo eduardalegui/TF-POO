@@ -13,11 +13,11 @@
     },
     "Tecnologias": {
         "id": 404,
-        "modelo": "PC Gamer",
-        "descricao": "Pczinho lindo",
-        "valorBase": 10000,
+        "modelo": "Tinta 456",
+        "descricao": "Tinta azul",
+        "valorBase": 100,
         "peso": 20,
-        "temperatura": 30,
+        "temperatura": 20,
         "fornecedor": 2
     },
     "Vendas": {
