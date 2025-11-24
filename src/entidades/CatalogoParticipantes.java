@@ -9,14 +9,20 @@ import java.util.*;
 public class CatalogoParticipantes {
     private List<Participante> participantes;
     private List<Tecnologia> tecnologiasVendidas;
+    private List<Tecnologia> tecnologiasSemFornecedor;
 
     public CatalogoParticipantes() {
         this.participantes = new ArrayList<>();
         this.tecnologiasVendidas = new ArrayList<>();
+        this.tecnologiasSemFornecedor = new ArrayList<>();
     }
 
     public List<Participante> getParticipantes() {
         return this.participantes;
+    }
+
+    public List<Tecnologia> getTecnologiasSemFornecedor() {
+        return this.tecnologiasSemFornecedor;
     }
     
     public String cadastrarFornecedor(String stringCod, String nome, String stringFundacao, String stringArea) {
@@ -341,6 +347,14 @@ public class CatalogoParticipantes {
                 }
             }
         }
+        for(Tecnologia t : tecnologiasSemFornecedor) {
+            arrayTecnologias.add(t);
+            if(maior == null) {
+                maior = t;
+            } else if(maior.getValorBase() < t.getValorBase()){
+                maior = t;
+            }
+        }
         if(maior == null) {
             return "Nenhuma tecnologia cadastrada";
         }
@@ -515,11 +529,13 @@ public class CatalogoParticipantes {
                     }
                 }
             }
-            
 
             Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
+
             if (fornecedor != null) {
                 fornecedor.setArrayTecnologias(novaTecnologia);
+            } else {
+                tecnologiasSemFornecedor.add(novaTecnologia);
             }
             
             return "Tecnologia cadastrada";
@@ -528,5 +544,12 @@ public class CatalogoParticipantes {
         } catch (Exception e) {
             return "Revise seus dados e tente novamente";
         }
+    }
+    public String mostrarRelatorioDeTecnologiasSemFornecedor() {
+        String retorno = "";
+        for(Tecnologia t : tecnologiasSemFornecedor) {
+            retorno = retorno + t.geraDescricao() + "\n" + "\n";
+        }
+        return retorno; 
     } 
 }

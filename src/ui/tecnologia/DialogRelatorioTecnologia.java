@@ -70,6 +70,9 @@ public class DialogRelatorioTecnologia extends JDialog{
                 }
             }
         }
+        for(Tecnologia t : catalogoParticipantes.getTecnologiasSemFornecedor()) {
+            tecnologias.add(t);
+        }
         if(tecnologias.isEmpty()) {
             return "Não existem tecnologias cadastradas";
         }
