@@ -95,7 +95,7 @@ public class Comprador extends Participante{
                     return "Venda removida";
                 }
             }
-        return "ERRO: não existe venda com o id fornecido";
+        return "ERRO: Não existe venda com o id fornecido";
         } catch (Exception e) {
             return "ERRO: Id inválido";
         }

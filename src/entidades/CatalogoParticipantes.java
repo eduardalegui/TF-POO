@@ -1,7 +1,5 @@
 package src.entidades;
 
-import java.io.IOException;
-import java.io.PipedInputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.*;
@@ -31,7 +29,9 @@ public class CatalogoParticipantes {
             boolean cadastrado = false;
             long cod = Long.parseLong(stringCod);
             
-
+            if(cod < 1) {
+                return "ERRO: Código inválido";
+            }
             if(nome.equals("")) {
                 return "ERRO: O nome não pode estar vazio";
             }
@@ -39,6 +39,9 @@ public class CatalogoParticipantes {
                 return "ERRO: O nome não pode conter números";
             }
             if (stringFundacao.length() < 10) {
+                return "ERRO: Data inválida";
+            }
+            if (stringFundacao.length() > 10) {
                 return "ERRO: Data inválida";
             }
             if (stringFundacao.equals("")) {
@@ -107,11 +110,14 @@ public class CatalogoParticipantes {
             if (email.length() < 6) {
                 return "ERRO: Email muito curto";
             }
+            if (cod < 1) {
+                return "ERRO: Código inválido";
+            }
 
             for(Participante p : participantes) {
                 if (p instanceof Comprador) {
                     if(p.getCod() == cod) {
-                        return "ERRO: Codigo repetido";
+                        return "ERRO: Código repetido";
                     }
                 }
             }
@@ -138,8 +144,9 @@ public class CatalogoParticipantes {
     }
 
     public Area verificarArea(String area) {
+        String capsLock = area.toUpperCase();
         for(Area a : Area.values()) {
-            if(a.getNome().equals(area)) {
+            if(a.getNome().equals(capsLock)) {
                 return a;
             }
         } 
@@ -156,7 +163,7 @@ public class CatalogoParticipantes {
             }
         }
         if (arrayFornecedores.size() == 0) {
-            return "Erro: Não há fornecedores cadastrados";
+            return "ERRO: Não há fornecedores cadastrados";
         }
         Fornecedor maior = arrayFornecedores.get(0);
         for (Fornecedor f: arrayFornecedores) {
@@ -186,7 +193,7 @@ public class CatalogoParticipantes {
             }
         }
         if (arrayCompradores.size() == 0) {
-            return "Erro: Não há fornecedores cadastrados";
+            return "ERRO: Não há fornecedores cadastrados";
         }
         Comprador maior = arrayCompradores.get(0);
         for (Comprador c: arrayCompradores) {
@@ -217,7 +224,7 @@ public class CatalogoParticipantes {
             }
         }
         if(fornecedores.size() == 0) {
-            retorno.add("Não existem fornecedores cadastrados");
+            retorno.add("ERRO: Não existem fornecedores cadastrados");
             return retorno;
         }
         for(Fornecedor f : fornecedores) {
@@ -236,7 +243,7 @@ public class CatalogoParticipantes {
             }
         }
         if(compradores.size() == 0) {
-            retorno.add("Não existem compradores cadastrados");
+            retorno.add("ERRO: Não existem compradores cadastrados");
         }
         for(Comprador c : compradores) {
             retorno.add(c.geraDescricao());
@@ -253,7 +260,7 @@ public class CatalogoParticipantes {
                 }
             }
         }
-        return "ERRO:não existe comprador com este código";
+        return "ERRO: Não existe comprador com este código";
     }
 
     public String mostrarOsDadosDeUmDeterminadoComprador(String stringCod) {
@@ -267,11 +274,11 @@ public class CatalogoParticipantes {
                     }
                 }
             }
-            return "Comprador nao encontrado";
+            return "ERRO: Comprador nao encontrado";
         } catch(NumberFormatException e) {
-            return "Codigo invalido";
+            return "ERRO: Codigo invalido";
         } catch(NullPointerException e) {
-            return "Comprador nao encontrado";
+            return "ERRO: Comprador nao encontrado";
         }
     }
 
@@ -312,16 +319,16 @@ public class CatalogoParticipantes {
                 }
             }
             if(c == null) {
-                return "Comprador nao encontrado";
+                return "ERRO: Comprador nao encontrado";
             } else if(modificado) {
-                return "Comprador modificado";
+                return "ERRO: Comprador modificado";
             } else {
-                return "Nenhum campo preenchido";
+                return "ERRO: Nenhum campo preenchido";
             }            
         } catch(NumberFormatException e) {
-            return "Codigo invalido";
+            return "ERRO: Codigo invalido";
         } catch(NullPointerException e) {
-            return "Comprador nao encontrado";
+            return "ERRO: Comprador nao encontrado";
         }
     }
 
@@ -356,7 +363,7 @@ public class CatalogoParticipantes {
             }
         }
         if(maior == null) {
-            return "Nenhuma tecnologia cadastrada";
+            return "ERRO: Nenhuma tecnologia cadastrada";
         }
         tecnologiasEmpatadas.add(maior);
         for (Tecnologia tecnologia : arrayTecnologias) {
@@ -383,7 +390,7 @@ public class CatalogoParticipantes {
             }
         }
         if (vendas.isEmpty()) {
-            return "Erro: Não há vendas cadastradas";
+            return "ERRO: Não há vendas cadastradas";
         }
         Venda maior = vendas.get(0);
         for (Venda venda : vendas) {
@@ -444,8 +451,14 @@ public class CatalogoParticipantes {
             List<Comprador> compradores = new ArrayList<>();
             long num = Long.parseLong(stringNum);
             DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, new Locale("pt", "BR"));
-
+            
+            if(num < 1) {
+                return "ERRO: Número inválido";
+            }
             if (stringDate.length() < 10) {
+                return "ERRO: Data inválida";
+            }
+            if (stringDate.length() > 10) {
                 return "ERRO: Data inválida";
             }
             if (stringDate.equals("")) {
@@ -472,7 +485,7 @@ public class CatalogoParticipantes {
             }
             for(Tecnologia t : tecnologiasVendidas) {
                 if(t.getId() == tecnologia.getId()) {
-                    return "Tecnologia ja foi vendida";
+                    return "ERRO: Tecnologia ja foi vendida";
                 }
             }
             tecnologiasVendidas.add(tecnologia);
@@ -484,11 +497,11 @@ public class CatalogoParticipantes {
 
             return "Venda cadastrada";
         } catch(NullPointerException e) {
-            return "Preencha os dados corretamente e tente novamente";
+            return "ERRO: Preencha os dados corretamente e tente novamente";
         } catch(NumberFormatException e){
             return "ERRO: " + e.getLocalizedMessage();
         } catch (Exception e) {
-            return "Revise seus dados e tente novamente";
+            return "ERRO: Revise seus dados e tente novamente";
         }
     }
 
@@ -500,6 +513,9 @@ public class CatalogoParticipantes {
             double peso = Double.parseDouble(pesoT);
             double temperatura = Double.parseDouble(temperaturaT);
 
+            if(id < 1) {
+                return "ERRO: Id inválido";
+            }
             if(modelo.equals("")) {
                 return "ERRO: O modelo não pode estar vazio";
             }
@@ -529,7 +545,11 @@ public class CatalogoParticipantes {
                     }
                 }
             }
-
+            for(Tecnologia t : tecnologiasSemFornecedor) {
+                if(t.getId() == id) {
+                    return "ERRO: Id repetido";
+                }
+            }
             Tecnologia novaTecnologia = new Tecnologia(id, modelo, descricao, valorBase, peso, temperatura, fornecedor);
 
             if (fornecedor != null) {
@@ -542,7 +562,7 @@ public class CatalogoParticipantes {
         } catch(NumberFormatException e){
             return "ERRO: " + e.getLocalizedMessage();
         } catch (Exception e) {
-            return "Revise seus dados e tente novamente";
+            return "ERRO: Revise seus dados e tente novamente";
         }
     }
     public String mostrarRelatorioDeTecnologiasSemFornecedor() {

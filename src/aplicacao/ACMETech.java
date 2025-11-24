@@ -83,10 +83,10 @@ public class ACMETech {
                     retorno.add(participantes.cadastrarFornecedor(stringCod, nome, fundacao_pais, area_email));
                 }
             } catch (NumberFormatException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             } catch(NoSuchElementException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             }
         }
@@ -130,10 +130,10 @@ public class ACMETech {
                 }
                 retorno.add(participantes.cadastrarTecnologia(stringId, modelo, descricao, stringValorBase, stringPeso, stringTemperatura, f));
             } catch (NumberFormatException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             } catch(NoSuchElementException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             }
         }
@@ -182,10 +182,10 @@ public class ACMETech {
                 }
                 retorno.add(participantes.cadastrarVenda(stringNum, stringData, comprador, tecnologia));
             } catch (NumberFormatException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             } catch(NoSuchElementException e) {
-                retorno.add("ERRO:formato invalido.");
+                retorno.add("ERRO: Formato invalido.");
                 continue;
             }
         }
@@ -397,7 +397,7 @@ public class ACMETech {
                         participantes.cadastrarVenda(num, data, c, tecnologia);
                     }
                 } catch (NumberFormatException e) {
-                        System.out.println("ERRO:formato invalido");
+                        System.out.println("ERRO: Formato invalido");
                         continue;
                 } catch(NoSuchElementException e) {
                     continue;

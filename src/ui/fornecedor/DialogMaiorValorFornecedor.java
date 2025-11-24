@@ -48,6 +48,7 @@ public class DialogMaiorValorFornecedor extends JDialog{
         areaTexto.setBackground(corFundo);
         comp4.setOpaque(false);
         JScrollPane scrollar = new JScrollPane(areaTexto);
+        areaTexto.setEditable(false);
         comp4.add(scrollar);
         botaoVoltar.add(comp1);
         botaoVoltar.add(comp4);
