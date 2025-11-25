@@ -146,19 +146,13 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
         if(e.getSource() == botao1) { //enviar
             String id = campTexto1.getText();
             String fornecedorT = (String) selecionaArea.getSelectedItem();
-            Fornecedor f = null;
-            Fornecedor fornecedor = null;
-
-            long fornecedorSelecionado = Long.parseLong(fornecedorT);
-            for (Participante participante : catalogoParticipantes.getParticipantes()) {
-                if (participante instanceof Fornecedor) {
-                    fornecedor = (Fornecedor) participante;
-                    if (fornecedorSelecionado == participante.getCod()) {
-                        f = fornecedor;
-                    }
-                }
+            if(fornecedorT.equals("")){
+                new DialogMensagens("ERRO: Fornecedor vazio");
+                return;
             }
-
+            
+            String msg = catalogoParticipantes.definirFornecedor(id, fornecedorT);
+            new DialogMensagens(msg);
             
         } else if(e.getSource() == botao2) { //limpar
             limpar();
@@ -169,7 +163,7 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
     }
 
     public void adicionaComboBoxNomes(){
-        for (String id : catalogoParticipantes.getArrayIdsFornecedores()) {
+        for (String id : catalogoParticipantes.getArrayNomesFornecedores()) {
             modeloIds.addElement(id);
         }
     }

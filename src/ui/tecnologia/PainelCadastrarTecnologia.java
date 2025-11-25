@@ -253,8 +253,6 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
                 f = null;
             }
             else{
-                long fornecedorSelecionado = Long.parseLong(fornecedorT);
-
                 if(catalogoParticipantes.getParticipantes().isEmpty()){
                     System.out.println("Catalago vazio");
                     return;
@@ -263,7 +261,7 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
                 for (Participante participante : catalogoParticipantes.getParticipantes()) {
                     if (participante instanceof Fornecedor) {
                         fornecedor = (Fornecedor) participante;
-                        if (fornecedorSelecionado == participante.getCod()) {
+                        if (fornecedorT == participante.getNome()) {
                             f = fornecedor;
                         }
                     }
@@ -281,7 +279,7 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
     }
 
     public void adicionaComboBoxNomes(){
-        for (String id : catalogoParticipantes.getArrayIdsFornecedores()) {
+        for (String id : catalogoParticipantes.getArrayNomesFornecedores()) {
             modeloIds.addElement(id);
         }
     }

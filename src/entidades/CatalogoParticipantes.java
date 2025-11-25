@@ -332,7 +332,7 @@ public class CatalogoParticipantes {
         }
     }
 
-    public String consultarTecnologiaComMaiorValor(){
+    public String consultarTecnologiaComMaiorValor() {
         List<Fornecedor> fornecedores = new ArrayList<>();
         List<Tecnologia> arrayTecnologias = new ArrayList<>();
         for(Participante p : participantes) {
@@ -434,13 +434,13 @@ public class CatalogoParticipantes {
         return array;
     }
 
-    public ArrayList<String> getArrayIdsFornecedores(){
+    public ArrayList<String> getArrayNomesFornecedores(){
         ArrayList<String> array = new ArrayList<>();
         array.add("");
         for (Participante p : participantes) {
             if (p instanceof Fornecedor) {
                 Fornecedor f = (Fornecedor) p;
-                array.add(String.valueOf(f.getCod()));
+                array.add(f.getNome());
             }
         }
         return array;
@@ -560,7 +560,7 @@ public class CatalogoParticipantes {
             
             return "Tecnologia cadastrada";
         } catch(NumberFormatException e){
-            return "ERRO: " + e.getLocalizedMessage();
+            return "ERRO: ";
         } catch (Exception e) {
             return "ERRO: Revise seus dados e tente novamente";
         }
@@ -572,6 +572,59 @@ public class CatalogoParticipantes {
         }
         return retorno; 
     } 
+
+    public String definirFornecedor(String id, String fornecedorT){
+        try {
+            Fornecedor f = null;
+            Fornecedor fornecedor = null;
+            long cod = Long.parseLong(id);
+            
+            if(cod < 1) {
+                return "ERRO: Id inválido";
+            }
+            
+            
+            for (Participante participante : participantes) {
+                if (participante instanceof Fornecedor) {
+                    fornecedor = (Fornecedor) participante;
+                    if (fornecedorT == participante.getNome()) {
+                        f = fornecedor;
+                    }
+                }
+            }
+            if (achaTecnologia(cod, f)) {
+                return "Fornecedor definido";
+            }
+            else return "ERRO: Id não encontrado";
+        } catch (Exception e) {
+            return "ERRO: Revise seus dados e tente novamente";
+        }
+    }
+
+    public boolean achaTecnologia(long cod, Fornecedor f){
+        List<Fornecedor> fornecedores = new ArrayList<>();
+        for(Participante p : participantes) {
+            if(p instanceof Fornecedor) {
+                Fornecedor fornecedor = (Fornecedor) p;
+                fornecedores.add(fornecedor);
+            }
+        }
+        for(Fornecedor fornecedor : fornecedores) {
+            for (Tecnologia tecnologia : fornecedor.getArrayTecnologia()) {
+                if (tecnologia.getId() == cod) {
+                    tecnologia.defineFornecedor(f);
+                    return true;
+                }
+            }
+        }
+        for (Tecnologia tecnologia : tecnologiasSemFornecedor){
+            if (tecnologia.getId() == cod){
+                tecnologia.defineFornecedor(f);
+                return true;
+            }
+        }
+        return false;
+    }
 
     
 }
