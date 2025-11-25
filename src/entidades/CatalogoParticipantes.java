@@ -499,7 +499,7 @@ public class CatalogoParticipantes {
         } catch(NullPointerException e) {
             return "ERRO: Preencha os dados corretamente e tente novamente";
         } catch(NumberFormatException e){
-            return "ERRO: " + e.getLocalizedMessage();
+            return "ERRO: O número da venda tem que ser um número inteiro";
         } catch (Exception e) {
             return "ERRO: Revise seus dados e tente novamente";
         }
@@ -560,7 +560,7 @@ public class CatalogoParticipantes {
             
             return "Tecnologia cadastrada";
         } catch(NumberFormatException e){
-            return "ERRO: ";
+            return "ERRO: Preencha os campos corretamente";
         } catch (Exception e) {
             return "ERRO: Revise seus dados e tente novamente";
         }
