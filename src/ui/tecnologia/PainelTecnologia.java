@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 
@@ -13,6 +12,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
     private JButton voltar;
     private JButton botao21;
     private JButton botao22;
+    private JButton botao23;
     private JButton botao24;
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
@@ -102,8 +102,21 @@ public class PainelTecnologia extends JPanel implements ActionListener {
                     comp22.setOpaque(false);
                 //===============================================
                 //===============================================
+                    JPanel comp23 = new JPanel();
+                    botao23= new JButton("Consultar Maior");
+                    MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, azul);
+                    botao23.setPreferredSize(new Dimension(250, 100));
+                    botao23.setOpaque(true);
+                    botao23.setBorder(bordaBotoes23);
+                    botao23.setBackground(azul);
+                    botao23.setFont(fontBotoes);
+                    comp23.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 25));
+                    comp23.add(botao23);
+                    comp23.setOpaque(false);
+                //===============================================
+                //===============================================
                     JPanel comp24 = new JPanel();
-                    botao24= new JButton("Consultar Maior");
+                    botao24= new JButton("Definir Fornecedor");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, azul);
                     botao24.setPreferredSize(new Dimension(250, 100));
                     botao24.setOpaque(true);
@@ -117,7 +130,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
 
                 comp2.add(comp21);
                 comp2.add(comp22);
-                // comp2.add(comp23);
+                comp2.add(comp23);
                 comp2.add(comp24);
                 comp2.setOpaque(false);
             //===============================================
