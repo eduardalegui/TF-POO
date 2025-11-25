@@ -124,17 +124,16 @@
         Botão Confirmar: salva todos os dados em um arquivo.
         Botão Voltar: volta para a página anterior.
 
-//ia ser bom uma mensagem em JDialog com  mesagem 'Salvamento de dados realizada com sucesso.'
-
     ==15==
     Página Carregar Dados:
         Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser carregado todos os dados contidos nele;
         Botão Confirmar: carrega todos os dados de um determinado arquivo.
         Botão Voltar: volta para a página anterior.
 
-//ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
-
-//ia ser bom uma mensagem em JDialog com  uma mensagem pra cada erro.
+    ==24==
+    //ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
+    //ia ser bom uma mensagem em JDialog com  mesagem 'Salvamento de dados realizada com sucesso.'
+    //ia ser bom uma mensagem em JDialog com  uma mensagem pra cada erro.
 
 
 /*OPCIONAIS*/
@@ -177,3 +176,6 @@
     Página Consultar Venda com maior valor:
         Área de texto: mostra todos os dados da venda com maior valor junto dos dados da tecnologia e comprador correspondentes;
         Botão Voltar: volta para a página anterior.
+
+    ==25==
+    //página de definir fornecedor de tecnologia.

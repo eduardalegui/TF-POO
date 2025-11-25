@@ -148,6 +148,8 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
             String fornecedorT = (String) selecionaArea.getSelectedItem();
             Fornecedor f = null;
             Fornecedor fornecedor = null;
+
+            long fornecedorSelecionado = Long.parseLong(fornecedorT);
             for (Participante participante : catalogoParticipantes.getParticipantes()) {
                 if (participante instanceof Fornecedor) {
                     fornecedor = (Fornecedor) participante;
@@ -157,7 +159,7 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
                 }
             }
 
-            f.de
+            
         } else if(e.getSource() == botao2) { //limpar
             limpar();
         } else if(e.getSource() == voltar) { //volta

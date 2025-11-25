@@ -5,13 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+import src.aplicacao.ACMETech;
 import src.entidades.*;
 import src.ui.comprador.*;
 import src.ui.fornecedor.*;
 import src.ui.salvar.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
-import src.aplicacao.ACMETech;
 
 
 public class HomePage extends JFrame implements ActionListener {
@@ -37,6 +37,7 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelModificarComprador painelModificarComprador;
     private PainelSalvarDadosSalvarCarregar painelSalvarDadosSalvarCarregar;
     private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar;
+    private PainelDefinirFornecedorTecnologia painelDefinirFornecedorTecnologia;
     private long idCompradorEscolhidoParaModificacao;
 
     public long getidCompradorEscolhidoParaModificacao(){
@@ -70,6 +71,7 @@ public class HomePage extends JFrame implements ActionListener {
         painelModificarComprador = new PainelModificarComprador(this, catalogoParticipantes);
         painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this, acme);
         painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this, acme);
+        painelDefinirFornecedorTecnologia = new PainelDefinirFornecedorTecnologia(this, catalogoParticipantes);
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    
@@ -375,6 +377,11 @@ public class HomePage extends JFrame implements ActionListener {
             break;
             case 14:
                 this.setContentPane(painelCarregarDadosSalvarCarregar);
+                this.pack();
+                this.setSize(1200, 700);
+            break;
+            case 15:
+                this.setContentPane(painelDefinirFornecedorTecnologia);
                 this.pack();
                 this.setSize(1200, 700);
             break;
