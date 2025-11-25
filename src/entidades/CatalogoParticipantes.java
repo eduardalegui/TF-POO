@@ -50,9 +50,9 @@ public class CatalogoParticipantes {
             if (stringArea.equals("")) {
                 return "ERRO: A área não pode estar vazia";
             }
-            Date fundacao = date.parse(stringFundacao);
             String data = stringFundacao.trim();
-
+            Date fundacao = date.parse(data);
+            
 
             for(Participante p : participantes) {
                 if (p instanceof Fornecedor) {

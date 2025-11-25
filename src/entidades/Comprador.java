@@ -1,6 +1,5 @@
 package src.entidades;
 
-import java.text.DateFormat;
 import java.util.*;
 
 public class Comprador extends Participante{

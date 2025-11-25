@@ -1,12 +1,9 @@
 package src.ui.venda;
 
 import java.awt.*;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.CatalogoParticipantes;
-import src.entidades.Comprador;
-import src.entidades.Participante;
 
 
 public class DialogMaiorValorVenda extends JDialog{

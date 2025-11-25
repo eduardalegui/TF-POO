@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
-import java.util.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.CatalogoParticipantes;

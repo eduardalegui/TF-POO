@@ -1,6 +1,5 @@
 package src.aplicacao;
 
-import java.awt.Container;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -10,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import src.entidades.CatalogoParticipantes;
@@ -19,7 +17,7 @@ import src.entidades.Fornecedor;
 import src.entidades.Participante;
 import src.entidades.Tecnologia;
 import src.entidades.Venda;
-import src.ui.comprador.DialogRelatorioComprador;
+// import src.ui.comprador.DialogRelatorioComprador;
 // import src.ui.comprador.DialogRelatorioComprador;
 // import src.ui.comprador.PainelCadastrarComprador;
 // import src.ui.comprador.PainelComprador;
@@ -50,7 +48,6 @@ public class ACMETech {
     public void executar() {
         inicializar();
         HomePage minhaJanela = new HomePage(participantes, this);
-        
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
