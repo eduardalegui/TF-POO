@@ -9,11 +9,11 @@ import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 
 public class PainelComprador extends JPanel implements ActionListener{
+    private JButton voltar;
     private JButton botao21;
     private JButton botao22;
     private JButton botao23;
     private JButton botao24;
-    private JButton voltar;
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
     private JPanel botaoVoltar;
