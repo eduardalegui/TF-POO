@@ -305,13 +305,13 @@ public class HomePage extends JFrame implements ActionListener {
         switch(painel) {
             case 0:
                 this.setContentPane(painelPrincipal);
-                //this.pack();
-                //this.setSize(1200, 700);
+                this.pack();
+                this.setSize(1200, 700);
                 break;
             case 1:
                 this.setContentPane(painelComprador);
-                //this.pack();
-                //this.setSize(1200, 700);
+                this.pack();
+                this.setSize(1200, 700);
                 break;
             case 2:
                 this.setContentPane(painelFornecedor);
@@ -320,17 +320,18 @@ public class HomePage extends JFrame implements ActionListener {
                 break;
             case 3:
                 this.setContentPane(painelTecnologia);
-                //this.pack();
-                //this.setSize(1200, 700);
+                this.pack();
+                this.setSize(1200, 700);
                 break;
             case 4:
                 this.setContentPane(painelVenda);
-                //this.pack();
-                //this.setSize(1200, 700);
+                this.pack();
+                this.setSize(1200, 700);
                 break;
             case 5: 
                 this.setContentPane(painelSalvarCarregar);
-                //this.pack();
+                this.pack();
+                this.setSize(1200, 700);
                 break;
             case 6:
                 this.setContentPane(painelCadastrarFornecedor);

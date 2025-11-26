@@ -33,7 +33,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
         adicionaComboBoxIds();
         selecionaComprador = new JComboBox<>(modeloNomes);
         selecionaTecnologia = new JComboBox<>(modeloIds);
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Cadastrar Venda"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);

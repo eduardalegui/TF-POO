@@ -38,7 +38,7 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
         super();
         this.acme = acme;
         this.home = home;
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         corFundo = new Color(238, 236, 194);
         layout = new BoxLayout(this, BoxLayout.Y_AXIS);

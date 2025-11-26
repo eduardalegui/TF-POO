@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.aplicacao.ACMETech;
 import src.ui.DialogMensagens;
 import src.ui.HomePage;
@@ -22,7 +21,7 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
 
     public PainelSalvarDadosSalvarCarregar(HomePage home, ACMETech acme){
         super();
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);

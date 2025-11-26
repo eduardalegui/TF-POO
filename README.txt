@@ -32,15 +32,6 @@
         Botão Voltar: volta para a página anterior.
 
     ==4==
-    Home Page:
-        Botão Fornecedor: redireciona a interface para a página com os métodos de fornecedor;
-        Botão Comprador: redireciona a interface para a página com os métodos de comprador;
-        Botão Venda: redireciona a interface para a página com métodos de Venda;
-        Botão Tecnologia: redireciona a interface para a página com os métodos de Tecnologia;
-        Botão Salvar/Carregar dados: redireciona a interface para a página de salvar ou carregar dados;
-        Botão Sair: Fecha a interface.
-
-    ==5==
     Página Cadastrar Venda:
         Botão Comprador: Mostra os compradores cadastrados e usuário escolhe um;
         Botão Tecnologia: Mostra as tecnologias cadastradas e o usuário escolhe uma;
@@ -50,51 +41,66 @@
         Botão Enviar: tenta cadastrar um fornecedor no sistema;
         Botão Voltar: volta para a página anterior.
 
-    ==6==
-    Página Comprador:
-        Botão Cadastrar: redireciona a interface para a página de cadastrar comprador;
-        Botão Mostrar Comprador: redireciona a interface para a página de mostrar relatório de compradores OU
-            Cria uma nova janela com todos os dados de todos os compradores cadastrados;
-        Botão Alterar dados: redireciona a interface para a página de alterar dados de um determinado comprador;
-        Botão Consultar Maior: redireciona a interface para a página de consultar comprador com maior número de vendas OU
-            Cria uma nova janela mostrando todos os dados do comprador com maior número de vendas;
-        Botão Voltar: volta para a página anterior.
+    ==5==
+    Página Home Page:
+        Botão Fornecedor: redireciona a interface para a página com os métodos de fornecedor;
+        Botão Comprador: redireciona a interface para a página com os métodos de comprador;
+        Botão Venda: redireciona a interface para a página com métodos de Venda;
+        Botão Tecnologia: redireciona a interface para a página com os métodos de Tecnologia;
+        Botão Salvar/Carregar dados: redireciona a interface para a página de salvar ou carregar dados;
+        Botão Sair: Fecha a interface.
 
-    ==7==
-    Página Fornecedor:
-        Botão Cadastrar: redireciona a interface para a página de cadastro de fornecedor;
-        Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de fornecedores OU
-            Cria uma nova janela mostrando todos os dados de todos fornecedores cadastrados;
-        Botão Consultar Maior: redireciona a interface para a página de consultar fornecedor com maior número de tecnologias OU
-            Cria uma nova janela mostrando todos os dados do fornecedor com maior número de tecnologias junto com número de 	tecnologias que ele possui;
-        Botão Voltar: volta para a página anterior.
+        ==6==
+        Página Comprador:
+            Botão Cadastrar: redireciona a interface para a página de cadastrar comprador;
+            Botão Mostrar Comprador: redireciona a interface para a página de mostrar relatório de compradores OU
+                Cria uma nova janela com todos os dados de todos os compradores cadastrados;
+            Botão Alterar dados: redireciona a interface para a página de alterar dados de um determinado comprador;
+            Botão Consultar Maior: redireciona a interface para a página de consultar comprador com maior número de vendas OU
+                Cria uma nova janela mostrando todos os dados do comprador com maior número de vendas;
+            Botão Voltar: volta para a página anterior.
 
-    ==8==
-    Página Tecnologia: 
-        Botão Cadastrar: redireciona a interface para a página de cadastrar tecnologia;
-        Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de tecnologias OU
-            Cria uma nova janela mostrando todos os dados de todas as tecnologias cadastradas junto dos dados do fornecedor 	correspondente;
-        Botão Consultar Maior: redireciona a interface para a página de consultar tecnologia com maior valor OU
-            Cria uma nova janela mostrando todos os dados da tecnologia com maior valor;
-        Botão Voltar: volta para a página anterior.
+        ==7==
+        Página Fornecedor:
+            Botão Cadastrar: redireciona a interface para a página de cadastro de fornecedor;
+            Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de fornecedores OU
+                Cria uma nova janela mostrando todos os dados de todos fornecedores cadastrados;
+            Botão Consultar Maior: redireciona a interface para a página de consultar fornecedor com maior número de tecnologias OU
+                Cria uma nova janela mostrando todos os dados do fornecedor com maior número de tecnologias junto com número de 	tecnologias que ele possui;
+            Botão Voltar: volta para a página anterior.
 
-    ==9==
-    Página Venda:
-        Botão Cadastrar: redireciona a interface para a página de cadastrar venda;
-        Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de vendas OU
-            Cria uma nova janela com todos os dados de todas as vendas cadastradas junto dos dados do comprador e da tecnologia correspondentes;
-        Botão Remover dados: redireciona a interface para a página de remover dados de uma determinada venda;
-        Botão Consultar Maior: redireciona a interface para a página de consultar venda com maior valor OU
-            Cria uma nova janela mostrando todos os dados da venda com maior valor junto da tecnologia e comprador correspondentes;
-        Botão Voltar: volta para a página anterior.
+        ==8==
+        Página Tecnologia: 
+            Botão Cadastrar: redireciona a interface para a página de cadastrar tecnologia;
+            Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de tecnologias OU
+                Cria uma nova janela mostrando todos os dados de todas as tecnologias cadastradas junto dos dados do fornecedor 	correspondente;
+            Botão Consultar Maior: redireciona a interface para a página de consultar tecnologia com maior valor OU
+                Cria uma nova janela mostrando todos os dados da tecnologia com maior valor;
+            Botão Voltar: volta para a página anterior.
 
-    ==10==
+        ==9==
+        Página Venda:
+            Botão Cadastrar: redireciona a interface para a página de cadastrar venda;
+            Botão Mostrar Relatório: redireciona a interface para a página de mostrar relatório de vendas OU
+                Cria uma nova janela com todos os dados de todas as vendas cadastradas junto dos dados do comprador e da tecnologia correspondentes;
+            Botão Remover dados: redireciona a interface para a página de remover dados de uma determinada venda;
+            Botão Consultar Maior: redireciona a interface para a página de consultar venda com maior valor OU
+                Cria uma nova janela mostrando todos os dados da venda com maior valor junto da tecnologia e comprador correspondentes;
+            Botão Voltar: volta para a página anterior.
+
+        ==10==
+        Página Salvar/Carregar:
+            Botão Salvar Dados: redireciona a interface para a página de salvar dados;
+            Botão Carregar Dados: redireciona a interface para a página de carregar dados.
+            Botão Voltar: volta para a página anterior.
+
+    ==11==
     Página Alterar Dados de um Determinado Comprador:
         Campo de texto Código: campo de texto para escrever o código do comprador;
         Botão Confirmar: busca um comprador com código fornecido, se achar abre uma página chamada Modificar Comprador.
         Botão Voltar: volta para a página anterior.
 
-    ==11==
+    ==12==
     Página Modificar Comprador:
         Área de texto: mostra todos os dados do comprador localizado;
         Campo de texto Nome: campo de texto para escrever o nome do comprador;
@@ -104,18 +110,10 @@
         Botão Enviar: tenta cadastrar um fornecedor no sistema;
         Botão Voltar: volta para a página anterior.
 
-    ==12==
+    ==13==
     Página Remover Dados de uma Determinada Venda:
         Campo de texto Número: campo de texto para escrever o número da venda;
         Botão Confirmar: busca uma venda com número fornecido, se achar remove ela do sistema.
-        Botão Voltar: volta para a página anterior.
-
-//ia ser bom uma mensagem em JDialog com  mesagem 'Dados da venda, de número xxx, removido com sucesso.'
-
-    ==13==
-    Página Salvar/Carregar Dados:
-        Botão Salvar Dados: redireciona a interface para a página de salvar dados;
-        Botão Carregar Dados: redireciona a interface para a página de carregar dados.
         Botão Voltar: volta para a página anterior.
 
     ==14==
@@ -129,12 +127,6 @@
         Campo de texto Nome: campo de texto para escrever o nome do arquivo a ser carregado todos os dados contidos nele;
         Botão Confirmar: carrega todos os dados de um determinado arquivo.
         Botão Voltar: volta para a página anterior.
-
-    ==24==
-    //ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
-    //ia ser bom uma mensagem em JDialog com  mesagem 'Salvamento de dados realizada com sucesso.'
-    //ia ser bom uma mensagem em JDialog com  uma mensagem pra cada erro.
-
 
 /*OPCIONAIS*/
     ==16==
@@ -176,6 +168,12 @@
     Página Consultar Venda com maior valor:
         Área de texto: mostra todos os dados da venda com maior valor junto dos dados da tecnologia e comprador correspondentes;
         Botão Voltar: volta para a página anterior.
+    
+    ==24==
+    //ia ser bom uma mensagem em JDialog com  mesagem 'Dados carregados com sucesso.'
+    //ia ser bom uma mensagem em JDialog com  mesagem 'Salvamento de dados realizada com sucesso.'
+    //ia ser bom uma mensagem em JDialog com  uma mensagem pra cada erro.
+    //ia ser bom uma mensagem em JDialog com  mesagem 'Dados da venda, de número xxx, removido com sucesso.'
 
     ==25==
     //página de definir fornecedor de tecnologia.

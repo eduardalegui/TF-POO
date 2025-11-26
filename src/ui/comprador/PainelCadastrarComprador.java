@@ -25,7 +25,7 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
     public PainelCadastrarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);

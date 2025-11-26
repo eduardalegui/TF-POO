@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-
 import src.aplicacao.ACMETech;
 import src.ui.DialogMensagens;
 import src.ui.HomePage;
@@ -19,10 +18,11 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
     private HomePage home;
     private ACMETech acme;
     private JTextField campTexto4;
+    private JComboBox<String> selecionaArea;
 
     public PainelCarregarDadosSalvarCarregar(HomePage home, ACMETech acme){
         super();
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Cadastrar Comprador"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);
@@ -32,6 +32,7 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
         //===============================================
         this.home = home;
         this.acme = acme;
+        selecionaArea = new JComboBox<>();
             // JPanel body = new JPanel();
             // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             // Color corFundo = new Color(238, 236, 194);
@@ -42,8 +43,8 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
             MatteBorder bordaTitulo = new MatteBorder(4, 0, 4, 0, Color.BLACK);
             FlowLayout  layoutB = new FlowLayout(FlowLayout.LEFT);
             JPanel botaoVoltar = new JPanel();
-            botaoVoltar.setMaximumSize(new Dimension(1200, 52));
-            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 70, 0));
+            botaoVoltar.setMaximumSize(new Dimension(1200, 20));
+            botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
             voltar.setOpaque(true);
@@ -66,87 +67,48 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
                 comp1.setLayout(layout11);
                 comp1.setBackground(corFundo);
                 comp1.setOpaque(true);
-                comp1.setMaximumSize(new Dimension(1200, 150));
+                comp1.setMaximumSize(new Dimension(1200, 300));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.setBorder(bordaTitulo);
                 comp1.add(titulo);
             //===============================================
             //===============================================
                 JPanel comp2 = new JPanel();
-                GridLayout layout2 = new GridLayout(5,1);
-                comp2.setLayout(layout2);
-                comp2.setMaximumSize(new Dimension(900, 300));
+                //GridLayout layout2 = new GridLayout(1,1);
+                FlowLayout  layout1 = new FlowLayout(FlowLayout.CENTER);
+                comp2.setLayout(layout1);
+                //comp2.setMaximumSize(new Dimension(900, 300));
                 comp2.setOpaque(false);
                 comp2.setBorder(BorderFactory.createEmptyBorder(30, 140, 0, 140));
-                FlowLayout  layout1 = new FlowLayout(FlowLayout.RIGHT);
+                
                 MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, Color.BLACK);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
 
-                // //===============================================
-                     JPanel comp21 = new JPanel();
-                //     JLabel tituloNome = new JLabel("Nome: ");
-                //     JTextField campTexto1 = new JTextField(20);
-                //     tituloNome.setFont(fontDosTitulos);
-                //     campTexto1.setOpaque(false);
-                //     campTexto1.setBorder(bordaCampTexto);
-                //     campTexto1.setFont(fontDosCampTexto);
-                //     comp21.setLayout(layout1);
-                //     comp21.add(tituloNome);
-                //     comp21.add(campTexto1);
-                //     comp21.setFont(fontDosTitulos);
-                    comp21.setOpaque(false);
-                // //===============================================
-                // //===============================================
-                     JPanel comp22 = new JPanel();
-                //     JLabel tituloEmail = new JLabel("Email: ");
-                //     JTextField campTexto2 = new JTextField(20);
-                //     tituloEmail.setFont(fontDosTitulos);
-                //     campTexto2.setOpaque(false);
-                //     campTexto2.setBorder(bordaCampTexto);
-                //     campTexto2.setFont(fontDosCampTexto);
-                //     comp22.setLayout(layout1);
-                //     comp22.add(tituloEmail);
-                //     comp22.add(campTexto2);
-                //     comp22.setFont(fontDosTitulos);
-                     comp22.setOpaque(false);
-                // //===============================================
-                // //===============================================
-                    JPanel comp23 = new JPanel();
-                    JPanel comp25 = new JPanel();
-                //     JLabel tituloPais = new JLabel("Pais: ");
-                //     JTextField campTexto3 = new JTextField(20);
-                //     tituloPais.setFont(fontDosTitulos);
-                //     campTexto3.setOpaque(false);
-                //     campTexto3.setBorder(bordaCampTexto);
-                //     campTexto3.setFont(fontDosCampTexto);
-                //     comp23.setLayout(layout1);
-                //     comp23.add(tituloPais);
-                //     comp23.add(campTexto3);
-                //     comp23.setFont(fontDosTitulos);
-                     comp23.setOpaque(false);
-                     comp25.setOpaque(false);
+                
                 // //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
                     JLabel tituloCod = new JLabel("Nome: ");
-                    campTexto4 = new JTextField(18);
+                    selecionaArea.setPreferredSize(new Dimension(375, 35));
+                    selecionaArea.setFont(fontDosCampTexto);
+                    //campTexto4 = new JTextField(18);
                     tituloCod.setFont(fontDosTitulos);
-                    campTexto4.setOpaque(false);
-                    campTexto4.setBorder(bordaCampTexto);
-                    campTexto4.setFont(fontDosCampTexto);
+                    // campTexto4.setOpaque(false);
+                    // campTexto4.setBorder(bordaCampTexto);
+                    // campTexto4.setFont(fontDosCampTexto);
                     comp24.setLayout(layout1);
                     comp24.add(tituloCod);
-                    comp24.add(campTexto4);
+                    comp24.add(selecionaArea);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
 
-                comp2.add(comp21);
-                comp2.add(comp22);
+                //comp2.add(comp21);
+                //comp2.add(comp22);
                 comp2.add(comp24);
-                comp2.add(comp23);
-                comp2.add(comp25);
+                //comp2.add(comp23);
+                //comp2.add(comp25);
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
@@ -197,7 +159,7 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
             String msg = acme.carregarDadosJson(campTexto4.getText());
             new DialogMensagens(msg);
         } else if(e.getSource() == voltar) { //voltar
-            campTexto4.setText("");
+            //campTexto4.setText("");
             home.mudaPainel(5);
         } 
     }

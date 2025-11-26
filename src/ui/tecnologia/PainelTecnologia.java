@@ -41,7 +41,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         this.home = home;
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         corFundo = new Color(238, 236, 194);
         azul = new Color(0, 100, 250);

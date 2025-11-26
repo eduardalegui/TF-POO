@@ -31,7 +31,7 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
         modeloIds = new DefaultComboBoxModel<>();
         adicionaComboBoxNomes();
         selecionaArea = new JComboBox<>(modeloIds);
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);

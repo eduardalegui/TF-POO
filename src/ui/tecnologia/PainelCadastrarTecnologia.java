@@ -31,7 +31,7 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
         modeloIds = new DefaultComboBoxModel<>();
         adicionaComboBoxNomes();
         selecionaArea = new JComboBox<>(modeloIds);
-        this.setSize(1200,700);
+        //this.setSize(1200,700);
         //this.setTitle("Cadastrar Tecnologia"); // nome da janela
         //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);
