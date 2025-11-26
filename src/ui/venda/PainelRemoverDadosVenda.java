@@ -64,10 +64,11 @@ public class PainelRemoverDadosVenda extends JPanel implements ActionListener{
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
                 JLabel tituloCod = new JLabel("Id: ");
-                campTexto4 = new JTextField(18);
+                campTexto4 = new JTextField(10);
                 tituloCod.setFont(fontDosTitulos);
                 campTexto4.setOpaque(false);
                 campTexto4.setBorder(bordaCampTexto);
+                campTexto4.setFont(fontDosCampTexto);
                 comp2.add(tituloCod);
                 comp2.add(campTexto4);
             //===============================================

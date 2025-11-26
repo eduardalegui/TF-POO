@@ -95,10 +95,6 @@ public class ACMETech {
                 String stringPeso = sc.next();
                 String stringTemperatura = sc.next();
                 String stringFornecedor = sc.next();
-                // long id = Long.parseLong(stringId);
-                // double valorBase = Double.parseDouble(stringValorBase);
-                // double peso = Double.parseDouble(stringPeso);
-                // double temperatura = Double.parseDouble(stringTemperatura);
                 long fornecedor = Long.parseLong(stringFornecedor);
                 for(Participante p : participantes.getParticipantes()) {
                     if(p instanceof Fornecedor) {

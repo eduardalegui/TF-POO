@@ -17,7 +17,7 @@ public class Venda{
         this.tecnologia = tecnologia;
     }
 
-    public void calculaValorFinal(){
+    public double calculaValorFinal(){
         double valorFinal = 0;
         double valorBase = tecnologia.getValorBase();
         Area area = tecnologia.getFornecedor().getArea();
@@ -42,6 +42,7 @@ public class Venda{
             valorFinal = valorBase + (valorBase * ((25 - qtdVendas) / 100));
         }
         setValorFinal(valorFinal);
+        return valorFinal;
     }
 
     public long getNum() {

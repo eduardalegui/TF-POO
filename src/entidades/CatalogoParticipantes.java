@@ -134,7 +134,6 @@ public class CatalogoParticipantes {
             if (!cadastrado) {
                 participantes.add(c);
             }
-
             return "Comprador cadastrado";
         } catch (NullPointerException e) {
             return "ERRO: Preencha todos os campos corretamente";
@@ -431,6 +430,9 @@ public class CatalogoParticipantes {
                 }
             }
         }
+        for(Tecnologia t : tecnologiasSemFornecedor) {
+            array.add(String.valueOf(t.getId()));
+        }
         return array;
     }
 
@@ -556,6 +558,7 @@ public class CatalogoParticipantes {
                 fornecedor.setArrayTecnologias(novaTecnologia);
             } else {
                 tecnologiasSemFornecedor.add(novaTecnologia);
+                Collections.sort(tecnologiasSemFornecedor, Comparator.comparing(Tecnologia::getId));
             }
             
             return "Tecnologia cadastrada";
@@ -624,7 +627,5 @@ public class CatalogoParticipantes {
             }
         }
         return false;
-    }
-
-    
+    } 
 }

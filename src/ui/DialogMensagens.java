@@ -13,7 +13,7 @@ public class DialogMensagens extends JDialog{
         Color corFundo = new Color(238, 236, 194);
         Color amarelo = new Color(255, 194, 62);
         GridBagLayout layout1 = new GridBagLayout();
-        Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 20);
+        Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 16);
         JLabel areaTexto = new JLabel(msg);
         JPanel comp4 = new JPanel();
         areaTexto.setFont(fontAreaTexto);
