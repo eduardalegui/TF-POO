@@ -17,25 +17,6 @@ public class PainelTecnologia extends JPanel implements ActionListener {
     private JButton botao24;
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
-    private JPanel botaoVoltar;
-    private JPanel comp1;
-    private JPanel comp2;
-    private JPanel comp21;
-    private JPanel comp22;
-    private JPanel comp23;
-    private JPanel comp24;
-    private Color corFundo;
-    private Color azul;
-    private BoxLayout layout;
-    private FlowLayout  layoutB;
-    private FlowLayout  layout11;
-    private MatteBorder bordaBotao;
-    private MatteBorder bordaTF;
-    private Font fontBotoes;
-    private Font fontTF;
-    private EmptyBorder bordaComp;
-    private Dimension dimensao;
-    private JLabel tituloTF;
 
     public PainelTecnologia(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
@@ -43,33 +24,33 @@ public class PainelTecnologia extends JPanel implements ActionListener {
         this.home = home;
         //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
-        corFundo = new Color(238, 236, 194);
-        azul = new Color(0, 100, 250);
-        layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        Color corFundo = new Color(238, 236, 194);
+        Color azul = new Color(0, 100, 250);
+        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         //===============================================
-            fontBotoes = new Font("SansSerif", Font.BOLD, 25);
-            bordaBotao = new MatteBorder(2,2, 2, 2, azul);
-            layoutB = new FlowLayout(FlowLayout.LEFT);
+            Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
+            MatteBorder bordaBotao = new MatteBorder(2,2, 2, 2, azul);
+            FlowLayout layoutB = new FlowLayout(FlowLayout.LEFT);
             voltar = new JButton("Voltar");
             voltar.setPreferredSize(new Dimension(100, 40));
             voltar.setBorder(bordaBotao);
             voltar.setLayout(layoutB);
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
-            botaoVoltar = new JPanel();
+            JPanel botaoVoltar = new JPanel();
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 0));
             botaoVoltar.setLayout(layoutB);
             botaoVoltar.add(voltar);
             botaoVoltar.setOpaque(false);
         //===============================================
         //=============================================== 
-            fontTF = new Font("SansSerif", Font.BOLD, 60);
-            layout11 = new FlowLayout(FlowLayout.CENTER);
-            bordaTF = new MatteBorder(0, 0, 4, 0, azul);
-            tituloTF = new JLabel("Métodos de Tecnologia");
+            Font fontTF = new Font("SansSerif", Font.BOLD, 60);
+            FlowLayout layout11 = new FlowLayout(FlowLayout.CENTER);
+            MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, azul);
+            JLabel tituloTF = new JLabel("Métodos de Tecnologia");
             tituloTF.setBorder(bordaTF);
             tituloTF.setFont(fontTF);
-            comp1 = new JPanel();
+            JPanel comp1 = new JPanel();
             comp1.setLayout(layout11);
             comp1.setSize(1200,40);
             comp1.setBorder(BorderFactory.createEmptyBorder(80, 0, 0, 0));
@@ -77,19 +58,19 @@ public class PainelTecnologia extends JPanel implements ActionListener {
             comp1.add(tituloTF);
         //===============================================
         //===============================================
-            comp2 = new JPanel();
+            JPanel comp2 = new JPanel();
             comp2.setLayout(layout11);
             comp2.setMaximumSize(new Dimension(800, 200));
             comp2.setBorder(BorderFactory.createEmptyBorder(20, 0, 400, 0));
-            bordaComp = new EmptyBorder(0,25,20,25);
-            dimensao = new Dimension(250, 100);
+            EmptyBorder bordaComp = new EmptyBorder(0,25,20,25);
+            Dimension dimensao = new Dimension(250, 100);
             //===============================================
                 botao21= new JButton("Cadastrar");
                 botao21.setPreferredSize(dimensao);
                 botao21.setBorder(bordaBotao);
                 botao21.setBackground(azul);
                 botao21.setFont(fontBotoes);
-                comp21 = new JPanel();
+                JPanel comp21 = new JPanel();
                 comp21.setBorder(bordaComp);
                 comp21.add(botao21);
                 comp21.setOpaque(false);
@@ -100,7 +81,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
                 botao22.setBorder(bordaBotao);
                 botao22.setBackground(azul);
                 botao22.setFont(fontBotoes);
-                comp22 = new JPanel();
+                JPanel comp22 = new JPanel();
                 comp22.setBorder(bordaComp);
                 comp22.add(botao22);
                 comp22.setOpaque(false);
@@ -111,7 +92,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
                 botao23.setBorder(bordaBotao);
                 botao23.setBackground(azul);
                 botao23.setFont(fontBotoes);
-                comp23 = new JPanel();
+                JPanel comp23 = new JPanel();
                 comp23.setBorder(bordaComp);
                 comp23.add(botao23);
                 comp23.setOpaque(false);
@@ -122,7 +103,7 @@ public class PainelTecnologia extends JPanel implements ActionListener {
                 botao24.setBorder(bordaBotao);
                 botao24.setBackground(azul);
                 botao24.setFont(fontBotoes);
-                comp24 = new JPanel();
+                JPanel comp24 = new JPanel();
                 comp24.setBorder(bordaComp);
                 comp24.add(botao24);
                 comp24.setOpaque(false);
