@@ -24,13 +24,11 @@ public class DialogMaiorValorComprador extends JDialog{
         GridBagLayout layout11 = new GridBagLayout();
         botaoVoltar.setMaximumSize(new Dimension(700, 500));
         botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        botaoVoltar.setOpaque(true);
         botaoVoltar.setLayout(layout);
         botaoVoltar.setBackground(corFundo);
         JPanel comp1 = new JPanel();
         JLabel titulo = new JLabel("COMPRADOR COM MAIOR NÚMERO DE VENDAS");
         comp1.setBackground(vermelho);
-        comp1.setOpaque(true);
         comp1.setMaximumSize(new Dimension(700, 40));
         titulo.setFont(new Font("SansSerif", Font.BOLD, 23));
         comp1.add(titulo);

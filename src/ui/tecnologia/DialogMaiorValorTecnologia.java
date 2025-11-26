@@ -21,13 +21,11 @@ public class DialogMaiorValorTecnologia extends JDialog{
         GridBagLayout layout11 = new GridBagLayout();
         botaoVoltar.setMaximumSize(new Dimension(700, 500));
         botaoVoltar.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        botaoVoltar.setOpaque(true);
         botaoVoltar.setLayout(layout);
         botaoVoltar.setBackground(corFundo);
         JPanel comp1 = new JPanel();
         JLabel titulo = new JLabel("TECNOLOGIA DE MAIOR VALOR");
         comp1.setBackground(azul);
-        comp1.setOpaque(true);
         comp1.setMaximumSize(new Dimension(700, 40));
         titulo.setFont(new Font("SansSerif", Font.BOLD, 23));
         comp1.add(titulo);
@@ -51,7 +49,7 @@ public class DialogMaiorValorTecnologia extends JDialog{
         this.add(botaoVoltar);
         this.setModal(true);
         this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!
+        this.setVisible(true); // ultima linha!!
     }
     
     public String maiorValor(){

@@ -9,7 +9,6 @@ import javax.swing.border.MatteBorder;
 import src.entidades.CatalogoParticipantes;
 import src.ui.HomePage;
 
-
 public class PainelVenda extends JPanel implements ActionListener{
     private JButton voltar;
     private JButton botao21;
@@ -19,12 +18,10 @@ public class PainelVenda extends JPanel implements ActionListener{
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
 
-
     public PainelVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         this.home = home;
-        //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         Color corFundo = new Color(238, 236, 194);
         Color amarelo = new Color(255, 194, 62);

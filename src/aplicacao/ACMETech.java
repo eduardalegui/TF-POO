@@ -17,20 +17,8 @@ import src.entidades.Fornecedor;
 import src.entidades.Participante;
 import src.entidades.Tecnologia;
 import src.entidades.Venda;
-// import src.ui.comprador.DialogRelatorioComprador;
-// import src.ui.comprador.DialogRelatorioComprador;
-// import src.ui.comprador.PainelCadastrarComprador;
-// import src.ui.comprador.PainelComprador;
-// import src.ui.fornecedor.DialogRelatorioFornecedor;
-// import src.ui.fornecedor.PainelCadastrarFornecedor;
-// import src.ui.fornecedor.PainelFornecedor;
-// import src.ui.tecnologia.DialogRelatorioTecnologia;
-// import src.ui.tecnologia.PainelCadastrarTecnologia;
-// import src.ui.tecnologia.PainelTecnologia;
-// import src.ui.venda.DialogRelatorioVenda;
-// import src.ui.venda.PainelCadastrarVenda;
-// import src.ui.venda.PainelVenda;
- import src.ui.HomePage;
+import src.ui.HomePage;
+
 public class ACMETech {
     private CatalogoParticipantes participantes;
     private List<String> retornoFornecedores = new ArrayList<>();
@@ -50,14 +38,6 @@ public class ACMETech {
         HomePage minhaJanela = new HomePage(participantes, this);
         minhaJanela.setLocationRelativeTo(null);
         minhaJanela.setVisible(true);
-        // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
-        // PainelComprador minhaJanela = new PainelComprador();
-        // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();
-        // PainelFornecedor minhaJanela = new PainelFornecedor();
-        // PainelCadastrarTecnologia minhaJanela = new PainelCadastrarTecnologia();
-        // PainelTecnologia minhaJanela = new PainelTecnologia();
-        // PainelCadastrarVenda minhaJanela = new PainelCadastrarVenda();
-        // PainelVenda minhaJanela = new PainelVenda();
     }
 
     public List<String> lerArquivoParticipantes(String caminho) {
@@ -322,7 +302,8 @@ public class ACMETech {
     public String carregarDadosJson(String caminho) {
         String nomeArquivo = caminho + ".json";
         Path path = Paths.get("src","recursos", nomeArquivo);
-        Scanner sc = null;        
+        Scanner sc = null;
+        String retorno;        
         try (BufferedReader br = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
             List<String> fornecedores = new ArrayList<>();
             List<String> compradores = new ArrayList<>();
@@ -344,7 +325,7 @@ public class ACMETech {
                         String nome = fornecedores.get(i + 1).substring(1, fornecedores.get(i + 1).length() - 1);
                         String fundacao = fornecedores.get(i + 2).substring(1,fornecedores.get(i + 2).length() - 1);
                         String area = fornecedores.get(i + 3).substring(1, fornecedores.get(i + 3).length()  - 1);
-                        participantes.cadastrarFornecedor(cod, nome, fundacao, area);
+                        String retornoFornecedor = participantes.cadastrarFornecedor(cod, nome, fundacao, area);
                     }
                     for(int i = 0; i < compradores.size(); i += 4) {
                         String cod = compradores.get(i);
@@ -395,12 +376,13 @@ public class ACMETech {
                         String data = vendas.get(i + 1).substring(1, vendas.get(i + 1).length() - 1);
                         participantes.cadastrarVenda(num, data, c, tecnologia);
                     }
+                } catch(StringIndexOutOfBoundsException e) {
+                    retorno = "Arquivo invalido";
                 } catch (NumberFormatException e) {
-                        System.out.println("ERRO: Formato invalido");
-                        continue;
+                    continue;
                 } catch(NoSuchElementException e) {
                     continue;
-                }
+                } 
             }
         } catch (IOException e) {
             return "Erro ao carregar o arquivo";

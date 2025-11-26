@@ -15,7 +15,6 @@ public class DialogMensagens extends JDialog{
         JPanel botaoVoltar = new JPanel();
         BoxLayout layout = new BoxLayout(botaoVoltar, BoxLayout.Y_AXIS);
         GridBagLayout layout11 = new GridBagLayout();
-        botaoVoltar.setOpaque(true);
         botaoVoltar.setLayout(layout);
         botaoVoltar.setBackground(corFundo);
         JPanel comp4 = new JPanel();
@@ -35,6 +34,6 @@ public class DialogMensagens extends JDialog{
         this.add(botaoVoltar);
         this.setModal(true);
         this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!!
+        this.setVisible(true); // ultima linha!!!
     }
 }

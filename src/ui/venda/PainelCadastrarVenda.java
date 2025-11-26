@@ -9,7 +9,6 @@ import src.entidades.*;
 import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
-
 public class PainelCadastrarVenda extends JPanel implements ActionListener {
     private CatalogoParticipantes catalogoParticipantes;
     private JButton voltar = new JButton("Voltar");
@@ -17,7 +16,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
     private JButton botao2= new JButton("Limpar");
     private JTextField campTexto1 = new JTextField(20);
     private JTextField campTexto2 = new JTextField(20);
-    //private JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"Coyote", "Alianca rebelde"});
     private DefaultComboBoxModel<String> modeloNomes;
     private DefaultComboBoxModel<String> modeloIds;
     private JComboBox<String> selecionaComprador;
@@ -26,6 +24,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
 
     public PainelCadastrarVenda(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
+        this.home = home;
         this.catalogoParticipantes = catalogoParticipantes;
         modeloNomes = new DefaultComboBoxModel<>();
         modeloIds = new DefaultComboBoxModel<>();
@@ -33,18 +32,11 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
         adicionaComboBoxIds();
         selecionaComprador = new JComboBox<>(modeloNomes);
         selecionaTecnologia = new JComboBox<>(modeloIds);
-        //this.setSize(1200,700);
-        //this.setTitle("Cadastrar Venda"); // nome da janela
-        //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
         //===============================================
-            this.home = home;
-            // JPanel body = new JPanel();
-            // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
-            // Color corFundo = new Color(238, 236, 194);
             Color amarelo = new Color(255, 194, 62);
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             MatteBorder bordaBotaoVoltar = new MatteBorder(2,2, 2, 2, amarelo);
@@ -54,26 +46,18 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 25, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
             voltar.setBorder(bordaBotaoVoltar);
             voltar.setLayout(layoutB);
             botaoVoltar.setLayout(layoutB);
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
-            // body.add(botaoVoltar);
-            // body.setLayout(layout);
-            // body.setBackground(corFundo);
-            // body.setOpaque(true); //não o torna tranparente
-            // body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-            
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
                 JLabel titulo = new JLabel("CADASTRAR VENDA");
                 comp1.setLayout(layout11);
                 comp1.setBackground(amarelo);
-                comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);
@@ -89,11 +73,9 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, amarelo);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
-
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNumero = new JLabel("Número: ");
-                    //campTexto1 = new JTextField(20);
                     tituloNumero.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -107,7 +89,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloData = new JLabel("Data: ");
-                    //campTexto2 = new JTextField(20);
                     tituloData.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -119,7 +100,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                     comp22.setOpaque(false);
                 //===============================================
                 //===============================================
-                    //JComboBox<String> selecionaComprador = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp23 = new JPanel();
                     JLabel tituloComprador = new JLabel("Comprador: ");
                     selecionaComprador.setPreferredSize(new Dimension(500, 50));
@@ -132,7 +112,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                     comp23.setOpaque(false);
                 //===============================================
                 //===============================================
-                    // JComboBox<String> selecionaTecnologia = new JComboBox<>(new String[]{"TI", "Androides", "Emergente", "Alimentos"});
                     JPanel comp24 = new JPanel();
                     JLabel tituloTecnologia = new JLabel("Tecnologia: ");
                     selecionaTecnologia.setPreferredSize(new Dimension(500, 50));
@@ -144,7 +123,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
-
                 comp2.add(comp22);
                 comp2.add(comp21);
                 comp2.add(comp23);
@@ -153,20 +131,15 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             //===============================================
                 JPanel comp3 = new JPanel();
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
-                FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                
+                FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);                
                 botao1.setPreferredSize(new Dimension(150, 60));
-                botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
                 botao1.setBackground(amarelo);
                 botao1.setFont(fontBotoes);
-
                 botao2.setPreferredSize(new Dimension(150, 60));
-                botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
                 botao2.setBackground(amarelo);
                 botao2.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
@@ -174,16 +147,10 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                 comp3.add(botao1);
                 comp3.add(botao2);
             //===============================================
-
-            // body.add(comp1);
-            // body.add(comp2);
-            // body.add(comp3);
-        //===============================================
             botao1.addActionListener(this);
             botao2.addActionListener(this);
             voltar.addActionListener(this);
         //===============================================
-        //this.add(body);
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
@@ -216,7 +183,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
             }
             String msg = catalogoParticipantes.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelecionada));
             new DialogMensagens(msg);
-            //JOptionPane.showMessageDialog(null, msg);
             
         } else if(e.getSource() == botao2) { //limpar
             limpar();

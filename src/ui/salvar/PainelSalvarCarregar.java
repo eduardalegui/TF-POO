@@ -9,8 +9,6 @@ import javax.swing.border.MatteBorder;
 import src.aplicacao.ACMETech;
 import src.ui.HomePage;
 
-
-
 public class PainelSalvarCarregar extends JPanel implements ActionListener{
     private JButton voltar;
     private JButton botao21;
@@ -22,7 +20,6 @@ public class PainelSalvarCarregar extends JPanel implements ActionListener{
         super();
         this.acme = acme;
         this.home = home;
-        //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);

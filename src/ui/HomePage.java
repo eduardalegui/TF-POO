@@ -13,16 +13,15 @@ import src.ui.salvar.*;
 import src.ui.tecnologia.*;
 import src.ui.venda.*;
 
-
 public class HomePage extends JFrame implements ActionListener {
     private CatalogoParticipantes catalogoParticipantes;
     private ACMETech acme;
-    private JButton botao21 = new JButton("Comprador");
-    private JButton botao22 = new JButton("Fornecedor");
-    private JButton botao23 = new JButton("Tecnologia");
-    private JButton botao24 = new JButton("Venda");
-    private JButton botao31 = new JButton("Salvar/Carregar");
-    private JButton botao32 = new JButton("Sair");
+    private JButton botao21;
+    private JButton botao22;
+    private JButton botao23;
+    private JButton botao24;
+    private JButton botao31;
+    private JButton botao32;
     private PainelVenda painelVenda;
     private PainelTecnologia painelTecnologia;
     private PainelComprador painelComprador;
@@ -39,20 +38,8 @@ public class HomePage extends JFrame implements ActionListener {
     private PainelCarregarDadosSalvarCarregar painelCarregarDadosSalvarCarregar;
     private PainelDefinirFornecedorTecnologia painelDefinirFornecedorTecnologia;
     private long idCompradorEscolhidoParaModificacao;
+    private JPanel body;
 
-    public long getidCompradorEscolhidoParaModificacao(){
-        return idCompradorEscolhidoParaModificacao;
-    }
-
-    public void setidCompradorEscolhidoParaModificacao(long idCompradorEscolhidoParaModificacao){
-        this.idCompradorEscolhidoParaModificacao = idCompradorEscolhidoParaModificacao;
-    }
-    // private DialogRelatorioComprador dialogRelatorioComprador = new DialogRelatorioComprador(catalogoParticipantes);
-    // private DialogRelatorioFornecedor dialogRelatorioFornecedor = new DialogRelatorioFornecedor(catalogoParticipantes);
-    // private DialogRelatorioTecnologia dialogRelatorioTecnologia = new DialogRelatorioTecnologia(catalogoParticipantes);
-    // private DialogRelatorioVenda dialogRelatorioVenda = new DialogRelatorioVenda(catalogoParticipantes);
-    private JPanel painelPrincipal;
-    // public HomePage(int f){}
     public HomePage(CatalogoParticipantes catalogoParticipantes, ACMETech acme) {
         super();
         this.acme = acme;
@@ -70,13 +57,13 @@ public class HomePage extends JFrame implements ActionListener {
         painelSalvarCarregar = new PainelSalvarCarregar(this, acme);
         painelModificarComprador = new PainelModificarComprador(this, catalogoParticipantes);
         painelSalvarDadosSalvarCarregar= new PainelSalvarDadosSalvarCarregar(this, acme);
-        painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this, acme);
+        painelCarregarDadosSalvarCarregar= new PainelCarregarDadosSalvarCarregar(this, acme, catalogoParticipantes);
         painelDefinirFornecedorTecnologia = new PainelDefinirFornecedorTecnologia(this, catalogoParticipantes);
         this.setSize(1200,700);
         this.setTitle("TF_POO"); // nome da janela
         setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.    
         //===============================================
-            JPanel body = new JPanel();
+            body = new JPanel();
             BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
             Color vermelho = new Color(233, 37, 37);
             Color corFundo = new Color(238, 236, 194);
@@ -87,8 +74,6 @@ public class HomePage extends JFrame implements ActionListener {
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
             body.setLayout(layout);
             body.setBackground(corFundo);
-            body.setOpaque(true); //não o torna tranparente
-
             //===============================================
                 JPanel comp11 = new JPanel();
                 MatteBorder bordaTF = new MatteBorder(0, 0, 4, 0, vermelho);
@@ -132,13 +117,11 @@ public class HomePage extends JFrame implements ActionListener {
                 comp2.setLayout(layout11);
                 comp2.setMaximumSize(new Dimension(900, 200));
                 comp2.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));
-
                 //===============================================
                     JPanel comp21 = new JPanel();
-                    //botao21= new JButton("Comprador");
+                    botao21 = new JButton("Comprador");
                     MatteBorder bordaBotoes21 = new MatteBorder(2, 2, 2, 2, vermelho);
                     botao21.setPreferredSize(new Dimension(200, 100));
-                    botao21.setOpaque(true);
                     botao21.setBorder(bordaBotoes21);
                     botao21.setBackground(vermelho);
                     botao21.setFont(fontBotoes);
@@ -148,10 +131,9 @@ public class HomePage extends JFrame implements ActionListener {
                 //===============================================
                 //===============================================
                     JPanel comp22 = new JPanel();
-                    // botao22 = new JButton("Fornecedor");
+                    botao22 = new JButton("Fornecedor");
                     MatteBorder bordaBotoes22 = new MatteBorder(2, 2, 2, 2, verde);
                     botao22.setPreferredSize(new Dimension(200, 100));
-                    botao22.setOpaque(true);
                     botao22.setBorder(bordaBotoes22);
                     botao22.setBackground(verde);
                     botao22.setFont(fontBotoes);
@@ -160,10 +142,9 @@ public class HomePage extends JFrame implements ActionListener {
                 //===============================================
                 //===============================================
                     JPanel comp23 = new JPanel();
-                    // botao23 = new JButton("Tecnologia");
+                    botao23 = new JButton("Tecnologia");
                     MatteBorder bordaBotoes23 = new MatteBorder(2, 2, 2, 2, azul);
                     botao23.setPreferredSize(new Dimension(200, 100));
-                    botao23.setOpaque(true);
                     botao23.setBorder(bordaBotoes23);
                     botao23.setBackground(azul);
                     botao23.setFont(fontBotoes);
@@ -173,9 +154,9 @@ public class HomePage extends JFrame implements ActionListener {
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
+                    botao24 = new JButton("Venda");
                     MatteBorder bordaBotoes24 = new MatteBorder(2, 2, 2, 2, amarelo);
                     botao24.setPreferredSize(new Dimension(200, 100));
-                    botao24.setOpaque(true);
                     botao24.setBorder(bordaBotoes24);
                     botao24.setBackground(amarelo);
                     botao24.setFont(fontBotoes);
@@ -195,8 +176,8 @@ public class HomePage extends JFrame implements ActionListener {
                 
                 //===============================================
                     JPanel comp31 = new JPanel();
+                    botao31 = new JButton("Salvar/Carregar");
                     botao31.setPreferredSize(new Dimension(230, 50));
-                    botao31.setOpaque(true);
                     botao31.setBorder(bordaBotoes3);
                     botao31.setBackground(corFundo);
                     botao31.setFont(fontBotoes);
@@ -206,8 +187,8 @@ public class HomePage extends JFrame implements ActionListener {
                 //===============================================
                 //===============================================
                     JPanel comp32 = new JPanel();
+                    botao32 = new JButton("Sair");
                     botao32.setPreferredSize(new Dimension(230, 50));
-                    botao32.setOpaque(true);
                     botao32.setBorder(bordaBotoes3);
                     botao32.setBackground(corFundo);
                     botao32.setFont(fontBotoes);
@@ -270,7 +251,6 @@ public class HomePage extends JFrame implements ActionListener {
             body.add(comp2);
             body.add(comp3);
             body.add(comp4);
-            painelPrincipal = body;
         //===============================================
             botao21.addActionListener(this);
             botao22.addActionListener(this);
@@ -279,8 +259,15 @@ public class HomePage extends JFrame implements ActionListener {
             botao31.addActionListener(this);
             botao32.addActionListener(this);
         //========================
-        
         this.add(body);
+    }
+
+    public long getIdCompradorEscolhidoParaModificacao(){
+        return idCompradorEscolhidoParaModificacao;
+    }
+
+    public void setIdCompradorEscolhidoParaModificacao(long idCompradorEscolhidoParaModificacao){
+        this.idCompradorEscolhidoParaModificacao = idCompradorEscolhidoParaModificacao;
     }
 
     @Override
@@ -302,7 +289,7 @@ public class HomePage extends JFrame implements ActionListener {
     public void mudaPainel(int painel) {
         switch(painel) {
             case 0:
-                this.setContentPane(painelPrincipal);
+                this.setContentPane(body);
                 this.pack();
                 this.setSize(1200, 700);
                 break;

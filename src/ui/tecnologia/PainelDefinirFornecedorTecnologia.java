@@ -9,7 +9,6 @@ import src.entidades.*;
 import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
-
 public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionListener {
     private JButton botao1= new JButton("Enviar");
     private JButton botao2= new JButton("Limpar");
@@ -31,7 +30,6 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
         modeloIds = new DefaultComboBoxModel<>();
         adicionaComboBoxNomes();
         selecionaArea = new JComboBox<>(modeloIds);
-        //this.setSize(1200,700);
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
@@ -47,7 +45,6 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 15, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
             voltar.setBorder(bordaBotaoVoltar);
             voltar.setLayout(layoutB);
             botaoVoltar.setLayout(layoutB);
@@ -60,7 +57,6 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
                 JLabel titulo = new JLabel("DEFINIR FORNECEDOR DE TECNOLOGIA");
                 comp1.setLayout(layout11);
                 comp1.setBackground(azul);
-                comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 300));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);
@@ -108,20 +104,15 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
             //===============================================
                 JPanel comp3 = new JPanel();
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
-                FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                
+                FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);                
                 botao1.setPreferredSize(new Dimension(150, 60));
-                botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
                 botao1.setBackground(azul);
                 botao1.setFont(fontBotoes);
-
                 botao2.setPreferredSize(new Dimension(150, 60));
-                botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
                 botao2.setBackground(azul);
                 botao2.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);

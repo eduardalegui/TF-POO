@@ -21,7 +21,6 @@ public class PainelComprador extends JPanel implements ActionListener{
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         this.home = home;
-        //this.setSize(1200,700);
         this.setMinimumSize(new Dimension(1200, 700));
         Color corFundo = new Color(238, 236, 194);
         Color vermelho = new Color(233, 37, 37);

@@ -9,8 +9,6 @@ import src.entidades.*;
 import src.ui.DialogMensagens;
 import src.ui.HomePage;
 
-
-
 public class PainelCadastrarComprador extends JPanel implements ActionListener{
     private JButton botao1;
     private JButton botao2;
@@ -21,15 +19,14 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
     private JTextField campTexto4 = new JTextField(20);
     private CatalogoParticipantes catalogoParticipantes;
     private HomePage home;
-
     public PainelCadastrarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        this.home = home;
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
-        this.home = home;
         //===============================================
             Color vermelho = new Color(233, 37, 37);
             voltar = new JButton("Voltar");
@@ -41,7 +38,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 70, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
             voltar.setBorder(bordaBotaoVoltar);
             voltar.setLayout(layoutB);
             botaoVoltar.setLayout(layoutB);
@@ -54,7 +50,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 JLabel titulo = new JLabel("CADASTRAR COMPRADOR");
                 comp1.setLayout(layout11);
                 comp1.setBackground(vermelho);
-                comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);
@@ -70,11 +65,9 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, vermelho);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
-
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNome = new JLabel("Nome: ");
-                    //JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -88,7 +81,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloEmail = new JLabel("Email: ");
-                    //JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -102,7 +94,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp23 = new JPanel();
                     JLabel tituloPais = new JLabel("Pais: ");
-                    //JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
                     campTexto3.setBorder(bordaCampTexto);
@@ -116,7 +107,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp24 = new JPanel();
                     JLabel tituloCod = new JLabel("Cod: ");
-                    //JTextField campTexto4 = new JTextField(20);
                     tituloCod.setFont(fontDosTitulos);
                     campTexto4.setOpaque(false);
                     campTexto4.setBorder(bordaCampTexto);
@@ -127,7 +117,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
-                
                 comp2.add(comp24);
                 comp2.add(comp23);
                 comp2.add(comp22);
@@ -139,19 +128,14 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                
                 botao1.setPreferredSize(new Dimension(150, 60));
-                botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
                 botao1.setBackground(vermelho);
                 botao1.setFont(fontBotoes);
-
                 botao2.setPreferredSize(new Dimension(150, 60));
-                botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
                 botao2.setBackground(vermelho);
                 botao2.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
@@ -159,16 +143,10 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
                 comp3.add(botao1);
                 comp3.add(botao2);
             //===============================================
-
-            // body.add(comp1);
-            // body.add(comp2);
-            // body.add(comp3);
-        //===============================================
         botao1.addActionListener(this);
         botao2.addActionListener(this);
         voltar.addActionListener(this);
         //==============================================
-        //this.add(body);
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);

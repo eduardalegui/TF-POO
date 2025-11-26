@@ -21,11 +21,11 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
     public PainelAlterarDadosComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        this.home = home;
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
-        this.home = home;
         //===============================================
             Color vermelho = new Color(233, 37, 37);
             voltar = new JButton("Voltar");
@@ -37,7 +37,6 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 85, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
             voltar.setBorder(bordaBotaoVoltar);
             voltar.setLayout(layoutB);
             botaoVoltar.setLayout(layoutB);
@@ -50,7 +49,6 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
                 JLabel titulo = new JLabel("ALTERAR DADOS DO COMPRADOR");
                 comp1.setLayout(layout11);
                 comp1.setBackground(vermelho);
-                comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);
@@ -80,7 +78,6 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 botao1.setPreferredSize(new Dimension(150, 60));
-                botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
                 botao1.setBackground(vermelho);
                 botao1.setFont(fontBotoes);
@@ -123,7 +120,7 @@ public class PainelAlterarDadosComprador extends JPanel implements ActionListene
                 if (p instanceof Comprador) {
                     comprador = (Comprador) p;
                     if (comprador.getCod() == id) {
-                        home.setidCompradorEscolhidoParaModificacao(id);
+                        home.setIdCompradorEscolhidoParaModificacao(id);
                         return true;
                     }
                 }

@@ -25,18 +25,12 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
     public PainelModificarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
-        //this.setSize(1200,700);
-        //this.setTitle("Cadastrar Comprador"); // nome da janela
-        //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
+        this.home = home;
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
         //===============================================
-        this.home = home;
-            // JPanel body = new JPanel();
-            // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
-            // Color corFundo = new Color(238, 236, 194);
             Color vermelho = new Color(233, 37, 37);
             voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
@@ -47,26 +41,18 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             botaoVoltar.setBorder(BorderFactory.createEmptyBorder(10, 10, 70, 0));
             voltar.setPreferredSize(new Dimension(100, 40));
             botaoVoltar.setOpaque(false);
-            voltar.setOpaque(true);
             voltar.setBorder(bordaBotaoVoltar);
             voltar.setLayout(layoutB);
             botaoVoltar.setLayout(layoutB);
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
-            // body.add(botaoVoltar);
-            // body.setLayout(layout);
-            // body.setBackground(corFundo);
-            // body.setOpaque(true); //não o torna tranparente
-            // body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-            
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
                 JLabel titulo = new JLabel("MODIFICAR COMPRADOR");
                 comp1.setLayout(layout11);
                 comp1.setBackground(vermelho);
-                comp1.setOpaque(true);
                 comp1.setMaximumSize(new Dimension(1200, 150));
                 titulo.setFont(new Font("SansSerif", Font.BOLD, 50));
                 comp1.add(titulo);
@@ -83,11 +69,9 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 MatteBorder bordaCampTexto = new MatteBorder(0, 0, 2, 0, vermelho);
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
-
                 //===============================================
                     JPanel comp21 = new JPanel();
                     JLabel tituloNome = new JLabel("Nome: ");
-                    // JTextField campTexto1 = new JTextField(20);
                     tituloNome.setFont(fontDosTitulos);
                     campTexto1.setOpaque(false);
                     campTexto1.setBorder(bordaCampTexto);
@@ -101,7 +85,6 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp22 = new JPanel();
                     JLabel tituloEmail = new JLabel("Email: ");
-                    // JTextField campTexto2 = new JTextField(20);
                     tituloEmail.setFont(fontDosTitulos);
                     campTexto2.setOpaque(false);
                     campTexto2.setBorder(bordaCampTexto);
@@ -115,7 +98,6 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                     JPanel comp23 = new JPanel();
                     JLabel tituloPais = new JLabel("Pais: ");
-                    // JTextField campTexto3 = new JTextField(20);
                     tituloPais.setFont(fontDosTitulos);
                     campTexto3.setOpaque(false);
                     campTexto3.setBorder(bordaCampTexto);
@@ -128,20 +110,16 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 //===============================================
                 //===============================================
                     JPanel comp24 = new JPanel();
-                    JLabel tituloCodInserido = new JLabel("Código inserido: " + home.getidCompradorEscolhidoParaModificacao());
-                    // JTextField campTexto41 = new JTextField(20);
-                    //campTexto41.setText("Código inserido: " + painelAlterarDadosComprador.getCampTexto4());
+                    JLabel tituloCodInserido = new JLabel("Código inserido: " + home.getIdCompradorEscolhidoParaModificacao());
                     tituloCodInserido.setFont(fontDosTitulos);
                     campTexto41.setOpaque(false);
                     campTexto41.setBorder(bordaCampTexto);
                     campTexto41.setFont(fontDosCampTexto);
                     comp24.setLayout(layout3);
                     comp24.add(tituloCodInserido);
-                    //comp24.add(campTexto41);
                     comp24.setFont(fontDosTitulos);
                     comp24.setOpaque(false);
                 //===============================================
-
                 comp2.add(comp24);
                 comp2.add(comp21);
                 comp2.add(comp22);
@@ -153,19 +131,14 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 botao2= new JButton("Limpar");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
-                
                 botao1.setPreferredSize(new Dimension(150, 60));
-                botao1.setOpaque(true);
                 botao1.setBorder(bordaBotoes);
                 botao1.setBackground(vermelho);
                 botao1.setFont(fontBotoes);
-
                 botao2.setPreferredSize(new Dimension(150, 60));
-                botao2.setOpaque(true);
                 botao2.setBorder(bordaBotoes);
                 botao2.setBackground(vermelho);
                 botao2.setFont(fontBotoes);
-
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
@@ -173,16 +146,10 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 comp3.add(botao1);
                 comp3.add(botao2);
             //===============================================
-
-            // body.add(comp1);
-            // body.add(comp2);
-            // body.add(comp3);
-        //===============================================
         botao1.addActionListener(this);
         botao2.addActionListener(this);
         voltar.addActionListener(this);
         //==============================================
-        //this.add(body);
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
@@ -194,7 +161,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             String nome = campTexto1.getText();
             String email = campTexto2.getText();
             String pais = campTexto3.getText();
-            String stringId = Long.toString(home.getidCompradorEscolhidoParaModificacao());
+            String stringId = Long.toString(home.getIdCompradorEscolhidoParaModificacao());
             
             String msg = catalogoParticipantes.alterarOsDadosDeUmDeterminadoComprador(stringId, nome, pais, email);
             new DialogMensagens(msg);
