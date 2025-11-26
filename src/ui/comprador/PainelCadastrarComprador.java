@@ -25,18 +25,12 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
     public PainelCadastrarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
-        //this.setSize(1200,700);
-        //this.setTitle("Cadastrar Comprador"); // nome da janela
-        //setDefaultCloseOperation(EXIT_ON_CLOSE); //o codigo para de rodar quando clica para fechar a janela.
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
         this.setLayout(layout);
-        //===============================================
         this.home = home;
-            // JPanel body = new JPanel();
-            // BoxLayout layout = new BoxLayout(body, BoxLayout.Y_AXIS);
-            // Color corFundo = new Color(238, 236, 194);
+        //===============================================
             Color vermelho = new Color(233, 37, 37);
             voltar = new JButton("Voltar");
             Font fontBotoes = new Font("SansSerif", Font.BOLD, 25);
@@ -54,12 +48,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
             voltar.setFont(fontBotoes);
             voltar.setBackground(corFundo);
             botaoVoltar.add(voltar);
-            // body.add(botaoVoltar);
-            // body.setLayout(layout);
-            // body.setBackground(corFundo);
-            // body.setOpaque(true); //não o torna tranparente
-            // body.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-            
             //===============================================
                 JPanel comp1 = new JPanel();
                 GridBagLayout layout11 = new GridBagLayout();
@@ -185,8 +173,6 @@ public class PainelCadastrarComprador extends JPanel implements ActionListener{
         this.add(comp1);
         this.add(comp2);
         this.add(comp3);
-        //this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!!
     }
 
     public void actionPerformed(ActionEvent e) {

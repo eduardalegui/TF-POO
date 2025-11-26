@@ -281,8 +281,6 @@ public class HomePage extends JFrame implements ActionListener {
         //========================
         
         this.add(body);
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
     }
 
     @Override

@@ -17,26 +17,6 @@ public class PainelComprador extends JPanel implements ActionListener{
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
 
-    // private JPanel botaoVoltar;
-    // private JPanel comp1;
-    // private JPanel comp2;
-    // private JPanel comp21;
-    // private JPanel comp22;
-    // private JPanel comp23;
-    // private JPanel comp24;
-    // private Color corFundo;
-    // private Color vermelho;
-    // private BoxLayout layout;
-    // private FlowLayout  layoutB;
-    // private FlowLayout  layout11;
-    // private MatteBorder bordaBotao;
-    // private MatteBorder bordaTF;
-    // private Font fontBotoes;
-    // private Font fontTF;
-    // private EmptyBorder bordaComp;
-    // private Dimension dimensao;
-    // private JLabel tituloTF;
-
     public PainelComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
@@ -143,7 +123,6 @@ public class PainelComprador extends JPanel implements ActionListener{
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
-        this.setVisible(true);
     }
 
     @Override

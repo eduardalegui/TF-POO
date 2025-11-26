@@ -124,7 +124,6 @@ public class PainelTecnologia extends JPanel implements ActionListener {
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
-        this.setVisible(true);
     }
 
     @Override

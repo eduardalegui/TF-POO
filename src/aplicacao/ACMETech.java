@@ -48,6 +48,8 @@ public class ACMETech {
     public void executar() {
         inicializar();
         HomePage minhaJanela = new HomePage(participantes, this);
+        minhaJanela.setLocationRelativeTo(null);
+        minhaJanela.setVisible(true);
         // PainelCadastrarComprador minhaJanela = new PainelCadastrarComprador();
         // PainelComprador minhaJanela = new PainelComprador();
         // PainelCadastrarFornecedor minhaJanela = new PainelCadastrarFornecedor();

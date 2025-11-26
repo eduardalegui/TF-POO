@@ -137,7 +137,6 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
         this.add(comp1);
         this.add(comp2);
         this.add(comp3);
-        setVisible(true); // ultima linha!!!
     }
 
     @Override

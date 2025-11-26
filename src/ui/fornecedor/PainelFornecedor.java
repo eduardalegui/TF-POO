@@ -110,7 +110,6 @@ public class PainelFornecedor extends JPanel implements ActionListener{
         this.add(botaoVoltar);
         this.add(comp1);
         this.add(comp2);
-        this.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {

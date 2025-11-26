@@ -182,8 +182,6 @@ public class PainelCadastrarFornecedor extends JPanel implements ActionListener{
         this.add(comp1);
         this.add(comp2);
         this.add(comp3);
-        //this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!!
     }
 
     public void actionPerformed(ActionEvent e) {

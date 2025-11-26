@@ -187,8 +187,6 @@ public class PainelSalvarDadosSalvarCarregar extends JPanel implements ActionLis
         this.add(comp1);
         this.add(comp2);
         this.add(comp3);
-        //this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!!
     }
 
     public void actionPerformed(ActionEvent e) {

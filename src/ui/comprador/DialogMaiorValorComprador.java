@@ -52,8 +52,9 @@ public class DialogMaiorValorComprador extends JDialog{
         botaoVoltar.add(comp1);
         botaoVoltar.add(comp4);
         this.add(botaoVoltar);
+        this.setModal(true);
         this.setLocationRelativeTo(null);
-        setVisible(true); // ultima linha!!!
+        this.setVisible(true); // ultima linha!!!
     }
 
     public String maiorComprador(){

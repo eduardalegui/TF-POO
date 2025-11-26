@@ -52,6 +52,7 @@ public class DialogMaiorValorFornecedor extends JDialog{
         botaoVoltar.add(comp1);
         botaoVoltar.add(comp4);
         this.add(botaoVoltar);
+        this.setModal(true);
         this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }

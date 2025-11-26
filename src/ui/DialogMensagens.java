@@ -33,6 +33,7 @@ public class DialogMensagens extends JDialog{
         comp4.add(scrollar);
         botaoVoltar.add(comp4);
         this.add(botaoVoltar);
+        this.setModal(true);
         this.setLocationRelativeTo(null);
         setVisible(true); // ultima linha!!!
     }
