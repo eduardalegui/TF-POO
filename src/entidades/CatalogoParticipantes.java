@@ -243,6 +243,7 @@ public class CatalogoParticipantes {
         }
         if(compradores.size() == 0) {
             retorno.add("ERRO: Não existem compradores cadastrados");
+            return retorno;
         }
         for(Comprador c : compradores) {
             retorno.add(c.geraDescricao());
@@ -318,9 +319,9 @@ public class CatalogoParticipantes {
                 }
             }
             if(c == null) {
-                return "ERRO: Comprador nao encontrado";
+                return "ERRO: Comprador não encontrado";
             } else if(modificado) {
-                return "ERRO: Comprador modificado";
+                return "Comprador modificado";
             } else {
                 return "ERRO: Nenhum campo preenchido";
             }            
@@ -498,7 +499,7 @@ public class CatalogoParticipantes {
             Venda venda = new Venda(num, date, comprador, tecnologia);
             venda.calculaValorFinal();
             comprador.setVendas(venda);
-            
+
             return "Venda cadastrada";
         } catch(NullPointerException e) {
             return "ERRO: Preencha os dados corretamente e tente novamente";

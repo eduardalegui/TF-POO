@@ -12,7 +12,7 @@ import src.entidades.CatalogoParticipantes;
 
 public class DialogDadosCompradorModificado extends JDialog{
     private CatalogoParticipantes catalogoParticipantes;
-    public DialogDadosCompradorModificado(CatalogoParticipantes catalogoParticipantes){
+    public DialogDadosCompradorModificado(CatalogoParticipantes catalogoParticipantes, String stringId){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
         this.setSize(700,500);            
@@ -56,7 +56,8 @@ public class DialogDadosCompradorModificado extends JDialog{
         this.setVisible(true); // ultima linha!!!
     }
 
-    public List<String> mostrarRelatorio(){
+    public String mostrarRelatorio(){
+        for() {}
         return catalogoParticipantes.mostrarRelatorioDeCompradores();
     }
 

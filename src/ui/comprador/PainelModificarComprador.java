@@ -22,6 +22,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
     private JTextField campTexto41 = new JTextField(20);
     private HomePage home;
     private CatalogoParticipantes catalogoParticipantes;
+    private String stringId;
 
     public PainelModificarComprador(HomePage home, CatalogoParticipantes catalogoParticipantes){
         super();
@@ -168,7 +169,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             String nome = campTexto1.getText();
             String email = campTexto2.getText();
             String pais = campTexto3.getText();
-            String stringId = Long.toString(home.getIdCompradorEscolhidoParaModificacao());
+            stringId = Long.toString(home.getIdCompradorEscolhidoParaModificacao());
             
             String msg = catalogoParticipantes.alterarOsDadosDeUmDeterminadoComprador(stringId, nome, pais, email);
             new DialogMensagens(msg);
@@ -177,7 +178,9 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
         } else if(e.getSource() == voltar) { //voltar
             limpar();
             home.mudaPainel(10);
-        } 
+        } else if(e.getSource() == botao3) {
+            new DialogDadosCompradorModificado(catalogoParticipantes, stringId); 
+        }
     }
 
     public void limpar(){
