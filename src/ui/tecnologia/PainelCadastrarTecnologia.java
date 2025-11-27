@@ -3,6 +3,8 @@ package src.ui.tecnologia;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
 import src.entidades.*;
@@ -209,10 +211,14 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
             String peso = campTexto5.getText();
             String temperatura = campTexto6.getText();
             String fornecedorT = (String) selecionaArea.getSelectedItem();
-            Fornecedor f = null;
-            Fornecedor fornecedor = null;
+            String fornecedorSemEspaco = "";
+            if (!fornecedorT.equals("")) {
+                fornecedorSemEspaco = fornecedorT.substring(0, fornecedorT.indexOf(" -"));
+            } 
+                Fornecedor f = null;
+                Fornecedor fornecedor = null;
 
-            if (fornecedorT.equals("")) {
+            if (fornecedorSemEspaco.equals("")) {
                 f = null;
             }
             else{
@@ -224,7 +230,7 @@ public class PainelCadastrarTecnologia extends JPanel implements ActionListener 
                 for (Participante participante : catalogoParticipantes.getParticipantes()) {
                     if (participante instanceof Fornecedor) {
                         fornecedor = (Fornecedor) participante;
-                        if (fornecedorT == participante.getNome()) {
+                        if (fornecedorSemEspaco.equals(participante.getNome())) {
                             f = fornecedor;
                         }
                     }

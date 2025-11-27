@@ -156,6 +156,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             //===============================================
         botao1.addActionListener(this);
         botao2.addActionListener(this);
+        botao3.addActionListener(this);
         voltar.addActionListener(this);
         //==============================================
         this.add(botaoVoltar);
@@ -179,6 +180,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
             limpar();
             home.mudaPainel(10);
         } else if(e.getSource() == botao3) {
+            stringId = Long.toString(home.getIdCompradorEscolhidoParaModificacao());
             new DialogDadosCompradorModificado(catalogoParticipantes, stringId); 
         }
     }

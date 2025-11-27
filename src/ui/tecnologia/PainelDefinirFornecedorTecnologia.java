@@ -139,8 +139,8 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
                 new DialogMensagens("ERRO: Fornecedor vazio");
                 return;
             }
-            
-            String msg = catalogoParticipantes.definirFornecedor(id, fornecedorT);
+            String fornecedorSemEspaco = fornecedorT.substring(0, fornecedorT.indexOf(" -")).trim();
+            String msg = catalogoParticipantes.definirFornecedor(id, fornecedorSemEspaco);
             new DialogMensagens(msg);
             
         } else if(e.getSource() == botao2) { //limpar
@@ -151,7 +151,7 @@ public class PainelDefinirFornecedorTecnologia extends JPanel implements ActionL
         }
     }
 
-    public void adicionaComboBoxNomes(){
+    public void adicionaComboBoxNomes() {
         for (String id : catalogoParticipantes.getArrayNomesFornecedores()) {
             modeloIds.addElement(id);
         }

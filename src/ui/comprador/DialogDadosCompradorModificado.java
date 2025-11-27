@@ -7,14 +7,15 @@ import java.awt.GridBagLayout;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
-import src.entidades.CatalogoParticipantes;
-
+import src.entidades.*;
 
 public class DialogDadosCompradorModificado extends JDialog{
     private CatalogoParticipantes catalogoParticipantes;
-    public DialogDadosCompradorModificado(CatalogoParticipantes catalogoParticipantes, String stringId){
+    private String stringCod;
+    public DialogDadosCompradorModificado(CatalogoParticipantes catalogoParticipantes, String stringCod){
         super();
         this.catalogoParticipantes = catalogoParticipantes;
+        this.stringCod = stringCod;
         this.setSize(700,500);            
         Color corFundo = new Color(238, 236, 194);
         Color vermelho = new Color(233, 37, 37);
@@ -35,7 +36,7 @@ public class DialogDadosCompradorModificado extends JDialog{
         comp1.add(titulo);
         JPanel comp4 = new JPanel();
         JTextArea areaTexto = new JTextArea(20, 55);
-        areaTexto.setText(relatorio());
+        areaTexto.setText(mostrarRelatorio());
         MatteBorder bordaAreaTexto = new MatteBorder(2, 2, 2, 2, vermelho);
         Font fontAreaTexto = new Font("SansSerif", Font.BOLD, 15);
         areaTexto.setBorder(bordaAreaTexto);
@@ -57,16 +58,19 @@ public class DialogDadosCompradorModificado extends JDialog{
     }
 
     public String mostrarRelatorio(){
-        for() {}
-        return catalogoParticipantes.mostrarRelatorioDeCompradores();
-    }
-
-    public String relatorio(){
-        String retorno = "";
-        for(String s : mostrarRelatorio()){
-            retorno = retorno + s + "\n";
+        try {
+            for(Participante p : catalogoParticipantes.getParticipantes()) {
+                if(p instanceof Comprador) {
+                    Comprador c = (Comprador) p;
+                    long cod = Long.parseLong(stringCod);
+                    if(c.getCod() == cod) {
+                        return c.geraDescricao();
+                    }
+                }
+            }
+            return "Comprador não encontrado";
+        } catch(Exception e) {
+            return "Erro ao buscar o comprador";
         }
-        return retorno;
-    } 
-
+    }
 }

@@ -101,23 +101,23 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == botao1) { //confirmar
-            String nome = (String) selecionaArquivo.getSelectedItem();
+            String nome = campTexto4.getText();
             String msg = acme.carregarDadosJson(nome);
             new DialogMensagens(msg);
         } else if(e.getSource() == voltar) { //voltar
-            //campTexto4.setText("");
+            campTexto4.setText("");
             home.mudaPainel(5);
         } 
     }
 
-    public void adicionaComboBoxNomesArquivos() {
-        Path pasta = Paths.get("src", "recursos");
-        try (DirectoryStream<Path> caminho = Files.newDirectoryStream(pasta, "*.json")) {
-            for (Path entrada : caminho) {
-                modeloArquivos.addElement(entrada.getFileName().toString().substring(0, entrada.getFileName().toString().length() - 5));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    // public void adicionaComboBoxNomesArquivos() {
+    //     Path pasta = Paths.get("src", "recursos");
+    //     try (DirectoryStream<Path> caminho = Files.newDirectoryStream(pasta, "*.json")) {
+    //         for (Path entrada : caminho) {
+    //             modeloArquivos.addElement(entrada.getFileName().toString().substring(0, entrada.getFileName().toString().length() - 5));
+    //         }
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }

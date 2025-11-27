@@ -101,6 +101,9 @@ public class CatalogoParticipantes {
             if (pais.matches(".*\\d.*")) {
                 return "ERRO: O pais não pode conter números";
             }
+            if(pais.equals("")) {
+                return "ERRO: O país não pode estar vazio";
+            }
             if (email.equals("")) {
                 return "ERRO: O email não pode estar vazio";
             }
@@ -433,9 +436,6 @@ public class CatalogoParticipantes {
                 }
             }
         }
-        for(Tecnologia t : tecnologiasSemFornecedor) {
-            array.add(String.valueOf(t.getId()));
-        }
         return array;
     }
 
@@ -593,7 +593,7 @@ public class CatalogoParticipantes {
             for (Participante participante : participantes) {
                 if (participante instanceof Fornecedor) {
                     fornecedor = (Fornecedor) participante;
-                    if (fornecedorT == participante.getNome()) {
+                    if (fornecedorT.equals(fornecedor)) {
                         f = fornecedor;
                     }
                 }
