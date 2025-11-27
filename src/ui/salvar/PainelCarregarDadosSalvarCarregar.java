@@ -17,18 +17,13 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
     private HomePage home;
     private ACMETech acme;
     private JTextField campTexto4;
-    private JComboBox<String> selecionaArquivo;
     private CatalogoParticipantes catalogoParticipantes;
-    private DefaultComboBoxModel<String> modeloArquivos;
 
     public PainelCarregarDadosSalvarCarregar(HomePage home, ACMETech acme, CatalogoParticipantes catalogoParticipantes){
         super();
         this.home = home;
         this.acme = acme;
         this.catalogoParticipantes = catalogoParticipantes;
-        this.modeloArquivos = new DefaultComboBoxModel<>();
-        adicionaComboBoxNomesArquivos();
-        this.selecionaArquivo = new JComboBox<>(modeloArquivos);
         Color corFundo = new Color(238, 236, 194);
         BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
         this.setBackground(corFundo);
@@ -72,11 +67,13 @@ public class PainelCarregarDadosSalvarCarregar extends JPanel implements ActionL
                 Font fontDosTitulos = new Font("SansSerif", Font.BOLD, 30);
                 Font fontDosCampTexto = new Font("SansSerif", Font.PLAIN, 30);
                 JLabel tituloCod = new JLabel("Nome: ");
-                selecionaArquivo.setPreferredSize(new Dimension(375, 35));
-                selecionaArquivo.setFont(fontDosCampTexto);
+                campTexto4 = new JTextField(18);
+                campTexto4.setOpaque(false);
+                campTexto4.setBorder(bordaCampTexto);
+                campTexto4.setFont(fontDosCampTexto);
                 tituloCod.setFont(fontDosTitulos);
                 comp2.add(tituloCod);
-                comp2.add(selecionaArquivo);
+                comp2.add(campTexto4);
             //===============================================
             //===============================================
                 JPanel comp3 = new JPanel();
