@@ -14,6 +14,7 @@ import src.ui.HomePage;
 public class PainelModificarComprador extends JPanel implements ActionListener{
     private JButton botao1;
     private JButton botao2;
+    private JButton botao3;
     private JButton voltar;
     private JTextField campTexto1 = new JTextField(20);
     private JTextField campTexto2 = new JTextField(20);
@@ -129,6 +130,7 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 JPanel comp3 = new JPanel();
                 botao1= new JButton("Enviar");
                 botao2= new JButton("Limpar");
+                botao3= new JButton("Mostrar Comprador");
                 MatteBorder bordaBotoes = new MatteBorder(0, 5, 0, 5, corFundo);
                 FlowLayout  layout21 = new FlowLayout(FlowLayout.CENTER);
                 botao1.setPreferredSize(new Dimension(150, 60));
@@ -139,11 +141,16 @@ public class PainelModificarComprador extends JPanel implements ActionListener{
                 botao2.setBorder(bordaBotoes);
                 botao2.setBackground(vermelho);
                 botao2.setFont(fontBotoes);
+                botao3.setPreferredSize(new Dimension(250, 60));
+                botao3.setBorder(bordaBotoes);
+                botao3.setBackground(vermelho);
+                botao3.setFont(fontBotoes);
                 comp3.setLayout(layout21);
                 comp3.setMaximumSize(new Dimension(900, 200));
                 comp3.setOpaque(false);
                 comp3.setBorder(BorderFactory.createEmptyBorder(30, 0, 0, 0));
                 comp3.add(botao1);
+                comp3.add(botao3);
                 comp3.add(botao2);
             //===============================================
         botao1.addActionListener(this);
