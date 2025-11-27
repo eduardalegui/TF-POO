@@ -12,7 +12,6 @@ public class Comprador extends Participante{
         this.pais = pais;
         this.email = email;
         vendas = new LinkedList<>();
-        
     }
 
     public String getPais() {
@@ -37,6 +36,11 @@ public class Comprador extends Participante{
 
     public void setVendas(Venda v) {
         this.vendas.add(v);
+        List<Venda> listaAlternativa = new ArrayList<>();
+        listaAlternativa.addAll(vendas);
+        Collections.sort(listaAlternativa, Comparator.comparing(Venda::getNum).reversed());
+        vendas.clear();
+        vendas.addAll(listaAlternativa);
     }
 
     public String mostrarRelatorioDeVendas() {

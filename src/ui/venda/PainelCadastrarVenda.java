@@ -164,7 +164,6 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
         } else if(e.getSource() == botao1) { //enviar
             String compradorSelecionado = (String) selecionaComprador.getSelectedItem();
             String tecnologiaSelec = (String) selecionaTecnologia.getSelectedItem();
-            long tecnologiaSelecionada = Long.parseLong(tecnologiaSelec);
             String date = campTexto2.getText();
             String num = campTexto1.getText();
             Comprador comprador = null;
@@ -181,7 +180,7 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
                     }
                 }
             }
-            String msg = catalogoParticipantes.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelecionada));
+            String msg = catalogoParticipantes.cadastrarVenda(num, date, c, achaTecnologia(tecnologiaSelec));
             new DialogMensagens(msg);
             
         } else if(e.getSource() == botao2) { //limpar
@@ -194,22 +193,28 @@ public class PainelCadastrarVenda extends JPanel implements ActionListener {
         campTexto1.setText("");
     }
 
-    public Tecnologia achaTecnologia(long tecnologiaSelecionada){
-        Fornecedor fornecedor = null;
-        Tecnologia tecnologia = null;
-        for (Participante participante : catalogoParticipantes.getParticipantes()) {
-            if(participante instanceof Fornecedor){
-                fornecedor = (Fornecedor) participante;
-                for (Tecnologia tec : fornecedor.getArrayTecnologia()){
-                    if(tec.getId() == tecnologiaSelecionada){
-                        tecnologia = tec;
-                        return tecnologia;
+    public Tecnologia achaTecnologia(String stringtecnologiaSelecionada){
+        try {
+            long tecnologiaSelecionada = Long.parseLong(stringtecnologiaSelecionada);
+            Fornecedor fornecedor = null;
+            Tecnologia tecnologia = null;
+            for (Participante participante : catalogoParticipantes.getParticipantes()) {
+                if(participante instanceof Fornecedor){
+                    fornecedor = (Fornecedor) participante;
+                    for (Tecnologia tec : fornecedor.getArrayTecnologia()){
+                        if(tec.getId() == tecnologiaSelecionada){
+                            tecnologia = tec;
+                            return tecnologia;
+                        }
                     }
+                    
                 }
-                
             }
+            return null;
+        } catch (Exception e) {
+            return null;
         }
-        return null;
+        
     }
 
     public void adicionaComboBoxNomes(){

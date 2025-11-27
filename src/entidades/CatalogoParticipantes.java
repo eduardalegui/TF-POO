@@ -411,6 +411,7 @@ public class CatalogoParticipantes {
 
     public ArrayList<String> getArrayNomesCompradores(){
         ArrayList<String> array = new ArrayList<>();
+        array.add("");
         for (Participante p : participantes) {
             if (p instanceof Comprador) {
                 Comprador c = (Comprador) p;
@@ -422,6 +423,7 @@ public class CatalogoParticipantes {
 
     public ArrayList<String> getIdsTecnologias(){
         ArrayList<String> array = new ArrayList<>();
+        array.add("");
         for (Participante p : participantes) {
             if (p instanceof Fornecedor) {
                 Fornecedor f = (Fornecedor) p;
@@ -442,7 +444,7 @@ public class CatalogoParticipantes {
         for (Participante p : participantes) {
             if (p instanceof Fornecedor) {
                 Fornecedor f = (Fornecedor) p;
-                array.add(f.getNome());
+                array.add(f.getNome() + " - " + f.getArea().getNome());
             }
         }
         return array;
@@ -496,7 +498,7 @@ public class CatalogoParticipantes {
             Venda venda = new Venda(num, date, comprador, tecnologia);
             venda.calculaValorFinal();
             comprador.setVendas(venda);
-
+            
             return "Venda cadastrada";
         } catch(NullPointerException e) {
             return "ERRO: Preencha os dados corretamente e tente novamente";
